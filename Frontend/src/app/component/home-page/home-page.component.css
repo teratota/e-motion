@@ -1,0 +1,37 @@
+.image-begin{
+    width: 100%;
+    background-image: url('../../../assets/images/S0-Sur-la-route-sans-surprise-mauvaise-ou-bonne-354470.jpg');
+    background-position: center;
+    height: 500px;
+    background-size: cover;
+}
+
+.image-begin .shadow-head{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(70, 70, 70, 0.6);
+    box-shadow: 0 0 20px 2px #333 inset;
+    display: flex;
+    align-items: center;
+    flex-basis: auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.image-begin .shadow-head > h1{
+    text-align: center;
+    color: whitesmoke;
+}
+
+.image-begin .shadow-head h3{
+    text-align: center;
+    color: whitesmoke;
+}
+
+.image-begin .shadow-head .header .row {
+    justify-content: center;
+}
+
+.image-begin .shadow-head .header .row .input-group{
+    display: flex;
+}
