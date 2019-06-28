@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { GestionClientComponent } from './component/gestion-client/gestion-client.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HistoriqueCommandeComponent } from './component/historique-commande/historique-commande.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GestionClientComponent
+    GestionClientComponent,
+    HistoriqueCommandeComponent,
   ],
   imports: [
     BrowserModule,
