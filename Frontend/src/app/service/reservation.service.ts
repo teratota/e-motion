@@ -17,7 +17,7 @@ export class ReservationService {
   constructor(private http: HttpClient) { }
   
     getAll() {
-      console.log("trouver2");
-      return this.http.get('http://localhost/api/script.php');
+      var parameters = { "function" : 'getAllMarque', "parameter_number" : 0 }
+      return this.http.post('http://localhost/api/controller/marqueController.php',parameters);
     }
 }
