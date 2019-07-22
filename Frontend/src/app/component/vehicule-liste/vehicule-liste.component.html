@@ -1,38 +1,56 @@
-<app-form-home-page></app-form-home-page>
-<h2>Liste des voitures</h2>
-<div class="vehicule">
-  <div class="card" style="width: 18rem;">
-      <h5 class="card-title">Renault Zoé</h5>
-      <div class="card-image">
-        <img src="../../../assets/images/renault-zoe-400-km-620x413.jpg"
-      </div>
-    </div>
+<script src="../../../assets/images"></script>
+<body ng-app="">
+  <h2>Liste des véhicules</h2>
+  <div class="vehicule">
+  <!-- <div ngModelGroup="vehicule"> -->
+    <div class="card-vehicule">
+      <!-- <form #vehiculeForm="ngForm">
 
-  <div class="card" style="width: 18rem;">
-      <h5 class="card-title">Renault Zoé</h5>
-      <div class="card-image">
-        <img src="../../../assets/images/renault-zoe-400-km-620x413.jpg"
-      </div>
-    </div>
+        {{ json | vehiculeForm }}; -->
 
-  <div class="card" style="width: 18rem;">
-      <h5 class="card-title">Renault Zoé</h5>
-      <div class="card-image">
-        <img src="../../../assets/images/renault-zoe-400-km-620x413.jpg"
-      </div>
-    </div>
+        <div class="card" style="width: 18rem;">
+          <!-- <h5 class="card-title" ngModel name="nameVehicule"></h5> -->
+          <h5 class="card-title">Renault</h5>
+          <!-- <div class="card-image" ng-init="imgVehicule = 'renault-zoe-400-km-620x413.jpg'">
+            <img ng-src="{{ imgVehicule }}">
+          </div> -->
+          <img src="../../../assets/images/tesla-model-s.jpg">
+          <!-- <p class="card-text" ngModel name="performenceVehicule"></p> -->
+          <p class="card-text">Est performant et ecologique</p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+            Réserver
+          </button>
+        </div>
 
-  <div class="card" style="width: 18rem;">
-      <h5 class="card-title">Renault Zoé</h5>
-      <div class="card-image">
-        <img src="../../../assets/images/renault-zoe-400-km-620x413.jpg"
-      </div>
-    </div>
+        <div class="card" style="width: 18rem;">
+          <!-- <h5 class="card-title" ngModel name="nameVehicule"></h5> -->
+          <h5 class="card-title">Renault</h5>
+          <!-- <div class="card-image" ng-init="imgVehicule = 'renault-zoe-400-km-620x413.jpg'">
+            <img ng-src="{{ imgVehicule }}">
+          </div> -->
+          <img src="../../../assets/images/renault-zoe-400-km-620x413.jpg">
+          <!-- <p class="card-text" ngModel name="performenceVehicule"></p> -->
+          <p class="card-text">Est performant et ecologique</p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+            Réserver
+          </button>
+        </div>
 
-  <div class="card" style="width: 18rem;">
-      <h5 class="card-title">Renault Zoé</h5>
-      <div class="card-image">
-        <img src="../../../assets/images/renault-zoe-400-km-620x413.jpg"
-      </div>
+        <div class="card" style="width: 18rem;">
+          <!-- <h5 class="card-title" ngModel name="nameVehicule"></h5> -->
+          <h5 class="card-title">Renault</h5>
+          <!-- <div class="card-image" ng-init="imgVehicule = 'renault-zoe-400-km-620x413.jpg'">
+            <img ng-src="{{ imgVehicule }}">
+          </div> -->
+          <img src="../../../assets/images/scooter_electrique_super_soco_cu_x_roue_avant_grande_385f88c0-8aca-4e79-b6bc-2b2d90593e48_large.jpg">
+          <!-- <p class="card-text" ngModel name="performenceVehicule"></p> -->
+          <p class="card-text">Est performant et ecologique</p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+            Réserver
+          </button>
+        </div>
+      <!-- </form> -->
     </div>
+  <!-- </div> -->
 </div>
+</body>
