@@ -4,6 +4,7 @@ import {  HttpErrorResponse, HttpParams, HttpClientModule } from '@angular/commo
 import { Marque } from 'src/app/class/marque';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
+import * as $ from 'jquery';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,21 @@ export class VehiculeService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-    /* var parameters = { "function" : 'getAllMarque', "parameter_number" : 0 }
-     return this.http.post('http://localhost/api/controller/marqueController.php',parameters);*/
-     var xmlhttp = new XMLHttpRequest();
-     xmlhttp.open("POST", "http://localhost:8000/vehicule/get", true);
-     xmlhttp.send("salut");
-     return xmlhttp.responseText;
-   }
+    var test: any;
+    $.ajax({
+      type: "POST",
+      data: {
+        password:"salut"
+      },
+      url: "http://localhost:8000/vehicule/get",
+      dataType: "json",
+      async: false,
+      success: function(data) {
+          console.log(data);
+          test = data;
+      }
+  });
+  console.log(test);
+  return test;
+  }
 }
