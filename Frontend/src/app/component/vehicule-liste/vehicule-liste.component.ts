@@ -17,8 +17,8 @@ export class VehiculeListeComponent implements OnInit {
   image = [];
 
   ngOnInit() {
-    this.vehicule = this.VehiculeService.getAll();
-    console.log(this.vehicule);
+    //this.vehicule = this.VehiculeService.getAll();
+    //console.log(this.vehicule);
   }
 
 }
