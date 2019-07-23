@@ -1,62 +1,29 @@
 <body>
+
   <div class="image-begin">
     <div class="shadow-head">
       <h1>E-Motion</h1>
-      <app-form-home-page></app-form-home-page>
-    </div>
-  </div>
-
-  <div class="presentation">
-    <div class="card">
-      <h5 class="card-title">Qui sommes nous ?</h5>
-      <div class="card-body">
-        <p class="card-text">Nous somme une société qui vous propose de pouvoir louer un scooter ou une voiture électrique à Paris et à Lyon.</p>
+      <div class="header">
+        <h3>La location de véhicule avec E-Motion</h3>
+        <div class="row">
+          <form class="form-horizontal col-md-8 col-md-offset-2" role="form" ng-controller="HeaderCtrl">
+              <div class="input-group" >
+                  <div class="nom-voiture"><input ng-model="query" type="text" class="form-control" placeholder="Renauld, peugeot, ..."></div>
+                  <input type="date" name="dateDebut" id="">
+                  <input type="time" id="exampleInput" name="heureDebut" ng-model="example.value"
+                      placeholder="HH:mm:ss" min="08:00:00" max="20:00:00" required >
+                  <input type="date" name="dateFin" id="">
+                  <input type="time" id="exampleInput" name="heureFin" ng-model="example.value"
+                      placeholder="HH:mm:ss" min="08:00:00" max="20:00:00" required >
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-default glyphicon glyphicon-search" type="button" ng-click="searchAction()">Valider</button>
+              </span>
+              </div>
+          </form>
+        </div>
       </div>
     </div>
-      
-    <div class="card">
-      <h5 class="card-title">Notre equipe</h5>
-      <div class="card-body">
-        <p class="card-text">Notre équipe est professionnel et pourra s'occuper de vous renseigner peut importe votre question.</p>
-      </div>
-    </div>
-
-    <div class="card">
-        <h5 class="card-title">Nos promotions</h5>
-        <div class="card-body">
-          <p class="card-text">Nous proposons des promotions que vous pourrez gagner en louant nos véhicules.</p>
-        </div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <h5 class="card-title">Location de voiture</h5>
-      </div>
-        <div class="card-body">
-          <p class="card-text">Vous pouvez voir la liste des voitures que nous proposons.</p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
-            Voir la liste
-          </button>
-        </div>
-    </div>
-
-    <div class="card">
-        <h5 class="card-title">Location de scooter</h5>
-        <div class="card-body">
-          <p class="card-text">Vous pouvez voir la liste des scooters que nous proposons</p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
-              Voir la liste
-            </button>
-        </div>
-    </div>
   </div>
-
-  <h2>Où sommes nous situer ?</h2>
-
-
-  <h2>Nos partenaires</h2>
-  <div class="partenaire">
-    <img src="../../../assets/images/logo-Michelin2.png">
-    <img src="../../../assets/images/stacks-image-c3ee5ea.png">
-  </div>
+  <p> Nous vous proposons un service de location de véhicule au tout moment en passant par notre site.</p>
+  <p>Vous pourrez voir les véhicules que nous proposonsn qui sont disponible dés maintenant</p>
 </body>

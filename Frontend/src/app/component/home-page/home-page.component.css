@@ -1,6 +1,6 @@
 .image-begin{
     width: 100%;
-    background-image: url('../../../assets/images/tesla-model-s.jpg');
+    background-image: url('../../../assets/images/S0-Sur-la-route-sans-surprise-mauvaise-ou-bonne-354470.jpg');
     background-position: center;
     height: 500px;
     background-size: cover;
@@ -32,66 +32,6 @@
     justify-content: center;
 }
 
-.image-begin .shadow-head .header .row .input-group .nom-voiture{
-    width: 100%;
-    margin-bottom: 10px;
-}
-
 .image-begin .shadow-head .header .row .input-group{
-    justify-content: center;
-}
-
-.image-begin .shadow-head .header .row .input-group input{
-    background-color: #333;
-    opacity: 0.8;
-    color: whitesmoke;
-    
-}
-
-.image-begin .shadow-head .header .row .input-group button{
-    padding:6px 0 6px 0;
-    margin-top: 10px;
-	font:Bold 13px Arial;
-	background:#821513;
-	color:#fff;
-	width:90px;
-	border-radius:2px;
-	border:none;
-}
-
-.presentation {
-    background: linear-gradient(#3A3A3A ,#333);
-    opacity: 0.90;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.card{
-    margin: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
-    background-color: rgb(17, 17, 17);
-    color: #fff;
-    width: 18rem;
-}
-
-.card .card-body{
-    background-color: lightgrey;
-    opacity: 0.9;
-    color: #383838;
-
-}
-
-.partenaire{
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    flex-basis: auto;
-}
-
-h2{
-    margin-top: 20px;
-    text-align: center;
 }
