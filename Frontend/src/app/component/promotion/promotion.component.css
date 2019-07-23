@@ -1,0 +1,55 @@
+.head-promotion{
+    width: 100%;
+    background-image: url('../../../assets/images/promotion3.jpg');
+    background-position: center;
+    height: 100px;
+    background-size: cover;
+}
+
+.head-promotion .shadow-head{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(70, 70, 70, 0.6);
+    box-shadow: 0 0 20px 2px #333 inset;
+    display: flex;
+    align-items: center;
+    flex-basis: auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h2{
+    padding-top: 10px;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.promotion{
+    background: linear-gradient(#3A3A3A ,#333);
+    opacity: 0.90;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card{
+    margin: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+    background-color: rgb(200, 17, 17);
+    color: #fff;
+    width: 18rem;
+}
+
+.card-body{
+    background-color: rgba(70, 70, 70, 0.6);
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.card-head{
+    padding-left: 5px;
+    padding-top: 5px;
+}
