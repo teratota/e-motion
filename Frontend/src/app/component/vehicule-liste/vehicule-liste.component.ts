@@ -11,6 +11,10 @@ export class VehiculeListeComponent implements OnInit {
 
   constructor(private VehiculeService: VehiculeService) { }
   vehicule: Vehicule[];
+  marque = [];
+  model = ['models', 'modelx'];
+  performence = [];
+  image = [];
 
   ngOnInit() {
     this.vehicule = this.VehiculeService.getAll();
