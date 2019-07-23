@@ -6,31 +6,25 @@
         <div class="col-md-2 offset-md-1">
         <label for="type_vehicule">Type de vehicule</label>
         <select class="form-control" id="type_vehicule" required>
-          <option *ngFor="let typev of type_vehicule" [value]="typev">{{typev}}</option>
+          <option *ngFor="let typev of type_vehicule" [value]="typev.id">{{typev.nom}}</option>
         </select>
         </div>
         <div class="col-md-2 ">
         <label for="marque">Marques</label>
-        <select class="form-control" id="marque" required>
-          <option *ngFor="let mar of marque" [value]="mar">{{mar}}</option>
+        <select (change)="Onchange(marques.value)" #marques class="form-control" id="marque" required>
+          <option *ngFor="let mar of marque" [value]="mar.id">{{mar.nom}}</option>
         </select>
         </div>
       <div class="col-md-2 ">
             <label for="model">Model</label>
             <select class="form-control" id="model" required>
-              <option *ngFor="let mod of model" [value]="mod">{{mod}}</option>
+              <option *ngFor="let mod of model" [value]="mod.id">{{mod.nom}}</option>
             </select>
         </div>
         <div class="col-md-2 ">
             <label for="couleur">Couleur</label>
             <select class="form-control" id="couleur" required>
-              <option *ngFor="let coul of couleur" [value]="coul">{{coul}}</option>
-            </select>
-        </div>
-      <div class="col-md-2 ">
-            <label for="type">Type</label>
-            <select class="form-control" id="type" required>
-              <option *ngFor="let typ of type" [value]="typ">{{typ}}</option>
+              <option *ngFor="let coul of couleur" [value]="coul.id">{{coul.nom}}</option>
             </select>
         </div>
       </div>
