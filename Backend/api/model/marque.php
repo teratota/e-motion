@@ -1,9 +1,12 @@
 <?php
-require_once('../config/config.php');
+require_once('config/config.php');
 
 class marque extends config
 {
-    function getAll(){}
+    function getAll(){
+        $listmarque = array('tesla','renault');
+		return $listmarque;
+	}
     
     function insert(){}
     

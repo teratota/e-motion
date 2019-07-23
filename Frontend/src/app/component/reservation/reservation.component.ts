@@ -23,9 +23,7 @@ export class ReservationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ReservationService.getAll().subscribe((res: Marque[]) => {
-      this.marque = res;
-  });
+    this.marque = this.ReservationService.getAll();
     console.log(this.marque);
   }
 
