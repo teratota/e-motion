@@ -6,7 +6,18 @@ class vehicule extends config
     function getAll(){
         try {
             $data_base=$this->connection();
-            $select = $data_base->prepare("Select model.nom, marque.nom As nom1, vehicule.prix, vehicule.img, vehicule.autonomie From vehicule Inner Join model On vehicule.ref_id_model = model.id Inner Join marque On vehicule.ref_id_marque = marque.");
+            $select = $data_base->prepare("Select
+            marque.nom,
+            model.ref_id_marque,
+            vehicule.prix,
+            vehicule.autonomie,
+            vehicule.id,
+            vehicule.img
+        From
+            vehicule Inner Join
+            marque On vehicule.ref_id_marque = marque.id Inner Join
+            model On model.ref_id_marque = marque.id
+                    And vehicule.ref_id_model = model.id");
             $select->execute();
             $data=$select->fetchAll();
             return $data;
