@@ -12,15 +12,14 @@ import { ReservationService } from 'src/app/service/reservation.service';
 export class ReservationComponent implements OnInit {
 
   constructor(private ReservationService: ReservationService) {}
-  type_vehicule = ['scooter','voiture']
-  marque: Marque[]
+  type_vehicule = ['scooter', 'voiture'];
+  marque: Marque[];
   model = ['models', 'modelx'];
   couleur = ['rouge', 'bleu', 'vert', 'noir'];
   type = ['4x4', 'couper', 'cabriolet', 'sport'];
 
   getMarque(): void {
-    console.log("trouver");
-    
+    console.log('trouver');
   }
 
   ngOnInit() {

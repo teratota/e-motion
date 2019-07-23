@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,22 +11,24 @@ import { GestionClientComponent } from './component/gestion-client/gestion-clien
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HistoriqueCommandeComponent } from './component/historique-commande/historique-commande.component';
+import { InterfaceAdminComponent } from './component/interface-admin/interface-admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GestionClientComponent,
     HistoriqueCommandeComponent,
-    HomePageComponent
-    ReservationComponent
+    HomePageComponent,
+    ReservationComponent,
+    InterfaceAdminComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot([]),
     FormsModule,
-    ReactiveFormsModule
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
     FormsModule,
   ],
   providers: [],

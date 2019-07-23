@@ -13,11 +13,10 @@ export class ReservationService {
   tab = [];
   baseUrl = 'http://localhost/api';
   reservation: Reservation[];
-  
+
   constructor(private http: HttpClient) { }
-  
+
     getAll() {
-      console.log("trouver2");
-      return this.http.get('http://localhost/api/script.php');
+      return this.http.get('http://localhost/api/controller/script.php');
     }
 }
