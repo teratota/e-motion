@@ -10,7 +10,6 @@ import { ReservationComponent } from './component/reservation/reservation.compon
 import { HttpClientModule } from '@angular/common/http';
 import { GestionClientComponent } from './component/gestion-client/gestion-client.component';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HistoriqueCommandeComponent } from './component/historique-commande/historique-commande.component';
 
 @NgModule({
@@ -18,7 +17,7 @@ import { HistoriqueCommandeComponent } from './component/historique-commande/his
     AppComponent,
     GestionClientComponent,
     HistoriqueCommandeComponent,
-    HomePageComponent
+    HomePageComponent,
     ReservationComponent
   ],
   imports: [
@@ -26,9 +25,7 @@ import { HistoriqueCommandeComponent } from './component/historique-commande/his
     AppRoutingModule,
     RouterModule.forRoot([]),
     FormsModule,
-    ReactiveFormsModule
     HttpClientModule
-    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
