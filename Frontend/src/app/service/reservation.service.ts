@@ -18,6 +18,6 @@ export class ReservationService {
   
     getAll() {
       var parameters = { "function" : 'getAllMarque', "parameter_number" : 0 }
-      return this.http.post('http://localhost/api/controller/marqueController.php',parameters);
+      return this.http.post('http://localhost:8000/vehicule/getAll',parameters);
     }
 }
