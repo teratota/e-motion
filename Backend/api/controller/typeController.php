@@ -1,10 +1,10 @@
 <?php
 require "config/model.php";
-class vehiculeController
+class typeController
 {
     public function get($parametre = null){
-        $class = new vehicule;
+        $class = new type;
         $result = $class->getall();
-        print_r($result);
+        echo json_encode($result);
     }
 }

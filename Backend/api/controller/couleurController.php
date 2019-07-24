@@ -1,10 +1,10 @@
 <?php
 require "config/model.php";
-class vehiculeController
+class couleurController
 {
     public function get($parametre = null){
-        $class = new vehicule;
+        $class = new couleur;
         $result = $class->getall();
-        print_r($result);
+        echo json_encode($result);
     }
 }
