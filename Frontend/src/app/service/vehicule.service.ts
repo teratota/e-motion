@@ -1,9 +1,4 @@
 import { Injectable } from '@angular/core';
-import {  HttpErrorResponse, HttpParams, HttpClientModule } from '@angular/common/http';
-// import { vehicule } from 'src/app/class/vehicule';
-import { Marque } from 'src/app/class/marque';
-import { HttpClient } from '@angular/common/http';
-import { map, catchError } from 'rxjs/operators';
 import * as $ from 'jquery';
 
 @Injectable({
@@ -11,18 +6,14 @@ import * as $ from 'jquery';
 })
 export class VehiculeService {
 
-  tab = [];
-  baseUrl = 'http://localhost/api';
-  // vehicule: Vehicule[];
+  constructor() { }
 
-  constructor(private http: HttpClient) { }
-
-  getAll() {
-    var test: any;
+  getAll(search) {
+    var test;
     $.ajax({
       type: "POST",
       data: {
-        password:"salut"
+        search:search
       },
       url: "http://localhost:8000/vehicule/get",
       dataType: "json",
