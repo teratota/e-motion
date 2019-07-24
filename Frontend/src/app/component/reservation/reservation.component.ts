@@ -42,17 +42,9 @@ export class ReservationComponent implements OnInit {
   Onclick() {
 
   }
- 
-
-  
-
- reservation = new Reservation(null,null,null,null,null,null,null,null,null);
 
   submitted = false;
 
-
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.reservation); }
 
   
 
