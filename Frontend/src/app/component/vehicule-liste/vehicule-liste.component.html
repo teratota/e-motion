@@ -1,50 +1,73 @@
 <script src="../../../assets/images"></script>
 <body ng-app="">
-  <h2>Liste des véhicules</h2>
-  <div class="vehicule">
+    <div class="container">
+        <form>
+        <div class="container"> 
+          <div class="row my-4">
+            <div class="col-md-2 offset-md-1">
+            <label for="type_vehicule">Type de vehicule</label>
+            <select class="form-control" #type id="type_vehicule" required>
+              <option disabled selected value hidden> -- select an option -- </option>
+              <option *ngFor="let typev of type_vehicule" [value]="typev.id">{{typev.nom}}</option>
+            </select>
+            </div>
+            <div class="col-md-2 ">
+            <label for="marque">Marques</label>
+            <select (change)="Onchange(marques.value)" #marques class="form-control" id="marque" required>
+              <option disabled selected value hidden> -- select an option -- </option>
+              <option *ngFor="let mar of marque" [value]="mar.id">{{mar.nom}}</option>
+            </select>
+            </div>
+          <div class="col-md-2 ">
+                <label for="model">Model</label>
+                <select class="form-control" #models id="model" required>
+                  <option disabled selected value hidden> -- select an option -- </option>
+                  <option *ngFor="let mod of model" [value]="mod.id">{{mod.nom}}</option>
+                </select>
+            </div>
+            <div class="col-md-2 ">
+                <label for="couleur">Couleur</label>
+                <select class="form-control" id="couleur" #couleurs required>
+                  <option disabled selected value hidden> -- select an option -- </option>
+                  <option *ngFor="let coul of couleur" [value]="coul.id">{{coul.nom}}</option>
+                </select>
+            </div>
+          </div>
+          <div class="row my-4">
+              <div class="col-md-3 offset-md-1">
+                  <label for="type">Date de debut</label>
+                  <input type="datetime-local" #datedebut class="form-control">
+              </div>
+              <div class="col-md-3 ">
+                  <label for="type">Date de Fin</label>
+                  <input type="datetime-local" #datefin class="form-control">
+              </div>
+          </div>
+          <div class="row my-4">
+            <div class="col-md-2 mx-auto">
+              <button (click)="showvehicule(type.value,marques.value,models.value,couleurs.value,datefin.value,datedebut.value)" type="submit" class="btn btn-success">Valider</button>
+            </div>
+          </div>  
+        </div>
+        </form>
+    </div>
+
+  <div *ngIf="isViewable" class="vehicule">
   <!-- <div ngModelGroup="vehicule"> -->
     <div class="card-vehicule">
 
-        <div *ngFor="let vehicule of vehicules" class="card">
-          <p>{{vehicule.prix}}</p>
-          <p>{{vehicule.autonomie}}</p>
-          <p>{{vehicule.img}}</p>
-          <p>{{model.nom}}</p>
-          <p>{{marque.nom}}</p>
-        <!-- </div> -->
-        <!-- <div class="card"> -->
-          <!-- <label class="card-title" for="marque">{{marque.nom}}</label>
-          <select class="vehicule" id="marque" required>
-            <option *ngFor="let mar of marque" [value]="mar">{{mar}}</option>
-          </select>
-          <label class="card-title" for="model">{{model.nom}}</label>
-          <select class="vehicule" id="model" required>
-            <option *ngFor="let mod of model" [value]="mod">{{mod}}</option>
-          </select> -->
-          <!-- <div class="card-title" : {{marque.nom | model.nom}}> -->
-            <!-- <h5>{{marque.nom | model.nom}}</h5> -->
-          <!-- </div> -->
-          <!-- <div class="card-image" for="imageVehicule">
-            <select class="vehicule" id="img" required>
-                <option *ngFor="let imgVehicule of imageVehicule" [value] = imgVehicule>{{imgVehicule}}</option>
-                <img *ngFor=imgVehicule>
-            </select>
-          </div> -->
- 
-          <!-- <img src="{{vehicule.img}}"> -->
-          
-          <!-- <p class="card-text" for="performenceVehicule">Performence du vehicule</p>
-          <select class="vehicule" id="autonomie" required>
-            <option *ngFor="let perfVehicule of performenceVehicule" [value] = perfVehicule>{{perfVehicule}}</option>
-          </select> -->
-          
-          <!-- <p class="card-text">{{vehicule.autonomie | vehicule.prix}}</p> -->
+         <div *ngFor="let vehicules of vehicule" class="card">
+          <p>{{vehicules.prix}}</p>
+          <p>{{vehicules.autonomie}}</p>
+          <p>{{vehicules.img}}</p>
+          <p>{{vehicules.marque}}</p>
+          <p>{{vehicules.model}}</p>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
             Réserver
           </button>
         </div>
 
-        <div class="card">
+        <div  class="card">
           <!-- <h5 class="card-title" ngModel name="nameVehicule"></h5> -->
           <h5 class="card-title">Renault</h5>
           <!-- <div class="card-image" ng-init="imgVehicule = 'renault-zoe-400-km-620x413.jpg'">
@@ -58,7 +81,7 @@
           </button>
         </div>
 
-        <div class="card">
+        <div  class="card">
           <!-- <h5 class="card-title" ngModel name="nameVehicule"></h5> -->
           <h5 class="card-title">Renault</h5>
           <!-- <div class="card-image" ng-init="imgVehicule = 'renault-zoe-400-km-620x413.jpg'">
