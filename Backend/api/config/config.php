@@ -3,10 +3,10 @@
 class config
 {
     function connection(){
-        $user='dev';
-        $pass="Mariatest00hope";
+        require('../../config_logs.php');
+
         try {
-            $data_base = new PDO('mysql:host=hoprikoma.diskstation.me;port=3307;dbname=emotion', $user, $pass);
+            $data_base = new PDO('mysql:host='.$host.';port='.$port.';dbname='.$database.'', $user, $pass);
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
         die();
