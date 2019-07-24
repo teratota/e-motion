@@ -6,7 +6,7 @@ class user extends config
     function getAll(){
         try {
             $data_base=$this->connection();
-            $select = $data_base->prepare("Select user.id, user.nom, user.prenom, user.anniversaire, user.`point` From user");
+            $select = $data_base->prepare("Select user.id, user.nom, user.prenom, user.anniversaire, user.npermis, user.`point` From user");
             $select->execute();
             $data=$select->fetchAll();
             return $data;
