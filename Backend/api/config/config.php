@@ -3,10 +3,9 @@
 class config
 {
     function connection(){
-        require('../../config_logs.php');
-
+        include('config_logs.php');
         try {
-            $data_base = new PDO('mysql:host='.$host.';port='.$port.';dbname='.$database.'', $user, $pass);
+            $data_base = new PDO("mysql:host=$host;port=$port;dbname=$database",$user,$pass);
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
         die();
