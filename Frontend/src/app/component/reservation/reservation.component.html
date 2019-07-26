@@ -19,8 +19,8 @@
             <select class="form-control" id="model" required>
               <option *ngFor="let mod of model" [value]="mod.id">{{mod.nom}}</option>
             </select>
-        </div>
-        <div class="col-md-2 ">
+          </div>
+          <div class="col-md-2 ">
             <label for="couleur">Couleur</label>
             <select class="form-control" id="couleur" required>
               <option *ngFor="let coul of couleur" [value]="coul.id">{{coul.nom}}</option>
@@ -29,27 +29,26 @@
       </div>
       <div class="row my-4">
           <div class="col-md-3 offset-md-1">
-              <label for="type">Date de debut</label>
-              <input type="date" class="form-control">
+            <label for="type">Date de debut</label>
+            <input type="date" class="form-control">
           </div>
           <div class="col-md-2 ">
-              <label for="type">Heure de debut</label>
-              <input type="time" class="form-control">
+            <label for="type">Heure de debut</label>
+            <input type="time" class="form-control">
           </div>
           <div class="col-md-3 ">
-              <label for="type">Date de Fin</label>
-              <input type="date" class="form-control">
+            <label for="type">Date de Fin</label>
+            <input type="date" class="form-control">
           </div>
           <div class="col-md-2 ">
-              <label for="type">Heure de Fin</label>
-              <input type="time" class="form-control">
+            <label for="type">Heure de Fin</label>
+            <input type="time" class="form-control">
           </div>
-      </div>
-      <div class="row my-4">
-        <div class="col-md-2 mx-auto">
-          <button type="submit" class="btn btn-success">Valider</button>
         </div>
-      </div>  
-    </div>
+        <div class="row my-4">
+          <div class="col-md-2 mx-auto">
+            <button type="submit" class="btn btn-outline-success">Valider</button>
+          </div>
+        </div>
+      </div>
     </form>
-</div>

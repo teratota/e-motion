@@ -1,0 +1,14 @@
+.admin-container{
+    text-align: center;
+    margin: 20px auto;
+}
+
+
+.admin-container .admin-bloc {
+    padding: 20px;
+    border: 1px solid;
+}
+
+.admin-container .btn{
+    width: 100%;
+}
