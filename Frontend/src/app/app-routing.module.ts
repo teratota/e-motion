@@ -18,8 +18,8 @@ const routes: Routes = [
   { path : 'administration/offre', component : InterfaceAdminOffreComponent },
   { path : 'administration/reservation', component : InterfaceAdminReservationComponent },
   { path : '', component : HomePageComponent},
-  { path : 'connexion', component : ConnexionComponent}
-  { path : 'reservation', component : ReservationComponent }
+  { path : 'connexion', component : ConnexionComponent},
+  { path : 'reservation', component : ReservationComponent },
 
 
 ];

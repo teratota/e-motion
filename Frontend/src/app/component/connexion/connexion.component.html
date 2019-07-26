@@ -1,5 +1,21 @@
-<form action="" method="post">
-  <input type="email" #mail name="mail" id="" required>
-  <input type="password" #pass name="pass" id="" required>
-  <input type="submit" value="GO !" (click)="connection(mail.value, pass.value)" id="">
-</form>
+<div class="container full-page">
+    <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Connexion</div>
+        <div class="card-body">
+          <h4 class="card-title">En voiture</h4>
+          <form action="" method="post">
+              <fieldset>
+                <div class="form-group row">
+                  <div class="col-sm-12">
+                    <input class="form-control" type="email" #mail name="mail" id="" placeholder="Email">
+                    <p *ngIf="MessageMail" style="color: red">Mail non conforme</p>
+                    <input class="form-control" type="password" #pass name="pass" id="" placeholder="Password">
+                    <p *ngIf="MessagePass" style="color: red">Mot de passe non conforme</p>
+                    <input class="btn btn-outline-secondary" type="submit" value="GO !" (click)="connection(mail.value, pass.value)" id="">
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+        </div>
+      </div>
+</div>
