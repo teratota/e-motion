@@ -9,6 +9,7 @@ import { GestionClientComponent } from './component/gestion-client/gestion-clien
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ReservationComponent } from './component/reservation/reservation.component';
+import { DetailVehiculeComponent } from './component/detail-vehicule/detail-vehicule.component';
 
 const routes: Routes = [
   { path : 'gestion', component : GestionClientComponent },
@@ -18,8 +19,9 @@ const routes: Routes = [
   { path : 'administration/offre', component : InterfaceAdminOffreComponent },
   { path : 'administration/reservation', component : InterfaceAdminReservationComponent },
   { path : '', component : HomePageComponent},
-  { path : 'connexion', component : ConnexionComponent},
   { path : 'reservation', component : ReservationComponent },
+  { path : 'detail-vehicule', component : DetailVehiculeComponent }
+  { path : 'connexion', component : ConnexionComponent},
 
 
 ];
