@@ -18,6 +18,7 @@ import { VehiculeListeComponent } from './component/vehicule-liste/vehicule-list
 import { HistoriqueCommandeComponent } from './component/historique-commande/historique-commande.component';
 import { PromotionComponent } from './component/promotion/promotion.component';
 import { HistoriqueReservationComponent } from './component/historique-reservation/historique-reservation.component';
+import { ConnexionComponent } from './component/connexion/connexion.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { HistoriqueReservationComponent } from './component/historique-reservati
     FormHomePageComponent,
     VehiculeListeComponent,
     PromotionComponent,
-    HistoriqueReservationComponent
+    HistoriqueReservationComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
