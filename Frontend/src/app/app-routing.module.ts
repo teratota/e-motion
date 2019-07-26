@@ -1,3 +1,4 @@
+import { HomePageComponent } from './component/home-page/home-page.component';
 import { InterfaceAdminReservationComponent } from './component/interface-admin-reservation/interface-admin-reservation.component';
 import { InterfaceAdminUtilisateursComponent } from './component/interface-admin-utilisateurs/interface-admin-utilisateurs.component';
 import { InterfaceAdminOffreComponent } from './component/interface-admin-offre/interface-admin-offre.component';
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path : 'administration', component : InterfaceAdminComponent },
   { path : 'administration/utilisateurs', component : InterfaceAdminUtilisateursComponent },
   { path : 'administration/offre', component : InterfaceAdminOffreComponent },
-  { path : 'administration/reservation', component : InterfaceAdminReservationComponent }
+  { path : 'administration/reservation', component : InterfaceAdminReservationComponent },
+  { path : '', component : HomePageComponent}
 
 
 ];
