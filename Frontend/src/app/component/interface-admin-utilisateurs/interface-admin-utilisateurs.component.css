@@ -1,0 +1,45 @@
+.user-container {
+    border: 1px solid;
+    width: 100%;
+    padding: 20px;
+    border-bottom: unset;
+}
+
+.user-container:last-child {
+    border-bottom: 1px solid;
+}
+
+.user-container > div {
+    text-align: center;
+}
+
+.user-container > div.row > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user-container > div p {
+    margin: 0;
+}
+
+.user-container .user-point,
+.user-container .user-delete {
+    font-size: 2rem;
+}
+
+.user-container  .user-nom {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: var(--cyan);
+}
+
+.user-container .user-prenom {
+    text-transform: initial;
+    font-size: 1.1rem;
+}
+
+.user-container .user-point i{
+    color: var(--cyan);
+}

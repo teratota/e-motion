@@ -30,7 +30,23 @@
               <option disabled selected value hidden> -- select an option -- </option>
               <option *ngFor="let coul of couleur" [value]="coul.id">{{coul.nom}}</option>
             </select>
+        </div>
+          <div class="row my-4" *ngIf="router.url !== '/administration/offre'">
+              <div class="col-md-3 offset-md-1">
+                  <label for="type">Date de debut</label>
+                  <input type="datetime-local" #datedebut class="form-control">
+              </div>
+              <div class="col-md-3 ">
+                  <label for="type">Date de Fin</label>
+                  <input type="datetime-local" #datefin class="form-control">
+              </div>
           </div>
+          <div class="row my-4">
+            <div class="col-md-2 mx-auto">
+              <button *ngIf="router.url !== '/administration/offre'" (click)="showvehicule(type.value,marques.value,models.value,couleurs.value,datefin.value,datedebut.value)" type="submit" class="btn btn-success">Valider</button>
+              <button *ngIf="router.url === '/administration/offre'" (click)="showvehicule(type.value,marques.value,models.value,couleurs.value)" type="submit" class="btn btn-success">Valider</button>
+            </div>
+          </div>  
         </div>
         <div class="row my-4">
           <div class="col-md-3 offset-md-1">

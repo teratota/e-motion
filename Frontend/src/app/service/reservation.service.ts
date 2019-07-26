@@ -12,9 +12,9 @@ export class ReservationService {
   tab = [];
   baseUrl = 'http://localhost/api';
   reservation: Reservation[];
-  
+
   constructor(private http: HttpClient) { }
-  
+
     getAll() {
       var test: any;
       $.ajax({
@@ -32,5 +32,22 @@ export class ReservationService {
     });
     console.log(test);
     return test;
+    }
+
+
+    getHistory() {
+      let result: any;
+      $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8000/reservation/getHistory',
+        dataType: 'json',
+        async: false,
+        success(data) {
+            console.log(data);
+            result = data;
+        }
+    });
+      console.log(result);
+      return result;
     }
 }
