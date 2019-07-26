@@ -23,29 +23,45 @@ export class ReservationComponent implements OnInit {
     private TypeService: TypeService
     ) {}
 
-  type_vehicule: any[];
-  marque: Marque[]
-  model: any[];
-  couleur: any[];
-  type: any[];
+  MessageDatedebut: boolean;
+  MessageDateFin: boolean;
+  formreservation: boolean;
+  payer: boolean;
 
-  Onchange(marque) {
-    this.model = this.ModelService.getAll(marque);
+  Onchange() {
   }
 
   ngOnInit() {
-    this.marque = this.MarqueService.getAll();
-    this.couleur = this.CouleurService.getAll();
-    this.type_vehicule = this.TypeService.getAll();
+    this.MessageDatedebut = false;
+    this.MessageDateFin = false;
+    this.formreservation = true;
+    this.payer = false;
+
   }
 
+  verifdate(datedebut,datefin){
+    console.log(datedebut);
+    console.log(datefin);
+    if(datedebut==""){
+      this.MessageDatedebut = true;
+    }else{
+      this.MessageDatedebut = false;
+    }
+    if(datefin==""){
+      this.MessageDateFin = true;
+    }else{
+      this.MessageDateFin = false;
+    }
+    if(datedebut!="" && datefin!=""){
+      this.formreservation = false;
+      this.payer = true;
+    }
+    
+  }
   Onclick() {
 
   }
 
   submitted = false;
-
-
-  
 
 }

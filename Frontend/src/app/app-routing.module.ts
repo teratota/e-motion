@@ -8,6 +8,7 @@ import { HistoriqueCommandeComponent } from './component/historique-commande/his
 import { GestionClientComponent } from './component/gestion-client/gestion-client.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ReservationComponent } from './component/reservation/reservation.component';
 
 const routes: Routes = [
   { path : 'gestion', component : GestionClientComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path : 'administration/reservation', component : InterfaceAdminReservationComponent },
   { path : '', component : HomePageComponent},
   { path : 'connexion', component : ConnexionComponent}
+  { path : 'reservation', component : ReservationComponent }
 
 
 ];
