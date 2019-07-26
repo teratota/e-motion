@@ -1,3 +1,4 @@
+import { ReservationService } from 'src/app/service/reservation.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoriqueCommandeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ReservationService: ReservationService) { }
 
+  history: any[];
+
+  /* Ajouter la connexion utilisateur */
   ngOnInit() {
+    this.history = this.ReservationService.getHistory();
   }
 
 }

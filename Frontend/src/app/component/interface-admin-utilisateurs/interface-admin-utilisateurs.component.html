@@ -1,0 +1,26 @@
+
+<app-interface-admin></app-interface-admin>
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let users of user" class="user-container">
+      <p class="user-nom">{{users.nom}} <span class="user-prenom">{{users.prenom}}</span> </p>
+      <div class="row">
+        
+        <div class="col-md-4">
+          <p class="user-anniv">Date d'anniversaire : {{users.anniversaire | date: 'dd MM yyyy' }}</p>
+          <p class="user-permis">Numéro de permis : {{users.npermis}}</p>
+        </div>
+        
+        <div class="col-md-4">
+          <p class="user-point">{{users.point}} <i class="fa fa-money"></i> </p>
+        </div>
+
+        <div class="col-md-4">
+          <p class="user-delete"><a id="{{users.id}}" #delete (click)="onDelete(delete.id)" class="text-danger"> <i class="fa fa-trash"></i> </a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

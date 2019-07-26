@@ -1,6 +1,10 @@
+import { InterfaceAdminReservationComponent } from './component/interface-admin-reservation/interface-admin-reservation.component';
+import { InterfaceAdminUtilisateursComponent } from './component/interface-admin-utilisateurs/interface-admin-utilisateurs.component';
+import { InterfaceAdminOffreComponent } from './component/interface-admin-offre/interface-admin-offre.component';
+import { InterfaceAdminComponent } from './component/interface-admin/interface-admin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +17,8 @@ import { FormHomePageComponent } from './component/form-home-page/form-home-page
 import { VehiculeListeComponent } from './component/vehicule-liste/vehicule-liste.component';
 import { HistoriqueCommandeComponent } from './component/historique-commande/historique-commande.component';
 import { PromotionComponent } from './component/promotion/promotion.component';
+import { HistoriqueReservationComponent } from './component/historique-reservation/historique-reservation.component';
+
 
 @NgModule({
   declarations: [
@@ -21,9 +27,14 @@ import { PromotionComponent } from './component/promotion/promotion.component';
     HistoriqueCommandeComponent,
     HomePageComponent,
     ReservationComponent,
+    InterfaceAdminComponent,
+    InterfaceAdminUtilisateursComponent,
+    InterfaceAdminOffreComponent,
+    InterfaceAdminReservationComponent,
     FormHomePageComponent,
     VehiculeListeComponent,
-    PromotionComponent
+    PromotionComponent,
+    HistoriqueReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +42,7 @@ import { PromotionComponent } from './component/promotion/promotion.component';
     RouterModule.forRoot([]),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

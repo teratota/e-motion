@@ -8,6 +8,7 @@ import { MarqueService } from 'src/app/service/marque.service';
 import { ModelService } from 'src/app/service/model.service';
 import { TypeService } from 'src/app/service/type.service';
 import { CouleurService } from 'src/app/service/couleur.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicule-liste',
@@ -21,7 +22,8 @@ export class VehiculeListeComponent implements OnInit {
     private ModelService: ModelService,
     private MarqueService: MarqueService,
     private CouleurService: CouleurService,
-    private TypeService: TypeService) { }
+    private TypeService: TypeService,
+    private router: Router) { }
   vehicule: Vehicule[];
   isViewable: boolean;
   type_vehicule: any[];
