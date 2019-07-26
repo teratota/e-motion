@@ -16,7 +16,7 @@ const routes: Routes = [
   { path : 'administration/utilisateurs', component : InterfaceAdminUtilisateursComponent },
   { path : 'administration/offre', component : InterfaceAdminOffreComponent },
   { path : 'administration/reservation', component : InterfaceAdminReservationComponent },
-  { path : '', component : HomePageComponent}
+  { path : '', component : HomePageComponent},
   { path : 'reservation', component : ReservationComponent }
 
 
