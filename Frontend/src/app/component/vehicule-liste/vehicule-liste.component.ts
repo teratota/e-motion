@@ -58,6 +58,9 @@ export class VehiculeListeComponent implements OnInit {
     this.isViewable = true;
   }
     
+  detail(){
+    
+  }
  
 
 }

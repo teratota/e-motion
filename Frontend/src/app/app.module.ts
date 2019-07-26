@@ -35,8 +35,7 @@ import { DetailVehiculeComponent } from './component/detail-vehicule/detail-vehi
     FormHomePageComponent,
     VehiculeListeComponent,
     PromotionComponent,
-    DetailVehiculeComponent
-    PromotionComponent,
+    DetailVehiculeComponent,
     HistoriqueReservationComponent
   ],
   imports: [

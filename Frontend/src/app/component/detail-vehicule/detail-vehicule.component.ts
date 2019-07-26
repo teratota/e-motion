@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VehiculeService } from '../../service/vehicule.service';
 
 @Component({
   selector: 'app-detail-vehicule',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailVehiculeComponent implements OnInit {
 
-  constructor() { }
+  detail: any[];
+
+  constructor(private vehiculeService: VehiculeService) { }
 
   ngOnInit() {
+    this.detail = this.vehiculeService.detail;
   }
 
 }
