@@ -49,8 +49,8 @@ export class VehiculeListeComponent implements OnInit {
     search['marque']=marque;
     search['model']=model;
     search['couleur']=couleur;
-    search['datefin']=datefin;
-    search['datedebut']=datedebut;
+    search['datefin']=datefin === undefined  ? "" : datefin;
+    search['datedebut']=datedebut === undefined  ? "" : datedebut;
     var json = JSON.stringify(search)
     console.log(json);
     this.vehicule = this.VehiculeService.getAll(json);
