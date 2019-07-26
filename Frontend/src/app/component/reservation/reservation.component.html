@@ -1,55 +1,33 @@
 <div class="container">
     <form>
-    <div class="container"> 
-      <div class="row my-4">
-        <div class="col-md-2 offset-md-1">
-        <label for="type_vehicule">Type de vehicule</label>
-        <select class="form-control" id="type_vehicule" required>
-          <option *ngFor="let typev of type_vehicule" [value]="typev.id">{{typev.nom}}</option>
-        </select>
-        </div>
-        <div class="col-md-2 ">
-        <label for="marque">Marques</label>
-        <select (change)="Onchange(marques.value)" #marques class="form-control" id="marque" required>
-          <option *ngFor="let mar of marque" [value]="mar.id">{{mar.nom}}</option>
-        </select>
-        </div>
-      <div class="col-md-2 ">
-            <label for="model">Model</label>
-            <select class="form-control" id="model" required>
-              <option *ngFor="let mod of model" [value]="mod.id">{{mod.nom}}</option>
-            </select>
-        </div>
-        <div class="col-md-2 ">
-            <label for="couleur">Couleur</label>
-            <select class="form-control" id="couleur" required>
-              <option *ngFor="let coul of couleur" [value]="coul.id">{{coul.nom}}</option>
-            </select>
-        </div>
-      </div>
-      <div class="row my-4">
+    <div *ngIf="formreservation"class="container"> 
+      <div  class="row my-4">
           <div class="col-md-3 offset-md-1">
               <label for="type">Date de debut</label>
-              <input type="date" class="form-control">
-          </div>
-          <div class="col-md-2 ">
-              <label for="type">Heure de debut</label>
-              <input type="time" class="form-control">
+              <input type="datetime-local" #datedebut class="form-control">
+              <p *ngIf="MessageDatedebut" style="color : red" >pas bien</p>
           </div>
           <div class="col-md-3 ">
               <label for="type">Date de Fin</label>
-              <input type="date" class="form-control">
-          </div>
-          <div class="col-md-2 ">
-              <label for="type">Heure de Fin</label>
-              <input type="time" class="form-control">
+              <input type="datetime-local" #datefin class="form-control">
+              <p *ngIf="MessageDateFin" style="color : red">pas bien</p>
           </div>
       </div>
       <div class="row my-4">
+        <div class="col-md-6">
+          <input type="text" #email class="form-control">
+        </div>
+      </div>
+      <div class="row my-4">
         <div class="col-md-2 mx-auto">
-          <button type="submit" class="btn btn-success">Valider</button>
+          <button type="submit" (click)="verifdate(datedebut.value,datefin.value)"class="btn btn-success">Valider</button>
         </div>
       </div>  
     </div>
+    <div *ngIf="payer" class="row my-4">
+      <div class="col-md-2 mx-auto">
+        <button type="submit"class="btn btn-success">Payer</button>
+      </div>
+    </div> 
     </form>
 </div>
