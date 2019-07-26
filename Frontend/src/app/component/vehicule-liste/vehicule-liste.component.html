@@ -45,7 +45,8 @@
           </div>
           <div class="row my-4">
             <div class="col-md-2 mx-auto">
-              <button (click)="showvehicule(type.value,marques.value,models.value,couleurs.value,datefin.value,datedebut.value)" type="submit" class="btn btn-success">Valider</button>
+              <button *ngIf="router.url !== '/administration/offre'" (click)="showvehicule(type.value,marques.value,models.value,couleurs.value,datefin.value,datedebut.value)" type="submit" class="btn btn-success">Valider</button>
+              <button *ngIf="router.url === '/administration/offre'" (click)="showvehicule(type.value,marques.value,models.value,couleurs.value)" type="submit" class="btn btn-success">Valider</button>
             </div>
           </div>  
         </div>
