@@ -13,6 +13,7 @@ import { FormHomePageComponent } from './component/form-home-page/form-home-page
 import { VehiculeListeComponent } from './component/vehicule-liste/vehicule-liste.component';
 import { HistoriqueCommandeComponent } from './component/historique-commande/historique-commande.component';
 import { PromotionComponent } from './component/promotion/promotion.component';
+import { DetailVehiculeComponent } from './component/detail-vehicule/detail-vehicule.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PromotionComponent } from './component/promotion/promotion.component';
     ReservationComponent,
     FormHomePageComponent,
     VehiculeListeComponent,
-    PromotionComponent
+    PromotionComponent,
+    DetailVehiculeComponent
   ],
   imports: [
     BrowserModule,

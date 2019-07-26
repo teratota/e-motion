@@ -3,10 +3,9 @@
 class config
 {
     function connection(){
-        $user='bvc';
-        $pass="bxcv";
+        include('config_logs.php');
         try {
-            $data_base = new PDO('mysql:host=12254555;port=07;dbname=dfg', $user, $pass);
+            $data_base = new PDO("mysql:host=$host;port=$port;dbname=$database",$user,$pass);
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
         die();
