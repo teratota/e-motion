@@ -1,3 +1,4 @@
+import { ConnexionComponent } from './component/connexion/connexion.component';
 import { HomePageComponent } from './component/home-page/home-page.component';
 import { InterfaceAdminReservationComponent } from './component/interface-admin-reservation/interface-admin-reservation.component';
 import { InterfaceAdminUtilisateursComponent } from './component/interface-admin-utilisateurs/interface-admin-utilisateurs.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path : '', component : HomePageComponent},
   { path : 'reservation', component : ReservationComponent },
   { path : 'detail-vehicule', component : DetailVehiculeComponent }
+  { path : 'connexion', component : ConnexionComponent},
 
 
 ];
