@@ -42,4 +42,24 @@ export class UserService {
       console.log(result);
       return result;
     }
+
+    connection(mail, pass) {
+      let result: any;
+      $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8000/user/connexion',
+        dataType: 'json',
+        async: false,
+        data: {
+          email: mail,
+          password: pass
+        },
+        success(data) {
+            console.log(data);
+            result = data;
+        }
+    });
+      console.log(result);
+      return result;
+    }
 }

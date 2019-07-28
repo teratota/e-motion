@@ -5,6 +5,7 @@ import * as $ from 'jquery';
   providedIn: 'root'
 })
 export class VehiculeService {
+  detail: any[];
 
   constructor() { }
 
