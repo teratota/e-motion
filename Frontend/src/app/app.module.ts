@@ -20,6 +20,7 @@ import { PromotionComponent } from './component/promotion/promotion.component';
 import { HistoriqueReservationComponent } from './component/historique-reservation/historique-reservation.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
 import { DetailVehiculeComponent } from './component/detail-vehicule/detail-vehicule.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 
 @NgModule({
@@ -37,8 +38,9 @@ import { DetailVehiculeComponent } from './component/detail-vehicule/detail-vehi
     VehiculeListeComponent,
     PromotionComponent,
     DetailVehiculeComponent,
-    HistoriqueReservationComponent
-    ConnexionComponent
+    HistoriqueReservationComponent,
+    ConnexionComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
