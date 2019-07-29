@@ -30,7 +30,7 @@ export class ConnexionComponent implements OnInit {
     } else {
       this.MessagePass = false;
     }
-    if (mail !== '' || pass !== '') {
+    if (mail !== '' && pass !== '' && this.ValidationService.validationEmail(mail)==true) {
       let connectionResult = this.UserService.connection(mail, pass);
 
       if (connectionResult !== false) {
