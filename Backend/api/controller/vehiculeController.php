@@ -26,4 +26,12 @@ class vehiculeController
         $result = $class->getinfovehiculebyUser($parametre["id"]);
         echo json_encode($result);
     }
+
+    public function saveVehicule($parametre = null)
+    {
+        $vehicule = json_decode($parametre['vehicule']);
+        $class = new vehicule;
+        $result = $class->saveVehicule($vehicule);
+        echo json_encode($result);
+    }
 }

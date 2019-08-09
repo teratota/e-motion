@@ -55,7 +55,34 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
       this.ajoutVehicule = true;
     }
 
-    saveVehicule(){
+    saveVehicule(type,marques,models,couleurs,auto,kilo,capa,cof,plaque,prix,img){
+      var cookie=this.ValidationService.getCookie('tokenValidation');
+      var result=this.UserService.getinfouser(cookie);
+      console.log(type);
+      console.log(marques);
+      console.log(models);
+      console.log(couleurs);
+      console.log(auto);
+      console.log(kilo);
+      console.log(capa);
+      console.log(cof);
+      console.log(plaque);
+      console.log(prix);
+      console.log(img.target);
+      var vehicule = {};
+      vehicule['type']=type;
+      vehicule['user']=result.id;
+      vehicule['marque']=marques;
+      vehicule['model']=models;
+      vehicule['couleur']=couleurs;
+      vehicule['auto']=auto;
+      vehicule['kilo']=kilo;
+      vehicule['capa']=capa;
+      vehicule['cof']=cof;
+      vehicule['plaque']=plaque;
+      vehicule['prix']=prix;
+      vehicule['img']=img;
+      this.VehiculeService.saveVehicule(vehicule);
       this.ajoutVehicule=false;
     }
 

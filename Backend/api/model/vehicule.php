@@ -111,7 +111,30 @@ class vehicule extends config
         }
     }
     
-    function insert(){}
+    function saveVehicule($vehicule)
+    {
+        try {
+            $data_base=$this->connection();
+            $insert = $data_base->prepare("INSERT INTO vehicule (ref_id_marque, ref_id_user, ref_id_model, plaque, ref_id_couleur, ref_id_type, coffre, kilometrage, recomendation, prix, autonomie, img) VALUES (:ref_id_marque, :ref_id_user, :ref_id_model, :plaque, :ref_id_couleur, :ref_id_type, :coffre, :kilometrage, :recomendation, :prix, :autonomie, :img)");
+            $insert->bindParam(':ref_id_marque',$vehicule);
+            $insert->bindParam(':ref_id_user',$vehicule);
+            $insert->bindParam(':ref_id_model',$vehicule);
+            $insert->bindParam(':plaque',$vehicule);
+            $insert->bindParam(':ref_id_couleur',$vehicule);
+            $insert->bindParam(':ref_id_type',$vehicule);
+            $insert->bindParam(':coffre',$vehicule);
+            $insert->bindParam(':kilometrage',$vehicule);
+            $insert->bindParam(':recomendation',$vehicule);
+            $insert->bindParam(':prix',$vehicule);
+            $insert->bindParam(':autonomie',$vehicule);
+            $insert->bindParam(':img',$vehicule);
+            $insert->execute();
+            return true;
+        } catch (PDOException $e) {
+            return "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
     
     function update(){}
         

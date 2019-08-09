@@ -28,6 +28,26 @@ export class VehiculeService {
   return test;
   }
 
+  saveVehicule(vehicule){
+    var json = JSON.stringify(vehicule);
+    var test;
+    $.ajax({
+      type: "POST",
+      data: {
+        vehicule:json
+      },
+      url: "http://localhost:8000/vehicule/saveVehicule",
+      dataType: "json",
+      async: false,
+      success: function(data) {
+          console.log(data);
+          test = data;
+      }
+  });
+  console.log(test);
+  return test;
+  }
+
   getVehiculeForUser(id){
     var test;
     $.ajax({

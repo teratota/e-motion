@@ -47,27 +47,45 @@
         </div>
         <div class="col-md-2 ">
             <label for="couleur">Capaciter (Personne)</label>
-            <input type="text" #kilo class="form-control" >
+            <input type="text" #capa class="form-control" >
         </div>
         <div class="col-md-2 ">
             <label for="couleur">Coffre (L)</label>
-            <input type="text" #kilo class="form-control" >
+            <input type="text" #cof class="form-control" >
         </div>
         <div class="col-md-2 ">
             <label for="couleur">Plaque d'immatriculation</label>
-            <input type="text" #kilo class="form-control" >
+            <input type="text" #plaque class="form-control" >
         </div>
         <div class="col-md-2 ">
             <label for="couleur">Prix (A la jpournée)</label>
-            <input type="text" #kilo class="form-control" >
+            <input type="text" #prix class="form-control" >
         </div>
+        <div class="col-md-2 ">
+          <label for="couleur">Image</label>
+          <input type="file" #img class="form-control" >
+      </div>
     </div>
     <div class="row my-4">
         <div class="col-md-2 mx-auto">
-          <button (click)="saveVehicule()" type="submit" class="btn btn-success">Enregistrer</button>
+          <button (click)="saveVehicule(type.value,marques.value,models.value,couleurs.value,auto.value,kilo.value,capa.value,cof.value,plaque.value,prix.value,img)" type="submit" class="btn btn-success">Enregistrer</button>
         </div>
       </div>  
   </div>
   </form>
 </div>
 <p *ngIf="MessNotOffre" style="color : green" >vous n'avez aucune offre</p>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let offres of offre" class="reservation-container">
+      <p class="reservation-debut">{{offres.marque}} <span class="reservation-fin">{{offres.model}}</span> </p>
+      <div class="row">
+        <div class="col-md-4">
+          <p class="reservation-download"><a id="{{reservations.id}}" #res (click)="onDownloadFacture(res.id)" class="text-danger"> <i class="fa fa-edit"></i> </a></p>
+          <p class="reservation-download"><a id="{{reservations.id}}" #res (click)="onDownloadFacture(res.id)" class="text-danger"> <i class="fa fa-trash"></i> </a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
