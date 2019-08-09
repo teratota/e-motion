@@ -10,6 +10,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ReservationComponent } from './component/reservation/reservation.component';
 import { DetailVehiculeComponent } from './component/detail-vehicule/detail-vehicule.component';
+import { InterfaceUtilisateurComponent } from './component/interface-utilisateur/interface-utilisateur.component';
+import { InterfaceUtilisateurInfoComponent } from './component/interface-utilisateur-info/interface-utilisateur-info.component';
+import { InterfaceUtilisateurOffreComponent } from './component/interface-utilisateur-offre/interface-utilisateur-offre.component';
+import { InterfaceUtilisateurReservationComponent } from './component/interface-utilisateur-reservation/interface-utilisateur-reservation.component';
 
 const routes: Routes = [
   { path : 'gestion', component : GestionClientComponent },
@@ -21,9 +25,11 @@ const routes: Routes = [
   { path : '', component : HomePageComponent},
   { path : 'reservation', component : ReservationComponent },
   { path : 'detail-vehicule', component : DetailVehiculeComponent },
-  { path : 'connexion', component : ConnexionComponent}
-
-
+  { path : 'connexion', component : ConnexionComponent},
+  { path : 'utilisateur', component : InterfaceUtilisateurComponent},
+  { path : 'utilisateur/info', component : InterfaceUtilisateurInfoComponent},
+  { path : 'utilisateur/offre', component : InterfaceUtilisateurOffreComponent},
+  { path : 'utilisateur/reservation', component : InterfaceUtilisateurReservationComponent}
 ];
 
 @NgModule({

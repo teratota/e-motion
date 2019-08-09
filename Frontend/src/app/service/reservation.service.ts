@@ -50,4 +50,43 @@ export class ReservationService {
       console.log(result);
       return result;
     }
+
+    saveReservation(reservation) {
+      var test: any;
+      $.ajax({
+        type: "POST",
+        data: {
+          reservation: reservation
+        },
+        url: "http://localhost:8000/reservation/saveReservation",
+        dataType: "json",
+        async: false,
+        success: function(data) {
+            console.log(data);
+            test = data;
+        }
+    });
+    console.log(test);
+    return test;
+    }
+
+    getReservationUser(id){
+      var test: any;
+      $.ajax({
+        type: "POST",
+        data: {
+          id: id
+        },
+        url: "http://localhost:8000/reservation/getUserReservation",
+        dataType: "json",
+        async: false,
+        success: function(data) {
+            console.log(data);
+            test = data;
+        }
+    });
+    console.log(test);
+    return test;
+    }
+    
 }

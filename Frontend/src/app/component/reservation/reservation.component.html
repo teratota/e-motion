@@ -16,18 +16,22 @@
       <div class="row my-4">
         <div class="col-md-6">
           <label for="type">Adresse de facturation</label>
-          <input type="text" #email class="form-control">
+          <input type="text" #mail class="form-control" value="{{ email }}">
+          <p *ngIf="MessageMail" style="color : red">Le mail n'est pas valide</p>
         </div>
       </div>
       <div class="row my-4">
         <div class="col-md-2 mx-auto">
-          <button type="submit" (click)="verifdate(datedebut.value,datefin.value)"class="btn btn-success">Valider</button>
+          <button type="submit" (click)="verifform(datedebut.value,datefin.value,mail.value)"class="btn btn-success">Valider</button>
         </div>
       </div>  
     </div>
     <div *ngIf="payer" class="row my-4">
+        <div class="col-md-2 mx-auto">
+            <p>recapitulatif de la reservation</p>
+          </div>
       <div class="col-md-2 mx-auto">
-        <button type="submit"class="btn btn-success">Payer</button>
+        <button type="submit"class="btn btn-success" (click)="payment()">Payer</button>
       </div>
     </div> 
     </form>
