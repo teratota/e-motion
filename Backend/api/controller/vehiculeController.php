@@ -20,4 +20,10 @@ class vehiculeController
         }
         echo json_encode($result);
     }
+    public function getVehiculeForUser($parametre = null)
+    {
+        $class = new vehicule;
+        $result = $class->getinfovehiculebyUser($parametre["id"]);
+        echo json_encode($result);
+    }
 }

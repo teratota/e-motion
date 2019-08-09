@@ -23,4 +23,13 @@ class tokenController
         }
         echo json_encode($result);
     }
+
+    public function getinfouser($parametre = null){
+        $class = new token;
+        $result = $class->getinfouser($parametre);
+        echo json_encode($result);
+    }
+
+    
+
 }

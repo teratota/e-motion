@@ -3,7 +3,8 @@ require_once('config/config.php');
 
 class user extends config
 {
-    function getAll(){
+    function getAll()
+    {
         try {
             $data_base=$this->connection();
             $select = $data_base->prepare("Select user.id, user.nom, user.prenom, user.anniversaire, user.npermis, user.`point` From user");
@@ -20,7 +21,8 @@ class user extends config
     
     function update(){}
         
-    function delete($id){
+    function delete($id)
+    {
         try {
             $data_base=$this->connection();
             $delete = $data_base->prepare("DELETE FROM user WHERE id=:id ; DELETE FROM adresse WHERE id=:id");
@@ -33,7 +35,8 @@ class user extends config
         }
     }  
     
-    function connexion($parametre){
+    function connexion($parametre)
+    {
         try {
             $data_base=$this->connection();
             $select = $data_base->prepare("Select COUNT(*), user.id From user WHERE mail=:mail AND password=:pass");
@@ -48,7 +51,8 @@ class user extends config
         }
     }
     
-    function insertToken($token, $id){
+    function insertToken($token, $id)
+    {
         try {
             $data_base=$this->connection();
             $insert = $data_base->prepare("INSERT INTO token (token, ref_id_user) VALUES (:token, :id)");
@@ -56,6 +60,21 @@ class user extends config
             $insert->bindParam(':id',$id[0]['id']);
             $insert->execute();
             return true;
+        } catch (PDOException $e) {
+            return "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
+    function getinfouserbyid($user)
+    {
+        try {
+            $data_base=$this->connection();
+            $select = $data_base->prepare("Select user.id, user.nom, user.prenom, user.anniversaire, user.npermis, user.point From user Where user.id = :id");
+            $select->bindParam(':id',$user);
+            $select->execute();
+            $data=$select->fetch(PDO::FETCH_ASSOC);
+            return $data;
         } catch (PDOException $e) {
             return "Erreur !: " . $e->getMessage() . "<br/>";
             die();
