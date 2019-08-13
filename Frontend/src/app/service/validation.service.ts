@@ -29,6 +29,7 @@ export class ValidationService {
 
   verifadminconnection(token) {
     let result: any;
+    console.log("hello");
     $.ajax({
       type: 'POST',
       url: 'http://localhost:8000/token/verifconnectionadmin',
@@ -38,6 +39,7 @@ export class ValidationService {
       },
       async: false,
       success(data) {
+        console.log("hello");
           console.log(data);
           result = data;
       }
@@ -70,7 +72,7 @@ export class ValidationService {
   }
   validationChaine(chaine)
   {
-
+    
   }
   validationDate()
   {
