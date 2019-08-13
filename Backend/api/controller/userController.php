@@ -35,4 +35,11 @@ class userController
             echo json_encode($result);
         }
     }
+
+    public function insertUser(){
+        $user = json_decode($parametre['user']);
+        $class = new user;
+        $result = $class->insert($user);
+        echo json_encode($result);
+    }
 }

@@ -7,7 +7,7 @@
   <div *ngIf="edituser">
       <form [formGroup]="registerForm" (ngSubmit)="saveUser()">
           <label> Nom : </label>
-              <input class="form-control"  type="text" formControlName="lastName">
+              <input class="form-control"  type="text" formControlName="lastName" >
           <label> Prénom : </label>
               <input class="form-control"  type="text" formControlName="firstName">
           <label> date de naissance : </label>

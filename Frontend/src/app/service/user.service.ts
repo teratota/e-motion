@@ -63,6 +63,44 @@ export class UserService {
       return result;
     }
 
+    insertUser(user){
+      let result: any;
+      $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8000/user/insertUser',
+        dataType: 'json',
+        async: false,
+        data: {
+          user: user
+        },
+        success(data) {
+            console.log(data);
+            result = data;
+        }
+      });
+      console.log(result);
+      return result;
+      }
+
+      updateUser(user,id){
+        let result: any;
+        $.ajax({
+          type: 'POST',
+          url: 'http://localhost:8000/user/insertUser',
+          dataType: 'json',
+          async: false,
+          data: {
+            user: user
+          },
+          success(data) {
+              console.log(data);
+              result = data;
+          }
+        });
+        console.log(result);
+        return result;
+        }
+
     getinfouser(token) {
       let result: any;
       $.ajax({
