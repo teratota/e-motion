@@ -58,7 +58,7 @@
 	border-radius:2px;
 	border:none;
 }
-
+/*
 .presentation {
     background: linear-gradient(#3A3A3A ,#333);
     opacity: 0.90;
@@ -83,15 +83,92 @@
     color: #383838;
 
 }
+*/
+
+.background-blue {
+    background: var(--cyan);
+    color: white;
+}
+
+.background-white {
+    background: white;
+    color: var(--cyan);
+}
+
+.presentation {
+    margin-top: 60px;
+}
+
+.presentation .title{
+    position: relative;
+    z-index: 2;
+    padding: 10px 0;
+}
+
+.presentation .body {
+    padding: 30px 0;
+    min-height: 300px;
+}
 
 .partenaire{
     justify-content: center;
     display: flex;
     align-items: center;
     flex-basis: auto;
+    justify-content: space-around;
 }
 
 h2{
     margin-top: 20px;
     text-align: center;
+}
+
+.background-white .picto,
+.background-blue .picto{
+    position: relative;
+}
+
+.background-white .picto:before{
+    background-color: white;
+}
+
+.background-blue .picto:before{
+    background-color: var(--cyan);
+}
+
+.background-white .picto:before,
+.background-blue .picto:before{
+    width: 115px;
+    height: 75px;
+    border-radius: 80px;
+    position: absolute;
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: flex;
+    flex-basis: auto;
+    justify-content: center;
+    align-items: center;
+    text-decoration: inherit;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: -37.5px;
+    font-size: 35px;
+}
+
+.about-us .picto:before{
+    content: "\f128";
+}
+
+.offers .picto:before{
+    content: "\f155";
+}
+
+.our-team .picto:before{
+    content: "\f0c0";
+}
+
+.partenaria .picto:before {
+    content: "\f2b5";
 }

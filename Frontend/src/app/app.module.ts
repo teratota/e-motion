@@ -27,7 +27,6 @@ import { InterfaceUtilisateurInfoComponent } from './component/interface-utilisa
 import { InterfaceUtilisateurReservationComponent } from './component/interface-utilisateur-reservation/interface-utilisateur-reservation.component';
 import { InterfaceUtilisateurOffreComponent } from './component/interface-utilisateur-offre/interface-utilisateur-offre.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +57,7 @@ import { InterfaceUtilisateurOffreComponent } from './component/interface-utilis
     RouterModule.forRoot([]),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
