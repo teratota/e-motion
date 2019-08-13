@@ -21,11 +21,12 @@ class token extends config
     function verifconnectionadmin($parametre)
     {
         try {
+            $role = 1;
             $data_base=$this->connection();
             $select = $data_base->prepare("Select COUNT(*) From token Inner Join
-            user On token.ref_id_user = user.id  WHERE token.token=:token and user.role = :role");
+            user On token.ref_id_user = user.id  WHERE token.token=:token and user.ref_id_role = :role");
             $select->bindParam(':token',$parametre['token']);
-            $select->bindParam(':role',1);
+            $select->bindParam(':role',$role);
             $select->execute();
             $data=$select->fetchAll();
             return $data;

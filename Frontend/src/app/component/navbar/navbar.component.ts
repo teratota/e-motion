@@ -10,6 +10,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(private ValidationService: ValidationService,) { }
   connection : boolean;
+  anonyme : boolean;
+  admin : boolean;
 
   ngOnInit() {
     console.log(document.cookie);
@@ -17,9 +19,15 @@ export class NavbarComponent implements OnInit {
     console.log(cookie);
     var result=this.ValidationService.verifuserconnection(cookie);
     if(result==true){
-      this.connection=true;
+      var admin=this.ValidationService.verifadminconnection(cookie);
+      console.log(admin);
+      if(result==true){
+        this.admin = true;
+      }else{
+        this.connection=true;
+      }
     }else{
-      this.connection=false;
+      this.anonyme = true;
     }
   }
 
