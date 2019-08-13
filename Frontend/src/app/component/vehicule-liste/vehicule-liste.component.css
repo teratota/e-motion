@@ -14,9 +14,10 @@
     background-color: rgb(17, 17, 17);
     color: #fff;
     width: 18rem;
+    text-align: center;
 }
 
-.card .card-image img{
+.card .card-image{
     width: 100%;
     background-position: center;
     height: 200px;

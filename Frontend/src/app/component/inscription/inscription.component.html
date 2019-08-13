@@ -1,0 +1,70 @@
+<form [formGroup]="registerForm" (ngSubmit)="checkData()">
+
+  <label>
+      Nom : 
+      <input type="text" formControlName="lastName">
+  </label>
+
+  <label>
+      Prénom : 
+      <input type="text" formControlName="firstName">
+  </label>
+
+  <label>
+      date de naissance : 
+      <input type="date" formControlName="birthday">
+  </label>
+
+  <label>
+      sexe : 
+      <input type="text" formControlName="gender">
+  </label>
+
+  <label>
+      phone : 
+      <input type="tel" formControlName="phone">
+  </label>
+
+  <label>
+      adresse :  
+      <input type="text" formControlName="adress">
+  </label>
+
+  <label>
+      ville : 
+      <input type="text" formControlName="city">
+  </label>
+
+  <label>
+      code postal : 
+      <input type="text" formControlName="zip">
+  </label>
+
+  <label>
+      pays : 
+      <input type="text" formControlName="country">
+  </label>
+
+  <label>
+      permis de conduire : 
+      <input type="number" formControlName="driverLicense">
+  </label>
+
+  <label>
+      mail : 
+      <input type="email" formControlName="mail">
+  </label>
+
+  <label>
+      mot de passe : 
+      <input type="password" formControlName="password1">
+  </label>
+
+  <label>
+      Confirmation du mot de passe : 
+      <input type="password" formControlName="password2">
+  </label>
+
+  <button type="submit" [disabled]="!registerForm.valid">Submit</button>
+
+</form>

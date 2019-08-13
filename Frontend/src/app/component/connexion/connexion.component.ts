@@ -1,5 +1,6 @@
 import { UserService } from 'src/app/service/user.service';
 import { Component, OnInit } from '@angular/core';
+import { ValidationService } from 'src/app/service/validation.service';
 
 @Component({
   selector: 'app-connexion',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConnexionComponent implements OnInit {
 
-  constructor(private UserService: UserService) { }
+  constructor(private UserService: UserService, private ValidationService: ValidationService) { }
 
   MessageMail: boolean;
   MessagePass: boolean;
@@ -19,7 +20,7 @@ export class ConnexionComponent implements OnInit {
   }
 
   connection(mail, pass) {
-    if (mail === '') {
+    if (mail === '' || this.ValidationService.validationEmail(mail)==false) {
       this.MessageMail = true;
     } else {
       this.MessageMail = false;
@@ -29,7 +30,7 @@ export class ConnexionComponent implements OnInit {
     } else {
       this.MessagePass = false;
     }
-    if (mail !== '' || pass !== '') {
+    if (mail !== '' && pass !== '' && this.ValidationService.validationEmail(mail)==true) {
       let connectionResult = this.UserService.connection(mail, pass);
 
       if (connectionResult !== false) {

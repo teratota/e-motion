@@ -62,4 +62,24 @@ export class UserService {
       console.log(result);
       return result;
     }
+
+    getinfouser(token) {
+      let result: any;
+      $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8000/token/getinfouser',
+        dataType: 'json',
+        async: false,
+        data: {
+          token: token
+        },
+        success(data) {
+            console.log(data);
+            result = data;
+        }
+    });
+      console.log(result);
+      return result;
+    }
+
 }

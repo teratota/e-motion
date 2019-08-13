@@ -19,6 +19,13 @@ import { HistoriqueCommandeComponent } from './component/historique-commande/his
 import { PromotionComponent } from './component/promotion/promotion.component';
 import { HistoriqueReservationComponent } from './component/historique-reservation/historique-reservation.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
+import { DetailVehiculeComponent } from './component/detail-vehicule/detail-vehicule.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
+import { InterfaceUtilisateurComponent } from './component/interface-utilisateur/interface-utilisateur.component';
+import { InscriptionComponent } from './component/inscription/inscription.component';
+import { InterfaceUtilisateurInfoComponent } from './component/interface-utilisateur-info/interface-utilisateur-info.component';
+import { InterfaceUtilisateurReservationComponent } from './component/interface-utilisateur-reservation/interface-utilisateur-reservation.component';
+import { InterfaceUtilisateurOffreComponent } from './component/interface-utilisateur-offre/interface-utilisateur-offre.component';
 
 
 @NgModule({
@@ -35,8 +42,15 @@ import { ConnexionComponent } from './component/connexion/connexion.component';
     FormHomePageComponent,
     VehiculeListeComponent,
     PromotionComponent,
+    DetailVehiculeComponent,
     HistoriqueReservationComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    NavbarComponent,
+    InterfaceUtilisateurComponent,
+    InscriptionComponent,
+    InterfaceUtilisateurInfoComponent,
+    InterfaceUtilisateurReservationComponent,
+    InterfaceUtilisateurOffreComponent
   ],
   imports: [
     BrowserModule,
