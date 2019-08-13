@@ -51,25 +51,28 @@ class user extends config
         }
     }
 
-    function update($user)
+    function update($user,$id)
     {
         try {
-            $role = 2;
-            $point = 10;
             $password = password_hash($user->password1, PASSWORD_DEFAULT);
             $data_base=$this->connection();
-            $insert = $data_base->prepare("UPDATE user SET nom = :nom, prenom = :prenom, mail = :mail, password = :passwords, point = :points, anniversaire = :anniversaire, telephone = :telephone, npermis = :npermis, ref_id_role = :ref_id_role, genre = :genre)");
-            $insert->bindParam(':nom',$user->lastName);
-            $insert->bindParam(':prenom',$user->firstName);
-            $insert->bindParam(':mail',$user->mail);
-            $insert->bindParam(':passwords',$password);
-            $insert->bindParam(':points',$point);
-            $insert->bindParam(':anniversaire',$user->birthday);
-            $insert->bindParam(':telephone',$user->phone);
-            $insert->bindParam(':npermis',$user->driverLicense);
-            $insert->bindParam(':ref_id_role',$role);
-            $insert->bindParam(':genre',$user->gender);
-            $insert->execute();
+            $update = $data_base->prepare("UPDATE user SET nom = :nom, prenom = :prenom, mail = :mail, password = :passwords, anniversaire = :anniversaire, telephone = :telephone, npermis = :npermis, genre = :genre WHERE user.id = :id");
+            $update->bindParam(':nom',$user->lastName);
+            $update->bindParam(':prenom',$user->firstName);
+            $update->bindParam(':mail',$user->mail);
+            $update->bindParam(':passwords',$password);
+            $update->bindParam(':anniversaire',$user->birthday);
+            $update->bindParam(':telephone',$user->phone);
+            $update->bindParam(':npermis',$user->driverLicense);
+            $update->bindParam(':genre',$user->gender);
+            $update->bindParam(':id',$id);
+            $update->execute();
+            $update->$data_base->prepare("UPDATE adresse SET code_postal = :code, rue = :rue, villes = :villes, pays = :pays WHERE ref_id_user = :id");
+            $insert->bindParam(':code',$user->zip);
+            $insert->bindParam(':rue',$user->adress);
+            $insert->bindParam(':villes',$user->city);
+            $insert->bindParam(':pays',$user->country);
+            $insert->bindParam(':id',$id);
             return true;
         } catch (PDOException $e) {
             return "Erreur !: " . $e->getMessage() . "<br/>";

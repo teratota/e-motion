@@ -40,8 +40,24 @@ class token extends config
     {
         try {
             $data_base=$this->connection();
-            $select = $data_base->prepare("Select user.id, user.mail, user.prenom, user.nom, user.anniversaire, user.telephone, user.npermis  From token Inner Join
-            user On token.ref_id_user = user.id  WHERE token.token=:token");
+            $select = $data_base->prepare("Select
+            user.id,
+            user.nom,
+            user.prenom,
+            user.mail,
+            user.genre,
+            user.anniversaire,
+            user.telephone,
+            user.npermis,
+            adresse.code_postal,
+            adresse.rue,
+            adresse.pays,
+            adresse.villes,
+            user.`point`
+            From
+            token Inner Join
+            user On token.ref_id_user = user.id Inner Join
+            adresse On adresse.ref_id_user = user.id WHERE token.token=:token");
             $select->bindParam(':token',$parametre['token']);
             $select->execute();
             $data=$select->fetch(PDO::FETCH_ASSOC);
