@@ -8,7 +8,7 @@ import { ValidationService } from 'src/app/service/validation.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private ValidationService: ValidationService,) { }
+  constructor(private ValidationService: ValidationService) { }
   connection : boolean;
   anonyme : boolean;
   admin : boolean;

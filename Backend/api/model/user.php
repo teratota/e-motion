@@ -17,7 +17,28 @@ class user extends config
         }
 	}
     
-    function insert(){}
+    function insert($user)
+    {
+        try {
+            $role = 2;
+            $data_base=$this->connection();
+            $insert = $data_base->prepare("INSERT INTO user (nom, prenom, mail, password, point, anniversaire, telephone, npermis, ref_id_role) VALUES (:token, :id)");
+            $insert->bindParam(':nom',$role);
+            $insert->bindParam(':prenom',$id[0]['id']);
+            $insert->bindParam(':mail',$id[0]['id']);
+            $insert->bindParam(':password',$id[0]['id']);
+            $insert->bindParam(':point',$id[0]['id']);
+            $insert->bindParam(':anniversaire',$id[0]['id']);
+            $insert->bindParam(':telephone',$id[0]['id']);
+            $insert->bindParam(':npermis',$id[0]['id']);
+            $insert->bindParam(':ref_id_role',$role);
+            $insert->execute();
+            return true;
+        } catch (PDOException $e) {
+            return "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
     
     function update(){}
         
