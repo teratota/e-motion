@@ -86,6 +86,10 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
       this.ajoutVehicule=false;
     }
 
+    notSave(){
+      this.ajoutVehicule=false;
+    }
+
     Onchange(marque) {
       this.model = this.ModelService.getAll(marque);
     }

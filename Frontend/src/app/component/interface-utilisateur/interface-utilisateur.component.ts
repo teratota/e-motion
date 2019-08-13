@@ -19,10 +19,9 @@ export class InterfaceUtilisateurComponent implements OnInit {
   id: number;
   nom : string;
   prenom : string;
-  edituser : boolean;
+
 
   ngOnInit() {
-    this.edituser = false;
     var cookie=this.ValidationService.getCookie('tokenValidation');
     var result=this.ValidationService.verifuserconnection(cookie);
     if(result!=true){
@@ -36,8 +35,6 @@ export class InterfaceUtilisateurComponent implements OnInit {
     }
   }
 
-  editUser(){
-    this.edituser = true;
-  }
+  
 
 }

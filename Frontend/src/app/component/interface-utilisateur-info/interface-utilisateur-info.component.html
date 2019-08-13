@@ -6,72 +6,33 @@
 
   <div *ngIf="edituser">
     <form>
-    <div class="container"> 
-    <div class="row my-4">
-      <div class="col-md-2 offset-md-1">
-      <label for="type_vehicule">Type de vehicule</label>
-      <select class="form-control" #type id="type_vehicule" required>
-        <option disabled selected value hidden> -- select an option -- </option>
-        <option *ngFor="let typev of type_vehicule" [value]="typev.id">{{typev.nom}}</option>
-      </select>
-      </div>
-      <div class="col-md-2 ">
-      <label for="marque">Marques</label>
-      <select (change)="Onchange(marques.value)" #marques class="form-control" id="marque" required>
-        <option disabled selected value hidden> -- select an option -- </option>
-        <option *ngFor="let mar of marque" [value]="mar.id">{{mar.nom}}</option>
-      </select>
-      </div>
-    <div class="col-md-2 ">
-          <label for="model">Model</label>
-          <select class="form-control" #models id="model" required>
-            <option disabled selected value hidden> -- select an option -- </option>
-            <option *ngFor="let mod of model" [value]="mod.id">{{mod.nom}}</option>
-          </select>
-      </div>
-      <div class="col-md-2 ">
-          <label for="couleur">Couleur</label>
-          <select class="form-control" id="couleur" #couleurs required>
-            <option disabled selected value hidden> -- select an option -- </option>
-            <option *ngFor="let coul of couleur" [value]="coul.id">{{coul.nom}}</option>
-          </select>
-      </div>
-    </div>
-      <div class="row my-4">
-          <div class="col-md-2 ">
-              <label for="couleur">Autonomie (Km)</label>
-              <input type="text" #auto class="form-control" >
-          </div>
-          <div class="col-md-2 ">
-              <label for="couleur">Kilometrage (Km)</label>
-              <input type="text" #kilo class="form-control" >
-          </div>
-          <div class="col-md-2 ">
-              <label for="couleur">Capaciter (Personne)</label>
-              <input type="text" #capa class="form-control" >
-          </div>
-          <div class="col-md-2 ">
-              <label for="couleur">Coffre (L)</label>
-              <input type="text" #cof class="form-control" >
-          </div>
-          <div class="col-md-2 ">
-              <label for="couleur">Plaque d'immatriculation</label>
-              <input type="text" #plaque class="form-control" >
-          </div>
-          <div class="col-md-2 ">
-              <label for="couleur">Prix (A la jpournée)</label>
-              <input type="text" #prix class="form-control" >
-          </div>
-          <div class="col-md-2 ">
-            <label for="couleur">Image</label>
-            <input type="file" #img class="form-control" >
-        </div>
-      </div>
+      <label>Nom</label>
+      <input class="form-control" type="text" style="width:200px" formControlName="lastName">
+      <label>Prenom</label>
+      <input class="form-control" type="text" style="width:200px" formControlName="firstName">
+      <label>Email</label>
+      <input class="form-control" type="text" style="width:200px" formControlName="birthday">
+      <label>Date</label>
+      <input class="form-control" type="date" style="width:200px">
+      <label>Adresse</label>
+      <input class="form-control" type="text" style="width:200px">
+      <label>Ville</label>
+      <input class="form-control" type="text" style="width:200px">
+      <label>Code Postal</label>
+      <input class="form-control" type="text" style="width:200px">
+      <label>Telephone</label>
+      <input class="form-control" type="text" style="width:200px">
+      <label>Numero de permis</label>
+      <input class="form-control" type="text" style="width:200px">
+      <label>Mots de passe</label>
+      <input class="form-control" type="text" style="width:200px">
+      <label>confirmer le mots de passe</label>
+      <input class="form-control" type="text" style="width:200px">
       <div class="row my-4">
           <div class="col-md-2 mx-auto">
-            <button (click)="saveVehicule(type.value,marques.value,models.value,couleurs.value,auto.value,kilo.value,capa.value,cof.value,plaque.value,prix.value,img)" type="submit" class="btn btn-success">Enregistrer</button>
+            <button (click)="saveUser()" type="submit" class="btn btn-success">Enregistrer</button>
+            <button (click)="notSave()" type="submit" class="btn btn-danger">Annuler</button>
           </div>
         </div>  
-    </div>
     </form>
   </div>

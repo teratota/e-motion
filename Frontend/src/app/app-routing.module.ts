@@ -14,6 +14,7 @@ import { InterfaceUtilisateurComponent } from './component/interface-utilisateur
 import { InterfaceUtilisateurInfoComponent } from './component/interface-utilisateur-info/interface-utilisateur-info.component';
 import { InterfaceUtilisateurOffreComponent } from './component/interface-utilisateur-offre/interface-utilisateur-offre.component';
 import { InterfaceUtilisateurReservationComponent } from './component/interface-utilisateur-reservation/interface-utilisateur-reservation.component';
+import { InscriptionComponent } from './component/inscription/inscription.component';
 
 const routes: Routes = [
   { path : 'gestion', component : GestionClientComponent },
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path : 'utilisateur', component : InterfaceUtilisateurComponent},
   { path : 'utilisateur/info', component : InterfaceUtilisateurInfoComponent},
   { path : 'utilisateur/offre', component : InterfaceUtilisateurOffreComponent},
-  { path : 'utilisateur/reservation', component : InterfaceUtilisateurReservationComponent}
+  { path : 'utilisateur/reservation', component : InterfaceUtilisateurReservationComponent},
+  { path : 'inscription', component : InscriptionComponent}
 ];
 
 @NgModule({

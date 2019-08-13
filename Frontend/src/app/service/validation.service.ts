@@ -68,4 +68,30 @@ export class ValidationService {
       return true;
     }    
   }
+  validationChaine(chaine)
+  {
+
+  }
+  validationDate()
+  {
+
+  }
+  validationPassword(password){
+    var passw=  /^[A-Za-z]\w{7,15}$/;
+    if(password.match(passw)) 
+    { 
+    return true;
+    }
+    else
+    { 
+    return false;
+    }
+  }
+  validationIdentiquePassword(password1,password2){
+    if(password1 === password2){
+      return true;
+    }else{
+      return true;
+    }
+  }
 }
