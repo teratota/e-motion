@@ -5,34 +5,38 @@
   </div>
 
   <div *ngIf="edituser">
-    <form>
-      <label>Nom</label>
-      <input class="form-control" type="text" style="width:200px" formControlName="lastName">
-      <label>Prenom</label>
-      <input class="form-control" type="text" style="width:200px" formControlName="firstName">
-      <label>Email</label>
-      <input class="form-control" type="text" style="width:200px" formControlName="birthday">
-      <label>Date</label>
-      <input class="form-control" type="date" style="width:200px">
-      <label>Adresse</label>
-      <input class="form-control" type="text" style="width:200px">
-      <label>Ville</label>
-      <input class="form-control" type="text" style="width:200px">
-      <label>Code Postal</label>
-      <input class="form-control" type="text" style="width:200px">
-      <label>Telephone</label>
-      <input class="form-control" type="text" style="width:200px">
-      <label>Numero de permis</label>
-      <input class="form-control" type="text" style="width:200px">
-      <label>Mots de passe</label>
-      <input class="form-control" type="text" style="width:200px">
-      <label>confirmer le mots de passe</label>
-      <input class="form-control" type="text" style="width:200px">
-      <div class="row my-4">
-          <div class="col-md-2 mx-auto">
-            <button (click)="saveUser()" type="submit" class="btn btn-success">Enregistrer</button>
-            <button (click)="notSave()" type="submit" class="btn btn-danger">Annuler</button>
-          </div>
-        </div>  
-    </form>
-  </div>
+      <form [formGroup]="registerForm" (ngSubmit)="saveUser()">
+          <label> Nom : </label>
+              <input class="form-control"  type="text" formControlName="lastName">
+          <label> Prénom : </label>
+              <input class="form-control"  type="text" formControlName="firstName">
+          <label> date de naissance : </label>
+              <input class="form-control"  type="date" formControlName="birthday">
+          <label> sexe : </label>
+              <input class="form-control"  type="text" formControlName="gender">
+          <label> phone : </label>
+              <input class="form-control"  type="tel" formControlName="phone">
+          <label> adresse :</label>
+              <input class="form-control"  type="text" formControlName="adress">
+          <label> ville :</label>
+              <input class="form-control"  type="text" formControlName="city">
+          <label> code postal : </label>
+              <input class="form-control"  type="text" formControlName="zip">
+          <label> pays : </label>
+              <input class="form-control"  type="text" formControlName="country">
+          <label> permis de conduire : </label>
+              <input class="form-control"  type="number" formControlName="driverLicense">
+          <label> mail : </label>
+              <input class="form-control"  type="email" formControlName="mail">
+          <label> mot de passe : </label>
+              <input class="form-control"  type="password" formControlName="password1">
+          <label> Confirmation du mot de passe : </label>
+              <input class="form-control"  type="password" formControlName="password2">
+          <div class="row my-4">
+              <div class="col-md-2 mx-auto">
+                <button  type="submit" [disabled]="!registerForm.valid" class="btn btn-success">Enregistrer</button>
+                <button (click)="notSave()" [disabled]="!registerForm.valid" type="button" class="btn btn-danger">Annuler</button>
+              </div>
+            </div> 
+        </form>
+</div>

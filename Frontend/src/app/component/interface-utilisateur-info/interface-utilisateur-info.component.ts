@@ -58,6 +58,7 @@ export class InterfaceUtilisateurInfoComponent implements OnInit {
     this.edituser = false;
   }
   saveUser(){
+    console.warn(this.registerForm.value);
     this.edituser = false;
   }
 
