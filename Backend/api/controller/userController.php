@@ -20,7 +20,7 @@ class userController
     {
         $class = new user;
         $result = $class->connexion($parametre);
-        if ($result[0]["COUNT(*)"] == 1) {
+        if ($result["COUNT(*)"] == 1 && password_verify($parametre['password'], $result['password'] )== true ) {
             $resultToken = md5(uniqid(rand(), true));
             $resultInsert = $class->insertToken($resultToken, $result);
             if ($resultInsert == true ) {

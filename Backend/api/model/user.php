@@ -95,11 +95,10 @@ class user extends config
     {
         try {
             $data_base=$this->connection();
-            $select = $data_base->prepare("Select COUNT(*), user.id From user WHERE mail=:mail AND password=:pass");
+            $select = $data_base->prepare("Select COUNT(*), user.id, user.password From user WHERE mail=:mail");
             $select->bindParam(':mail',$parametre['email']);
-            $select->bindParam(':pass',$parametre['password']);
             $select->execute();
-            $data=$select->fetchAll();
+            $data = $select->fetch(PDO::FETCH_ASSOC);
             return $data;
         } catch (PDOException $e) {
             return "Erreur !: " . $e->getMessage() . "<br/>";
@@ -113,7 +112,7 @@ class user extends config
             $data_base=$this->connection();
             $insert = $data_base->prepare("INSERT INTO token (token, ref_id_user) VALUES (:token, :id)");
             $insert->bindParam(':token',$token);
-            $insert->bindParam(':id',$id[0]['id']);
+            $insert->bindParam(':id',$id['id']);
             $insert->execute();
             return true;
         } catch (PDOException $e) {
