@@ -25,7 +25,7 @@
           <label> pays : </label>
               <input class="form-control"  type="text" formControlName="country" value="{{ pays }}">
           <label> permis de conduire : </label>
-              <input class="form-control"  type="number" formControlName="driverLicense" value="{{ npermis }}">
+              <input class="form-control"  type="text" formControlName="driverLicense" value="{{ npermis }}">
           <label> mail : </label>
               <input class="form-control"  type="email" formControlName="mail" value="{{ mail }}">
           <label> mot de passe : </label>
@@ -36,7 +36,7 @@
           <div class="row my-4">
               <div class="col-md-2 mx-auto">
                 <button  type="submit" [disabled]="!registerForm.valid" class="btn btn-success">Enregistrer</button>
-                <button (click)="notSave()" [disabled]="!registerForm.valid" type="button" class="btn btn-danger">Annuler</button>
+                <button (click)="notSave()"  type="button" class="btn btn-danger">Annuler</button>
               </div>
             </div> 
         </form>

@@ -67,12 +67,13 @@ class user extends config
             $update->bindParam(':genre',$user->gender);
             $update->bindParam(':id',$id);
             $update->execute();
-            $update->$data_base->prepare("UPDATE adresse SET code_postal = :code, rue = :rue, villes = :villes, pays = :pays WHERE ref_id_user = :id");
-            $insert->bindParam(':code',$user->zip);
-            $insert->bindParam(':rue',$user->adress);
-            $insert->bindParam(':villes',$user->city);
-            $insert->bindParam(':pays',$user->country);
-            $insert->bindParam(':id',$id);
+            $update = $data_base->prepare("UPDATE adresse SET code_postal = :code, rue = :rue, villes = :villes, pays = :pays WHERE ref_id_user = :id");
+            $update->bindParam(':code',$user->zip);
+            $update->bindParam(':rue',$user->adress);
+            $update->bindParam(':villes',$user->city);
+            $update->bindParam(':pays',$user->country);
+            $update->bindParam(':id',$id);
+            $update->execute();
             return true;
         } catch (PDOException $e) {
             return "Erreur !: " . $e->getMessage() . "<br/>";

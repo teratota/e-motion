@@ -48,7 +48,7 @@ class userController
     {
         $user = json_decode($parametre['user']);
         $class = new user;
-        $result = $class->update($user,$parameter['id']);
+        $result = $class->update($user,$parametre['id']);
         echo json_encode($result);
     }
 }
