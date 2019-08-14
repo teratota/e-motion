@@ -86,11 +86,11 @@ export class UserService {
         let result: any;
         $.ajax({
           type: 'POST',
-          url: 'http://localhost:8000/user/insertUser',
+          url: 'http://localhost:8000/user/updateUser',
           dataType: 'json',
           async: false,
           data: {
-            user: user
+            user: user,id:id
           },
           success(data) {
               console.log(data);
