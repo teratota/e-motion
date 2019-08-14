@@ -6,6 +6,8 @@ import { MarqueService } from 'src/app/service/marque.service';
 import { CouleurService } from 'src/app/service/couleur.service';
 import { TypeService } from 'src/app/service/type.service';
 import { VehiculeService } from 'src/app/service/vehicule.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { callbackify } from 'util';
 
 @Component({
   selector: 'app-interface-utilisateur-offre',
@@ -14,6 +16,42 @@ import { VehiculeService } from 'src/app/service/vehicule.service';
 })
 export class InterfaceUtilisateurOffreComponent implements OnInit {
 
+  vehiculeForm = new FormGroup({
+    type:new FormControl('',[
+        Validators.required
+    ]),
+    marque:new FormControl('',[
+      Validators.required
+    ]),
+    model:new FormControl('',[
+      Validators.required
+    ]),
+    couleur:new FormControl('',[
+      Validators.required
+    ]),
+    autonomie:new FormControl('',[
+      Validators.required
+    ]),
+    kilometrage:new FormControl('',[
+      Validators.required
+    ]),
+    capaciter:new FormControl('',[
+      Validators.required
+    ]),
+    coffre:new FormControl('',[
+      Validators.required
+    ]),
+    plaque:new FormControl('',[
+      Validators.required
+    ]),
+    prix:new FormControl('',[
+      Validators.required
+    ]),
+    img:new FormControl('',[
+      Validators.required
+    ])
+  });
+
   constructor(
     private UserService: UserService,
     private ValidationService: ValidationService,
@@ -21,15 +59,17 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
     private MarqueService: MarqueService,
     private CouleurService: CouleurService,
     private TypeService: TypeService,
-    private VehiculeService: VehiculeService,
+    private VehiculeService: VehiculeService
     ) { }
     MessNotOffre : boolean;
+    Msgimg : boolean;
     offre : any;
     marque: any[]
     model: any[];
     couleur: any[];
     type_vehicule: any[];
     ajoutVehicule: boolean;
+    img : String | ArrayBuffer;
 
   ngOnInit() {
     this.ajoutVehicule = false;
@@ -55,35 +95,22 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
       this.ajoutVehicule = true;
     }
 
-    saveVehicule(type,marques,models,couleurs,auto,kilo,capa,cof,plaque,prix,img){
+    saveVehicule(){
       var cookie=this.ValidationService.getCookie('tokenValidation');
       var result=this.UserService.getinfouser(cookie);
-      console.log(type);
-      console.log(marques);
-      console.log(models);
-      console.log(couleurs);
-      console.log(auto);
-      console.log(kilo);
-      console.log(capa);
-      console.log(cof);
-      console.log(plaque);
-      console.log(prix);
-      console.log(img.target);
-      var vehicule = {};
-      vehicule['type']=type;
-      vehicule['user']=result.id;
-      vehicule['marque']=marques;
-      vehicule['model']=models;
-      vehicule['couleur']=couleurs;
-      vehicule['auto']=auto;
-      vehicule['kilo']=kilo;
-      vehicule['capa']=capa;
-      vehicule['cof']=cof;
-      vehicule['plaque']=plaque;
-      vehicule['prix']=prix;
-      vehicule['img']=img;
-      this.VehiculeService.saveVehicule(vehicule);
-      this.ajoutVehicule=false;
+      if(this.img != ''){
+        var insert = this.VehiculeService.saveVehicule(this.vehiculeForm.value,result.id,this.img);
+        if(insert == true){
+          var cookie=this.ValidationService.getCookie('tokenValidation');
+          var result=this.UserService.getinfouser(cookie);
+          this.offre=this.VehiculeService.getVehiculeForUser(result.id);
+          this.Msgimg = false;
+          this.ajoutVehicule=false;
+        }
+      }else{
+        this.Msgimg = true;
+      }
+      
     }
 
     notSave(){
@@ -94,4 +121,16 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
       this.model = this.ModelService.getAll(marque);
     }
 
+    
+    onFileChange(event) {
+      let reader = new FileReader();
+      if(event.target.files && event.target.files.length) {
+        const [file] = event.target.files;
+        reader.readAsDataURL(file);
+      }
+        reader.onload = (e) => {
+          this.img=reader.result;
+        }
+      console.log(this.img);
+    }
 }

@@ -31,7 +31,7 @@ class vehiculeController
     {
         $vehicule = json_decode($parametre['vehicule']);
         $class = new vehicule;
-        $result = $class->saveVehicule($vehicule);
+        $result = $class->saveVehicule($vehicule,$parametre['id']);
         echo json_encode($result);
     }
 }

@@ -111,23 +111,23 @@ class vehicule extends config
         }
     }
     
-    function saveVehicule($vehicule)
+    function saveVehicule($vehicule,$id)
     {
         try {
             $data_base=$this->connection();
-            $insert = $data_base->prepare("INSERT INTO vehicule (ref_id_marque, ref_id_user, ref_id_model, plaque, ref_id_couleur, ref_id_type, coffre, kilometrage, recomendation, prix, autonomie, img) VALUES (:ref_id_marque, :ref_id_user, :ref_id_model, :plaque, :ref_id_couleur, :ref_id_type, :coffre, :kilometrage, :recomendation, :prix, :autonomie, :img)");
-            $insert->bindParam(':ref_id_marque',$vehicule);
-            $insert->bindParam(':ref_id_user',$vehicule);
-            $insert->bindParam(':ref_id_model',$vehicule);
-            $insert->bindParam(':plaque',$vehicule);
-            $insert->bindParam(':ref_id_couleur',$vehicule);
-            $insert->bindParam(':ref_id_type',$vehicule);
-            $insert->bindParam(':coffre',$vehicule);
-            $insert->bindParam(':kilometrage',$vehicule);
-            $insert->bindParam(':recomendation',$vehicule);
-            $insert->bindParam(':prix',$vehicule);
-            $insert->bindParam(':autonomie',$vehicule);
-            $insert->bindParam(':img',$vehicule);
+            $insert = $data_base->prepare("INSERT INTO vehicule (ref_id_marque, ref_id_user, ref_id_model, plaque, ref_id_couleur, ref_id_type, coffre, kilometrage,  prix, autonomie, img, personne) VALUES (:ref_id_marque, :ref_id_user, :ref_id_model, :plaque, :ref_id_couleur, :ref_id_type, :coffre, :kilometrage,  :prix, :autonomie, :img, :personne)");
+            $insert->bindParam(':ref_id_marque',$vehicule->marque);
+            $insert->bindParam(':ref_id_user',$id);
+            $insert->bindParam(':ref_id_model',$vehicule->model);
+            $insert->bindParam(':plaque',$vehicule->plaque);
+            $insert->bindParam(':ref_id_couleur',$vehicule->couleur);
+            $insert->bindParam(':ref_id_type',$vehicule->type);
+            $insert->bindParam(':coffre',$vehicule->coffre);
+            $insert->bindParam(':kilometrage',$vehicule->kilometrage);
+            $insert->bindParam(':prix',$vehicule->prix);
+            $insert->bindParam(':autonomie',$vehicule->autonomie);
+            $insert->bindParam(':img',$vehicule->img);
+            $insert->bindParam(':personne',$vehicule->capaciter);
             $insert->execute();
             return true;
         } catch (PDOException $e) {

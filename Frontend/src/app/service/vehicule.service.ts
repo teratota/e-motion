@@ -28,13 +28,13 @@ export class VehiculeService {
   return test;
   }
 
-  saveVehicule(vehicule){
+  saveVehicule(vehicule,id,img){
     var json = JSON.stringify(vehicule);
     var test;
     $.ajax({
       type: "POST",
       data: {
-        vehicule:json
+        vehicule:json,id:id,img:img
       },
       url: "http://localhost:8000/vehicule/saveVehicule",
       dataType: "json",
