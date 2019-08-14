@@ -58,12 +58,11 @@ class vehicule extends config
         try {
             $data_base=$this->connection();
             $select = $data_base->prepare("Select
-            vehicule.id,
+            vehicule.*,
             type.nom,
             couleur.nom As couleur,
             marque.nom As marque,
-            model.nom As model,
-            vehicule.autonomie
+            model.nom As model
             From
             vehicule Inner Join
             type On vehicule.ref_id_type = type.id Inner Join
@@ -136,7 +135,29 @@ class vehicule extends config
         }
     }
     
-    function update(){}
+    function update($vehicule,$id){
+        try {
+            $data_base=$this->connection();
+            $update = $data_base->prepare("UPDATE vehicule SET ref_id_marque=:ref_id_marque, ref_id_model=:ref_id_model, plaque=:plaque, ref_id_couleur=:ref_id_couleur, ref_id_type=:ref_id_type, coffre=:coffre, kilometrage=:kilometrage,  prix=:prix, autonomie=:autonomie, img=:img, personne=:personne WHERE id = :id");
+            $update->bindParam(':ref_id_marque',$vehicule->marque);
+            $update->bindParam(':ref_id_model',$vehicule->model);
+            $update->bindParam(':plaque',$vehicule->plaque);
+            $update->bindParam(':ref_id_couleur',$vehicule->couleur);
+            $update->bindParam(':ref_id_type',$vehicule->type);
+            $update->bindParam(':coffre',$vehicule->coffre);
+            $update->bindParam(':kilometrage',$vehicule->kilometrage);
+            $update->bindParam(':prix',$vehicule->prix);
+            $update->bindParam(':autonomie',$vehicule->autonomie);
+            $update->bindParam(':img',$vehicule->img);
+            $update->bindParam(':personne',$vehicule->capaciter);
+            $update->bindParam(':id',$id);
+            $update->execute();
+            return true;
+        } catch (PDOException $e) {
+            return "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
         
     function delete($id)
     {

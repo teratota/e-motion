@@ -48,6 +48,27 @@ export class VehiculeService {
   return test;
   }
 
+  updateVehicule(vehicule,id,img){
+    var json = JSON.stringify(vehicule);
+    var test;
+    $.ajax({
+      type: "POST",
+      data: {
+        vehicule:json,id:id,img:img
+      },
+      url: "http://localhost:8000/vehicule/updateVehicule",
+      dataType: "json",
+      async: false,
+      success: function(data) {
+          console.log(data);
+          test = data;
+      }
+  });
+  console.log(test);
+  return test;
+  }
+  
+
   getVehiculeForUser(id){
     var test;
     $.ajax({
@@ -82,6 +103,25 @@ export class VehiculeService {
           result = data;
       }
   });
+    console.log(result);
+    return result;
+  }
+
+  getInfoVehiculebyId(id){
+    let result: any;
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:8000/vehicule/getInfoVehiculebyId',
+      dataType: 'json',
+      async: false,
+      data: {
+        id: id
+      },
+      success(data) {
+          console.log(data);
+          result = data;
+      }
+    });
     console.log(result);
     return result;
   }
