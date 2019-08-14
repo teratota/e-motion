@@ -70,7 +70,7 @@ export class InterfaceUtilisateurInfoComponent implements OnInit {
       birthday:new FormControl('',[
         Validators.required
       ]),
-      gender:new FormControl('',[
+      gender:new FormControl(this.genre,[
         Validators.required
       ]),
       phone:new FormControl('',[
@@ -108,7 +108,17 @@ export class InterfaceUtilisateurInfoComponent implements OnInit {
   
 
   ngOnInit() {
-    
+    this.registerForm.get('firstName').setValue(this.prenom);
+    this.registerForm.get('lastName').setValue(this.nom);
+    this.registerForm.get('birthday').setValue(this.anniversaire);
+    this.registerForm.get('gender').setValue(this.genre);
+    this.registerForm.get('phone').setValue(this.phone);
+    this.registerForm.get('adress').setValue(this.adress);
+    this.registerForm.get('country').setValue(this.pays);
+    this.registerForm.get('zip').setValue(this.code);
+    this.registerForm.get('city').setValue(this.city);
+    this.registerForm.get('mail').setValue(this.mail);
+    this.registerForm.get('driverLicense').setValue(this.npermis);
   }
   editUser(){
     this.edituser = true;
@@ -122,7 +132,7 @@ export class InterfaceUtilisateurInfoComponent implements OnInit {
     if(result == false){
       this.password=true;
     }else{
-      var user = JSON.stringify(this.registerForm.value)
+      var user = JSON.stringify(this.registerForm.value);
       var info = this.UserService.updateUser(user,this.id);
       if(info==true){
        // this.confirmation = false;

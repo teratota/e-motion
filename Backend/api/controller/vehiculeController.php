@@ -34,4 +34,11 @@ class vehiculeController
         $result = $class->saveVehicule($vehicule);
         echo json_encode($result);
     }
+
+    public function delete($parametre = null)
+    {
+        $class = new vehicule;
+        $result = $class->delete($parametre["id"]);
+        echo json_encode($result);
+    }
 }
