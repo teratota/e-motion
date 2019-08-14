@@ -36,10 +36,19 @@ class userController
         }
     }
 
-    public function insertUser(){
+    public function insertUser($parametre = null)
+    {
         $user = json_decode($parametre['user']);
         $class = new user;
         $result = $class->insert($user);
+        echo json_encode($result);
+    }
+
+    public function updateUser($parametre = null)
+    {
+        $user = json_decode($parametre['user']);
+        $class = new user;
+        $result = $class->update($user,$parametre['id']);
         echo json_encode($result);
     }
 }
