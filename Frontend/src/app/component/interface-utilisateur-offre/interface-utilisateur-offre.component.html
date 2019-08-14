@@ -1,6 +1,6 @@
 <app-interface-utilisateur></app-interface-utilisateur>
 
-<div class="col-md-4">
+<div class="container">
   <p class="reservation-download"><a (click)="newVehicule()" class="text-danger"> Ajouter un vehicule <i class="fa fa-plus"></i> </a></p>
 </div>
 <div *ngIf="ajoutVehicule">
@@ -79,14 +79,10 @@
 <p *ngIf="MessNotOffre" style="color : green" >vous n'avez aucune offre</p>
 <div class="container">
   <div class="row">
-    <div *ngFor="let offres of offre" class="reservation-container">
-      <p class="reservation-debut">{{offres.marque}} <span class="reservation-fin">{{offres.model}}</span> <p>
-      <div class="row">
-        <div class="col-md-4">
-          <p class="reservation-download"><a id="{{offres.id}}" #res (click)="onDownloadFacture(res.id)" class="text-danger"> <i class="fa fa-edit"></i> </a></p>
-          <p class="reservation-download"><a id="{{offres.id}}" #res (click)="onDownloadFacture(res.id)" class="text-danger"> <i class="fa fa-trash"></i> </a></p>
-        </div>
-      </div>
+    <div *ngFor="let offres of offre" class="reservation-container col-md-12">
+      <p class="marques">{{offres.marque}} <span class="modeles">{{offres.model}}</span> </p>
+      <p class="reservation-download"><a id="{{offres.id}}" #res (click)="onDownloadFacture(res.id)" class="text-danger"> <i class="fa fa-edit"></i> </a></p>
+      <p class="reservation-download"><a id="{{offres.id}}" #res (click)="onDelete(res.id)" class="text-danger"> <i class="fa fa-trash"></i> </a></p>
     </div>
   </div>
 </div>

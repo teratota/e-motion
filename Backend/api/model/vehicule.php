@@ -138,5 +138,17 @@ class vehicule extends config
     
     function update(){}
         
-    function delete(){}  
+    function delete($id)
+    {
+        try {
+            $data_base=$this->connection();
+            $delete = $data_base->prepare("DELETE FROM vehicule WHERE id=:id");
+            $delete->bindParam(':id',$id);
+            $delete->execute();
+            return true;
+        } catch (PDOException $e) {
+            return "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }  
 }

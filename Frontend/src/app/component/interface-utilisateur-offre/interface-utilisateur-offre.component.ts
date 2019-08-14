@@ -121,6 +121,14 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
       this.model = this.ModelService.getAll(marque);
     }
 
+    onDelete(id) {
+      var cookie=this.ValidationService.getCookie('tokenValidation');
+      var result=this.UserService.getinfouser(cookie);
+      let user_id = result.id;      
+      this.VehiculeService.delete(id);
+      this.offre = this.VehiculeService.getVehiculeForUser(user_id);
+    }
+
     
     onFileChange(event) {
       let reader = new FileReader();

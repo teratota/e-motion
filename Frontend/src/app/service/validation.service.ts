@@ -93,7 +93,7 @@ export class ValidationService {
     if(password1 === password2){
       return true;
     }else{
-      return true;
+      return false;
     }
   }
 }

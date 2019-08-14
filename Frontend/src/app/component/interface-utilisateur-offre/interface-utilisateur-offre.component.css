@@ -1,0 +1,24 @@
+.reservation-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+    border: 1px solid black;
+}
+
+.reservation-container > p{
+    margin: 0;
+    padding: 20px 0;
+}
+
+.marques {
+    text-transform: uppercase;
+}
+
+.modeles {
+    text-transform: initial;
+}
+
+.reservation-download {
+    margin: 0;
+    padding: 10px 0;
+}
