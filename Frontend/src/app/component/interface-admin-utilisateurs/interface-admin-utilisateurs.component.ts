@@ -1,3 +1,4 @@
+import { ValidationService } from 'src/app/service/validation.service';
 import { UserService } from 'src/app/service/user.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,12 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InterfaceAdminUtilisateursComponent implements OnInit {
 
-  constructor(private UserService: UserService) { }
+  constructor(private UserService: UserService, private ValidationService: ValidationService) { }
 
+  displayInfos = false;
   user: any[];
 
   ngOnInit() {
     this.user = this.UserService.getAll();
+    let cookie = this.ValidationService.getCookie('tokenValidation');
+    let result = this.ValidationService.verifadminconnection(cookie);
+    if (result !== true) {
+      window.location.href = '/';
+    } else {
+        this.displayInfos = true;
+        result = this.UserService.getinfouser(cookie);
+    }
   }
 
   onDelete(id) {

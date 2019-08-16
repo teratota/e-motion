@@ -29,7 +29,6 @@ export class ValidationService {
 
   verifadminconnection(token) {
     let result: any;
-    console.log("hello");
     $.ajax({
       type: 'POST',
       url: 'http://localhost:8000/token/verifconnectionadmin',
@@ -56,6 +55,23 @@ export class ValidationService {
     } else {
         return null;
     }
+  }
+
+  deleteCookie(cookie) {
+    let result: any;
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:8000/token/deleteCookie',
+      dataType: 'json',
+      data: {
+        cookie: cookie
+      },
+      async: false,
+      success(data) {
+          result = data;
+      }
+  });
+    return result;
   }
 
   validationEmail(email)

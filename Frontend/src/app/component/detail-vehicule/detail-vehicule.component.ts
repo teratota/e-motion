@@ -10,14 +10,16 @@ import { Router } from '@angular/router';
 export class DetailVehiculeComponent implements OnInit {
 
   detail: any[];
+  info: any[];
 
-  constructor(private vehiculeService: VehiculeService, private router : Router) { }
-  vehicule: number = 10;
+  constructor(private VehiculeService: VehiculeService, private router : Router) { }
+
   ngOnInit() {
-    this.detail = this.vehiculeService.detail;
+    this.detail = history.state.data;
+    this.info = this.VehiculeService.getInfoVehiculebyId(this.detail['vehicleID']);
   }
-  reservation(id){
-    id = 1;
+
+  reservation(id) {
     this.router.navigate(['/reservation'], {state: {data: {id}}});
   }
 

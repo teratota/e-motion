@@ -1,7 +1,7 @@
 
 <app-interface-admin></app-interface-admin>
 
-<div class="container">
+<div class="container" *ngIf="displayInfos">
   <div class="row">
     <div *ngFor="let users of user" class="user-container">
       <p class="user-nom">{{users.nom}} <span class="user-prenom">{{users.prenom}}</span> </p>

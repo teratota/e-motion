@@ -86,4 +86,23 @@ export class VehiculeService {
     return result;
   }
 
+  getInfoVehiculebyId(identifiant) {
+    let result: any;
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:8000/vehicule/getInfoVehiculebyId',
+      dataType: 'json',
+      async: false,
+      data: {
+        id: identifiant
+      },
+      success(data) {
+          console.log(data);
+          result = data;
+      }
+  });
+    console.log(result);
+    return result;
+  }
+
 }

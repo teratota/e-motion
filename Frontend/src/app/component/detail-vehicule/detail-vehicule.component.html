@@ -1,4 +1,10 @@
-<body>
-    <h1>Renault Zoé</h1>
-    <button type="submit"(click)="reservation(2)"class="btn btn-success">Réserver</button>
-</body>
+<h1>{{this.info.marque}} {{this.info.model}}</h1>
+<p>Autonomie : {{this.info.autonomie}}</p>
+<p>coffre : {{this.info.coffre}}</p>
+<p>couleur : {{this.info.couleur}}</p>
+<p>img : {{this.info.img}}</p>
+<p>kilometrage : {{this.info.kilometrage}}</p>
+<p>personne : {{this.info.personne}}</p>
+<p>plaque : {{this.info.plaque}}</p>
+<p>prix : {{this.info.prix}}</p>
+<button type="submit" (click)="reservation(this.info.id)" class="btn btn-success">Réserver</button>
