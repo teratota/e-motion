@@ -9,6 +9,7 @@ import { CouleurService } from 'src/app/service/couleur.service';
 import { UserService } from 'src/app/service/user.service';
 import { ValidationService } from 'src/app/service/validation.service';
 import { Router } from '@angular/router';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -29,6 +30,31 @@ export class ReservationComponent implements OnInit {
     private router: Router
     ) {}
 
+    mailForm = new FormGroup({
+      mail:new FormControl('',[
+        Validators.required,
+        Validators.email,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ]),
+    });
+
+    monthForm = new FormGroup({
+      monthStart:new FormControl('',[
+        Validators.required
+      ]),
+      monthEnd:new FormControl('',[
+        Validators.required
+      ]),
+    });
+
+    timeForm = new FormGroup({
+      timeStart:new FormControl('',[
+        Validators.required
+      ]),
+      timeEnd:new FormControl('',[
+        Validators.required
+      ]),
+    });
 
   MessageDatedebut: boolean;
   MessageDateFin: boolean;
@@ -61,6 +87,7 @@ export class ReservationComponent implements OnInit {
       window.location.href = '/connexion';
     }else{
         var result=this.UserService.getinfouser(cookie);
+        this.mailForm.get('mail').setValue(result.mail);
         this.email = result.mail;
         this.id = result.id;
     }
@@ -93,14 +120,17 @@ export class ReservationComponent implements OnInit {
       this.payer = true;
     }
   }
-
+  verifDate(){
+    console.log("valid");  
+  }
+  verifTime(){
+    console.log("valid");
+  }
+  verif(){
+    console.log("not");
+  }
   payment(){
     var reservation = {};
-    reservation["vehicule"]=this.vehicule;
-    reservation["datedebut"]=this.datedebut;
-    reservation["datefin"]=this.datefin;
-    reservation['email']=this.email;
-    reservation['user']=this.id;
     var json = JSON.stringify(reservation)
     this.ReservationService.saveReservation(json)
   }
