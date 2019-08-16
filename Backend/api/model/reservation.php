@@ -82,12 +82,12 @@ class reservation extends config
                 OR (date_debut < :datefin AND :datefin < date_fin)
                 OR (:datedebut < date_debut AND date_debut < :datefin)
               )
-              AND id = :id_vehicule");
+              AND ref_id_vehicule=:id_vehicule");
             $select->bindParam(':datedebut',$search->datedebut);
             $select->bindParam(':datefin',$search->datefin);
             $select->bindParam(':id_vehicule',$id);
             $select->execute();
-            $data=$select->fetchAll();
+            $data=$select->fetch(PDO::FETCH_ASSOC);
             return $data;
         } catch (PDOException $e) {
             return "Erreur !: " . $e->getMessage() . "<br/>";

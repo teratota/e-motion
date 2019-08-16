@@ -4,11 +4,20 @@
         <div  class="row my-4">
             <div class="col-md-3 offset-md-1">
               <label>Mois de debut</label>
-              <input type='text' formControlName="monthStart" class='form-control'>
-            </div>
-            <div class="col-md-3 ">
-              <label>Mois de fin</label>
-              <input type='text' formControlName="monthEnd" class='form-control'> 
+              <select formControlName="monthStart" class='form-control'>
+                <option value='01'>Janvier</option>
+                <option value='02'>Février</option>
+                <option value='03'>Mars</option>
+                <option value='04'>Avril</option>
+                <option value='05'>Mai</option>
+                <option value='06'>Juin</option>
+                <option value='07'>Juillet</option>
+                <option value='08'>Aout</option>
+                <option value='09'>Septembre</option>
+                <option value='10'>Octobre</option>
+                <option value='11'>Novembre</option>
+                <option value='12'>Decembre</option>
+              </select>
             </div>
             <div class="col-md-3 ">
               <button type="submit"  class="btn btn-success">Valider</button>
@@ -20,11 +29,11 @@
           <div  class="row my-4">
               <div class="col-md-3 offset-md-1">
                 <label>Horaire de recuperation du véhicule</label>
-                <input type='time' formControlName="timeEnd" class='form-control'>
+                <input type='time' formControlName="timeStart" class='form-control timepicker'>
               </div>
               <div class="col-md-3 ">
                 <label>Horaire de retour du véhicule</label>
-                <input type='time' formControlName="timeEnd" class='form-control'> 
+                <input type='time' formControlName="timeEnd" class='form-control timepicker'> 
               </div>
               <div class="col-md-3 ">
                 <button type="submit"  class="btn btn-success">Valider</button>

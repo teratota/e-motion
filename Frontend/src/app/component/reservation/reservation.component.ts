@@ -35,7 +35,7 @@ export class ReservationComponent implements OnInit {
         Validators.required,
         Validators.email,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ]),
+      ])
     });
 
     monthForm = new FormGroup({
@@ -44,7 +44,7 @@ export class ReservationComponent implements OnInit {
       ]),
       monthEnd:new FormControl('',[
         Validators.required
-      ]),
+      ])
     });
 
     timeForm = new FormGroup({
@@ -53,12 +53,9 @@ export class ReservationComponent implements OnInit {
       ]),
       timeEnd:new FormControl('',[
         Validators.required
-      ]),
+      ])
     });
-
-  MessageDatedebut: boolean;
-  MessageDateFin: boolean;
-  MessageMail: boolean;
+  agenda : String;
   formreservation: boolean;
   payer: boolean;
   email: String;
@@ -76,9 +73,6 @@ export class ReservationComponent implements OnInit {
     if(this.vehicule==undefined){
       this.router.navigate(['/']);
     }
-    this.MessageDatedebut = false;
-    this.MessageDateFin = false;
-    this.MessageMail = false;
     this.formreservation = true;
     this.payer = false;
     var cookie=this.ValidationService.getCookie('tokenValidation');
@@ -97,36 +91,22 @@ export class ReservationComponent implements OnInit {
   verifform(datedebut,datefin,mail){
     console.log(datedebut);
     console.log(datefin);
-    if(datedebut==""){
-      this.MessageDatedebut = true;
-    }else{
-      this.MessageDatedebut = false;
-    }
-    if(datefin==""){
-      this.MessageDateFin = true;
-    }else{
-      this.MessageDateFin = false;
-    }
-    if (mail === '' || this.ValidationService.validationEmail(mail)==false) {
-      this.MessageMail = true;
-    } else {
-      this.MessageMail = false;
-    }
-    if(datedebut!="" && datefin!="" && this.ValidationService.validationEmail(mail)==true ){
       this.formreservation = false;
       this.email = mail;
       this.datedebut = datedebut;
       this.datefin = datefin;
       this.payer = true;
-    }
   }
   verifDate(){
+    console.log(this.monthForm.value);
     console.log("valid");  
   }
   verifTime(){
+    console.log(this.timeForm.value);
     console.log("valid");
   }
   verif(){
+    console.log(this.mailForm.value);
     console.log("not");
   }
   payment(){
