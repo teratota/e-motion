@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
 import { ValidationService } from 'src/app/service/validation.service';
 import { ModelService } from 'src/app/service/model.service';
@@ -6,16 +7,14 @@ import { MarqueService } from 'src/app/service/marque.service';
 import { CouleurService } from 'src/app/service/couleur.service';
 import { TypeService } from 'src/app/service/type.service';
 import { VehiculeService } from 'src/app/service/vehicule.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { callbackify } from 'util';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-interface-utilisateur-offre',
-  templateUrl: './interface-utilisateur-offre.component.html',
-  styleUrls: ['./interface-utilisateur-offre.component.css']
+  selector: 'app-interface-utilisateur-offre-edit',
+  templateUrl: './interface-utilisateur-offre-edit.component.html',
+  styleUrls: ['./interface-utilisateur-offre-edit.component.css']
 })
-export class InterfaceUtilisateurOffreComponent implements OnInit {
+export class InterfaceUtilisateurOffreEditComponent implements OnInit {
 
   vehiculeForm = new FormGroup({
     type:new FormControl('',[
@@ -72,13 +71,28 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
     type_vehicule: any[];
     ajoutVehicule: boolean;
     img : String | ArrayBuffer;
+    vehicule : number;
+    info : any;
 
   ngOnInit() {
+    this.marque = this.MarqueService.getAll();
+    this.couleur = this.CouleurService.getAll();
+    this.type_vehicule = this.TypeService.getAll(); 
+    this.vehicule=history.state.data;
+    this.info=this.VehiculeService.getInfoVehiculebyId(this.vehicule['id']);
+    this.vehiculeForm.get('autonomie').setValue(this.info['autonomie']);
+    this.vehiculeForm.get('kilometrage').setValue(this.info['kilometrage']);
+    this.vehiculeForm.get('capaciter').setValue(this.info['personne']);
+    this.vehiculeForm.get('coffre').setValue(this.info['coffre']);
+    this.vehiculeForm.get('plaque').setValue(this.info['plaque']);
+    this.vehiculeForm.get('prix').setValue(this.info['prix']);
+    this.vehiculeForm.get('img').setValue(this.info['img']);
+    console.log(this.info);
     this.ajoutVehicule = false;
     var cookie=this.ValidationService.getCookie('tokenValidation');
     var result=this.ValidationService.verifuserconnection(cookie);
     if(result!=true){
-      window.location.href = '/';
+      window.location.href = '/connexion';
     }else{
         var result=this.UserService.getinfouser(cookie);
         this.offre=this.VehiculeService.getVehiculeForUser(result.id);
@@ -90,24 +104,11 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
     }
   }
 
-    newVehicule(){
-      this.marque = this.MarqueService.getAll();
-      this.couleur = this.CouleurService.getAll();
-      this.type_vehicule = this.TypeService.getAll(); 
-      this.ajoutVehicule = true;
-    }
-
     saveVehicule(){
-      var cookie=this.ValidationService.getCookie('tokenValidation');
-      var result=this.UserService.getinfouser(cookie);
       if(this.img != ''){
-        var insert = this.VehiculeService.saveVehicule(this.vehiculeForm.value,result.id,this.img);
+        var insert = this.VehiculeService.updateVehicule(this.vehiculeForm.value,this.vehicule['id'],this.img);
         if(insert == true){
-          var cookie=this.ValidationService.getCookie('tokenValidation');
-          var result=this.UserService.getinfouser(cookie);
-          this.offre=this.VehiculeService.getVehiculeForUser(result.id);
-          this.Msgimg = false;
-          this.ajoutVehicule=false;
+          this.router.navigate(['/utilisateur/offre']);
         }
       }else{
         this.Msgimg = true;
@@ -116,7 +117,7 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
     }
 
     notSave(){
-      this.ajoutVehicule=false;
+      this.router.navigate(['/utilisateur/offre']);
     }
 
     Onchange(marque) {
@@ -131,10 +132,6 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
       this.offre = this.VehiculeService.getVehiculeForUser(user_id);
     }
 
-    onEdit(id){
-      this.router.navigate(['/utilisateur/offre/edit'], {state: {data: {id}}});
-    }
-
     
     onFileChange(event) {
       let reader = new FileReader();
@@ -147,4 +144,5 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
         }
       console.log(this.img);
     }
+
 }

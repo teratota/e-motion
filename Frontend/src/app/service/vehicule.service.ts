@@ -28,13 +28,13 @@ export class VehiculeService {
   return test;
   }
 
-  saveVehicule(vehicule){
+  saveVehicule(vehicule,id,img){
     var json = JSON.stringify(vehicule);
     var test;
     $.ajax({
       type: "POST",
       data: {
-        vehicule:json
+        vehicule:json,id:id,img:img
       },
       url: "http://localhost:8000/vehicule/saveVehicule",
       dataType: "json",
@@ -47,6 +47,27 @@ export class VehiculeService {
   console.log(test);
   return test;
   }
+
+  updateVehicule(vehicule,id,img){
+    var json = JSON.stringify(vehicule);
+    var test;
+    $.ajax({
+      type: "POST",
+      data: {
+        vehicule:json,id:id,img:img
+      },
+      url: "http://localhost:8000/vehicule/updateVehicule",
+      dataType: "json",
+      async: false,
+      success: function(data) {
+          console.log(data);
+          test = data;
+      }
+  });
+  console.log(test);
+  return test;
+  }
+  
 
   getVehiculeForUser(id){
     var test;
@@ -82,6 +103,37 @@ export class VehiculeService {
           result = data;
       }
   });
+    console.log(result);
+    return result;
+  }
+
+<<<<<<< HEAD
+  getInfoVehiculebyId(identifiant) {
+=======
+  getInfoVehiculebyId(id){
+>>>>>>> Dev
+    let result: any;
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:8000/vehicule/getInfoVehiculebyId',
+      dataType: 'json',
+      async: false,
+      data: {
+<<<<<<< HEAD
+        id: identifiant
+=======
+        id: id
+>>>>>>> Dev
+      },
+      success(data) {
+          console.log(data);
+          result = data;
+      }
+<<<<<<< HEAD
+  });
+=======
+    });
+>>>>>>> Dev
     console.log(result);
     return result;
   }

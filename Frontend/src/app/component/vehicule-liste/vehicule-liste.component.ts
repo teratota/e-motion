@@ -27,7 +27,7 @@ export class VehiculeListeComponent implements OnInit {
   vehicule: Vehicule[];
   isViewable: boolean;
   type_vehicule: any[];
-  marque: Marque[]
+  marque: Marque[];
   model: any[];
   couleur: any[];
   type: any[];
@@ -51,15 +51,15 @@ export class VehiculeListeComponent implements OnInit {
     search['couleur']=couleur;
     search['datefin']=datefin === undefined  ? "" : datefin;
     search['datedebut']=datedebut === undefined  ? "" : datedebut;
-    var json = JSON.stringify(search)
+    var json = JSON.stringify(search);
     console.log(json);
     this.vehicule = this.VehiculeService.getAll(json);
     console.log(this.vehicule);
     this.isViewable = true;
   }
     
-  detail(){
-    
+  detail(vehicleID){
+    this.router.navigate(['/detail-vehicule'], {state: {data: {vehicleID}}});
   }
  
 

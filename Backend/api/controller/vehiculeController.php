@@ -31,7 +31,15 @@ class vehiculeController
     {
         $vehicule = json_decode($parametre['vehicule']);
         $class = new vehicule;
-        $result = $class->saveVehicule($vehicule);
+        $result = $class->saveVehicule($vehicule,$parametre['id']);
+        echo json_encode($result);
+    }
+
+    public function updateVehicule($parametre = null)
+    {
+        $vehicule = json_decode($parametre['vehicule']);
+        $class = new vehicule;
+        $result = $class->saveVehicule($vehicule,$parametre['id']);
         echo json_encode($result);
     }
 
@@ -39,6 +47,13 @@ class vehiculeController
     {
         $class = new vehicule;
         $result = $class->delete($parametre["id"]);
+        echo json_encode($result);
+    }
+
+    public function getInfoVehiculebyId($parametre = null)
+    {
+        $class = new vehicule;
+        $result = $class->getinfovehiculebyid($parametre["id"]);
         echo json_encode($result);
     }
 }
