@@ -107,11 +107,7 @@ export class VehiculeService {
     return result;
   }
 
-<<<<<<< HEAD
   getInfoVehiculebyId(identifiant) {
-=======
-  getInfoVehiculebyId(id){
->>>>>>> Dev
     let result: any;
     $.ajax({
       type: 'POST',
@@ -119,21 +115,13 @@ export class VehiculeService {
       dataType: 'json',
       async: false,
       data: {
-<<<<<<< HEAD
         id: identifiant
-=======
-        id: id
->>>>>>> Dev
       },
       success(data) {
           console.log(data);
           result = data;
       }
-<<<<<<< HEAD
   });
-=======
-    });
->>>>>>> Dev
     console.log(result);
     return result;
   }
