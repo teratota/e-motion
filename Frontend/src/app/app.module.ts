@@ -26,6 +26,7 @@ import { InscriptionComponent } from './component/inscription/inscription.compon
 import { InterfaceUtilisateurInfoComponent } from './component/interface-utilisateur-info/interface-utilisateur-info.component';
 import { InterfaceUtilisateurReservationComponent } from './component/interface-utilisateur-reservation/interface-utilisateur-reservation.component';
 import { InterfaceUtilisateurOffreComponent } from './component/interface-utilisateur-offre/interface-utilisateur-offre.component';
+import { InterfaceUtilisateurOffreEditComponent } from './component/interface-utilisateur-offre-edit/interface-utilisateur-offre-edit.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { InterfaceUtilisateurOffreComponent } from './component/interface-utilis
     InscriptionComponent,
     InterfaceUtilisateurInfoComponent,
     InterfaceUtilisateurReservationComponent,
-    InterfaceUtilisateurOffreComponent
+    InterfaceUtilisateurOffreComponent,
+    InterfaceUtilisateurOffreEditComponent
   ],
   imports: [
     BrowserModule,

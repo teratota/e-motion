@@ -62,8 +62,7 @@ class vehicule extends config
             type.nom,
             couleur.nom As couleur,
             marque.nom As marque,
-            model.nom As model,
-            vehicule.autonomie
+            model.nom As model
             From
             vehicule Inner Join
             type On vehicule.ref_id_type = type.id Inner Join
@@ -111,23 +110,23 @@ class vehicule extends config
         }
     }
     
-    function saveVehicule($vehicule)
+    function saveVehicule($vehicule,$id)
     {
         try {
             $data_base=$this->connection();
-            $insert = $data_base->prepare("INSERT INTO vehicule (ref_id_marque, ref_id_user, ref_id_model, plaque, ref_id_couleur, ref_id_type, coffre, kilometrage, recomendation, prix, autonomie, img) VALUES (:ref_id_marque, :ref_id_user, :ref_id_model, :plaque, :ref_id_couleur, :ref_id_type, :coffre, :kilometrage, :recomendation, :prix, :autonomie, :img)");
-            $insert->bindParam(':ref_id_marque',$vehicule);
-            $insert->bindParam(':ref_id_user',$vehicule);
-            $insert->bindParam(':ref_id_model',$vehicule);
-            $insert->bindParam(':plaque',$vehicule);
-            $insert->bindParam(':ref_id_couleur',$vehicule);
-            $insert->bindParam(':ref_id_type',$vehicule);
-            $insert->bindParam(':coffre',$vehicule);
-            $insert->bindParam(':kilometrage',$vehicule);
-            $insert->bindParam(':recomendation',$vehicule);
-            $insert->bindParam(':prix',$vehicule);
-            $insert->bindParam(':autonomie',$vehicule);
-            $insert->bindParam(':img',$vehicule);
+            $insert = $data_base->prepare("INSERT INTO vehicule (ref_id_marque, ref_id_user, ref_id_model, plaque, ref_id_couleur, ref_id_type, coffre, kilometrage,  prix, autonomie, img, personne) VALUES (:ref_id_marque, :ref_id_user, :ref_id_model, :plaque, :ref_id_couleur, :ref_id_type, :coffre, :kilometrage,  :prix, :autonomie, :img, :personne)");
+            $insert->bindParam(':ref_id_marque',$vehicule->marque);
+            $insert->bindParam(':ref_id_user',$id);
+            $insert->bindParam(':ref_id_model',$vehicule->model);
+            $insert->bindParam(':plaque',$vehicule->plaque);
+            $insert->bindParam(':ref_id_couleur',$vehicule->couleur);
+            $insert->bindParam(':ref_id_type',$vehicule->type);
+            $insert->bindParam(':coffre',$vehicule->coffre);
+            $insert->bindParam(':kilometrage',$vehicule->kilometrage);
+            $insert->bindParam(':prix',$vehicule->prix);
+            $insert->bindParam(':autonomie',$vehicule->autonomie);
+            $insert->bindParam(':img',$vehicule->img);
+            $insert->bindParam(':personne',$vehicule->capaciter);
             $insert->execute();
             return true;
         } catch (PDOException $e) {
@@ -136,7 +135,29 @@ class vehicule extends config
         }
     }
     
-    function update(){}
+    function update($vehicule,$id){
+        try {
+            $data_base=$this->connection();
+            $update = $data_base->prepare("UPDATE vehicule SET ref_id_marque=:ref_id_marque, ref_id_model=:ref_id_model, plaque=:plaque, ref_id_couleur=:ref_id_couleur, ref_id_type=:ref_id_type, coffre=:coffre, kilometrage=:kilometrage,  prix=:prix, autonomie=:autonomie, img=:img, personne=:personne WHERE id = :id");
+            $update->bindParam(':ref_id_marque',$vehicule->marque);
+            $update->bindParam(':ref_id_model',$vehicule->model);
+            $update->bindParam(':plaque',$vehicule->plaque);
+            $update->bindParam(':ref_id_couleur',$vehicule->couleur);
+            $update->bindParam(':ref_id_type',$vehicule->type);
+            $update->bindParam(':coffre',$vehicule->coffre);
+            $update->bindParam(':kilometrage',$vehicule->kilometrage);
+            $update->bindParam(':prix',$vehicule->prix);
+            $update->bindParam(':autonomie',$vehicule->autonomie);
+            $update->bindParam(':img',$vehicule->img);
+            $update->bindParam(':personne',$vehicule->capaciter);
+            $update->bindParam(':id',$id);
+            $update->execute();
+            return true;
+        } catch (PDOException $e) {
+            return "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
         
     function delete($id)
     {
