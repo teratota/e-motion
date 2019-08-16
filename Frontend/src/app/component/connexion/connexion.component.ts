@@ -36,7 +36,7 @@ export class ConnexionComponent implements OnInit {
   connection() {
       let connectionResult = this.UserService.connection(this.registerForm.value.mail, this.registerForm.value.password);
       if (connectionResult !== false) {
-        document.cookie = 'tokenValidation = ' + connectionResult + '; expires=expires=Thu, 18 Dec 3000 12:00:00 UTC' ;
+        document.cookie = 'tokenValidation = ' + connectionResult + '; expires=Thu, 18 Dec 3000 12:00:00 UTC' ;
         window.location.href = '/';
       }
     }

@@ -33,7 +33,7 @@ export class InterfaceUtilisateurInfoComponent implements OnInit {
     var cookie=this.ValidationService.getCookie('tokenValidation');
     var result=this.ValidationService.verifuserconnection(cookie);
     if(result!=true){
-      window.location.href = '/connexion';
+      window.location.href = '/';
     }else{
         var result=this.UserService.getinfouser(cookie);
         console.table(result);

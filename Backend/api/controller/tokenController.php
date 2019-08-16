@@ -30,6 +30,12 @@ class tokenController
         echo json_encode($result);
     }
 
+    public function deleteCookie($parametre = null){
+        $class = new token;
+        $result = $class->deleteCookie($parametre["cookie"]);
+        echo json_encode($result);
+    }
+
     
 
 }

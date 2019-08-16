@@ -9,30 +9,38 @@ import { ValidationService } from 'src/app/service/validation.service';
 export class NavbarComponent implements OnInit {
 
   constructor(private ValidationService: ValidationService) { }
-  connection : boolean;
-  anonyme : boolean;
-  admin : boolean;
+  connection: boolean;
+  anonyme: boolean;
+  admin: boolean;
 
   ngOnInit() {
     console.log(document.cookie);
-    var cookie=this.ValidationService.getCookie('tokenValidation');
+    let cookie = this.ValidationService.getCookie('tokenValidation');
     console.log(cookie);
-    var result=this.ValidationService.verifuserconnection(cookie);
-    if(result==true){
-      var admin=this.ValidationService.verifadminconnection(cookie);
+    let result = this.ValidationService.verifuserconnection(cookie);
+    if (result === true) {
+      let admin = this.ValidationService.verifadminconnection(cookie);
       console.log(admin);
-      if(result==true){
+      if (admin === true) {
         this.admin = true;
-      }else{
-        this.connection=true;
+      } else {
+        this.connection = true;
       }
-    }else{
+    } else {
       this.anonyme = true;
     }
   }
 
-  deconnection(){
-    var cookie=this.ValidationService.getCookie('tokenValidation');
+  deconnection() {
+    let cookie = this.ValidationService.getCookie('tokenValidation');
+    console.log(cookie);
+    
+    const deleteCookie = this.ValidationService.deleteCookie(cookie);
+    console.log("delete : " + deleteCookie);
+    
+    document.cookie = 'tokenValidation = 0; path=/; expires=Thu, 18 Dec 1000 12:00:00 UTC';
+    window.location.href = '/';
+    
   }
 
 }

@@ -67,4 +67,19 @@ class token extends config
             die();
         }
     }
+
+
+    function deleteCookie($token)
+    {
+        try {
+            $data_base=$this->connection();
+            $delete = $data_base->prepare("DELETE FROM token WHERE token=:token");
+            $delete->bindParam(':token',$token);
+            $delete->execute();
+            return true;
+        } catch (PDOException $e) {
+            return "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
 }
