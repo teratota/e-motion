@@ -89,7 +89,39 @@ export class ReservationService {
     return test;
     }
 
-    prixReservation(datedebut,datefin,prix){
+    getAllUserReservation(){
+      var test: any;
+      $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8000/reservation/getAllUserReservation',
+        dataType: 'json',
+        async: false,
+        success: function(data) {
+            console.log(data);
+            test = data;
+        }
+    });
+    return test;
+    }
+
+  getNameUser(id){
+      var test: any;
+      $.ajax({
+        type: 'POST',
+        data: {
+          id: id
+        },
+        url: 'http://localhost:8000/reservation/getNameUser',
+        dataType: 'json',
+        async: false,
+        success: function(data) {
+            console.log(data);
+            test = data;
+        }
+    });
+    return test;
+    }
+     prixReservation(datedebut,datefin,prix){
       var test: any;
       $.ajax({
         type: "POST",
@@ -104,8 +136,5 @@ export class ReservationService {
             test = data;
         }
     });
-    console.log(test);
     return test;
     }
-    
-}

@@ -101,7 +101,7 @@ class reservation extends config
         }
     }
 
-    function getUserReservaton($id)
+    function getUserReservation($id)
     {
         try {
             $data_base=$this->connection();
@@ -117,7 +117,55 @@ class reservation extends config
             marque On vehicule.ref_id_marque = marque.id Inner Join
             model On model.ref_id_marque = marque.id
             And vehicule.ref_id_model = model.id
-            Where ref_id_user = :id_user");
+            Where reservation.ref_id_user = :id_user");
+            $select->bindParam(':id_user',$id);
+            $select->execute();
+            $data=$select->fetchAll();
+            return $data;
+        } catch (PDOException $e) {
+            return "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
+    function getAllUserReservation()
+    {
+        try {
+            $data_base=$this->connection();
+            $select = $data_base->prepare("Select
+            reservation.id,
+            reservation.ref_id_user,
+            reservation.date_fin,
+            reservation.date_debut,
+            marque.nom As marque,
+            model.nom As model,
+            reservation.prix,
+            vehicule.plaque,
+            vehicule.coffre,
+            vehicule.personne,
+            vehicule.kilometrage,
+            vehicule.prix As prix1,
+            vehicule.autonomie,
+            vehicule.img
+            From
+            reservation 
+            Inner Join vehicule On reservation.ref_id_vehicule = vehicule.id 
+            Inner Join marque On vehicule.ref_id_marque = marque.id
+            Inner Join model On model.ref_id_marque = marque.id");
+            $select->execute();
+            $data=$select->fetchAll();
+            return $data;
+        } catch (PDOException $e) {
+            return "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
+    function getNameUser($id)
+    {
+        try {
+            $data_base=$this->connection();
+            $select = $data_base->prepare("Select nom, prenom from user where id = :id_user");
             $select->bindParam(':id_user',$id);
             $select->execute();
             $data=$select->fetchAll();
