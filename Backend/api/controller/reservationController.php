@@ -37,7 +37,7 @@ class reservationController
         $prixtotal = $nbhour * $tarifH;
         echo json_encode($prixtotal);
     }
-    public function vefifDateReservation($parametre = null)
+    /*public function vefifDateReservation($parametre = null)
     {
         $vehicule = json_decode($parametre['vehicule']);
         $class = new reservation;
@@ -47,11 +47,25 @@ class reservationController
             }else{
                 echo json_encode(true);
             }
-    }
+    }*/
     public function getUserReservation($parametre = null)
     {
         $class = new reservation;
-        $data = $class->getUserReservaton($parametre['id']);
+        $data = $class->getUserReservation($parametre['id']);
+        echo json_encode($data);
+    }
+
+    public function getAllUserReservation($parametre = null)
+    {
+        $class = new reservation;
+        $data = $class->getAllUserReservation();
+        echo json_encode($data);
+    }
+    
+    public function getNameUser($parametre = null)
+    {
+        $class = new reservation;
+        $data = $class->getNameUser($parametre['id']);
         echo json_encode($data);
     }
 

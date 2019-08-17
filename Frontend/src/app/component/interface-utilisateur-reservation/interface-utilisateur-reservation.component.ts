@@ -16,21 +16,22 @@ export class InterfaceUtilisateurReservationComponent implements OnInit {
     private ReservationService: ReservationService
     ) { }
 
-    reservation : any;
-    MessNotReservation : boolean;
+    reservation: any;
+    MessNotReservation: boolean;
 
   ngOnInit() {
-    var cookie=this.ValidationService.getCookie('tokenValidation');
-    var result=this.ValidationService.verifuserconnection(cookie);
-    if(result!=true){
+    const cookie = this.ValidationService.getCookie('tokenValidation');
+    const result = this.ValidationService.verifuserconnection(cookie);
+    if (result !== true) {
       window.location.href = '/';
-    }else{
-        var result=this.UserService.getinfouser(cookie);
+    } else {
+
+        const result = this.UserService.getinfouser(cookie);
         this.reservation = this.ReservationService.getReservationUser(result.id);
-        if(this.reservation.length == 0){
-          this.MessNotReservation=true;
-        }else{
-          this.MessNotReservation=false;
+        if (this.reservation.length === 0) {
+          this.MessNotReservation = true;
+        } else {
+          this.MessNotReservation = false;
         }
     }
   }
