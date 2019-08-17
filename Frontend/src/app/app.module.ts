@@ -28,6 +28,7 @@ import { InterfaceUtilisateurReservationComponent } from './component/interface-
 import { InterfaceUtilisateurOffreComponent } from './component/interface-utilisateur-offre/interface-utilisateur-offre.component';
 import { InterfaceUtilisateurOffreEditComponent } from './component/interface-utilisateur-offre-edit/interface-utilisateur-offre-edit.component';
 import { ContactComponent } from './component/contact/contact.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { ContactComponent } from './component/contact/contact.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxStripeModule.forRoot('pk_test_AXzdUpIX7azjNPXpDIQlLHj500383OadJs'),
   ],
   providers: [],
   bootstrap: [AppComponent]
