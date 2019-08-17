@@ -107,4 +107,21 @@ export class ValidationService {
       return false;
     }
   }
+
+  paymentStripe(token,prix){
+    let result: any;
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:8000/reservation/stripe',
+      dataType: 'json',
+      data: {
+        token: token, prix: prix
+      },
+      async: false,
+      success(data) {
+          result = data;
+      }
+  });
+    return result;
+  }
 }
