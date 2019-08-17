@@ -50,13 +50,19 @@ class reservation extends config
     function saveReservation($reservation,$facture)
     {
         try {
+            echo $reservation->id;
+            echo $reservation->vehicule->id;
+            echo $reservation->datefin;
+            echo $reservation->datedebut;
+            echo $reservation->prix;
+            echo $facture;
             $data_base=$this->connection();
-            $insert = $data_base->prepare("INSERT INTO reservation (ref_id_user, ref_id_vehicule, date_fin, date_debut, prix, facture) VALUES (:user, :vehicule, :datefin, :datedebut, :prix :facture)");
-            $insert->bindParam(':user',$reservation['user']);
-            $insert->bindParam(':vehicule',$reservation['vehicule']);
-            $insert->bindParam(':datefin',$reservation['datefin']);
-            $insert->bindParam(':datedebut',$reservation['datedebut']);
-            $insert->bindParam(':prix',$reservation['prix']);
+            $insert = $data_base->prepare("INSERT INTO reservation (ref_id_user, ref_id_vehicule, date_fin, date_debut, prix, facture) VALUES (:user, :vehicule, :datefin, :datedebut, :prix ,:facture)");
+            $insert->bindParam(':user',$reservation->id);
+            $insert->bindParam(':vehicule',$reservation->vehicule->id);
+            $insert->bindParam(':datefin',$reservation->datefin);
+            $insert->bindParam(':datedebut',$reservation->datedebut);
+            $insert->bindParam(':prix',$reservation->prix);
             $insert->bindParam(':facture',$facture);
             $insert->execute();
             return true;
@@ -82,12 +88,12 @@ class reservation extends config
                 OR (date_debut < :datefin AND :datefin < date_fin)
                 OR (:datedebut < date_debut AND date_debut < :datefin)
               )
-              AND id = :id_vehicule");
+              AND ref_id_vehicule=:id_vehicule");
             $select->bindParam(':datedebut',$search->datedebut);
             $select->bindParam(':datefin',$search->datefin);
             $select->bindParam(':id_vehicule',$id);
             $select->execute();
-            $data=$select->fetchAll();
+            $data=$select->fetch(PDO::FETCH_ASSOC);
             return $data;
         } catch (PDOException $e) {
             return "Erreur !: " . $e->getMessage() . "<br/>";

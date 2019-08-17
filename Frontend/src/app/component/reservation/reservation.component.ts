@@ -9,6 +9,8 @@ import { CouleurService } from 'src/app/service/couleur.service';
 import { UserService } from 'src/app/service/user.service';
 import { ValidationService } from 'src/app/service/validation.service';
 import { Router } from '@angular/router';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { VehiculeService } from 'src/app/service/vehicule.service';
 
 
 @Component({
@@ -26,13 +28,36 @@ export class ReservationComponent implements OnInit {
     private TypeService: TypeService,
     private UserService: UserService,
     private ValidationService: ValidationService,
+    private VehiculeService: VehiculeService,
     private router: Router
     ) {}
 
+    mailForm = new FormGroup({
+      mail:new FormControl('',[
+        Validators.required,
+        Validators.email,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])
+    });
 
-  MessageDatedebut: boolean;
-  MessageDateFin: boolean;
-  MessageMail: boolean;
+    monthForm = new FormGroup({
+      monthStart:new FormControl('',[
+        Validators.required
+      ]),
+      monthEnd:new FormControl('',[
+        Validators.required
+      ])
+    });
+
+    timeForm = new FormGroup({
+      timeStart:new FormControl('',[
+        Validators.required
+      ]),
+      timeEnd:new FormControl('',[
+        Validators.required
+      ])
+    });
+  agenda : String;
   formreservation: boolean;
   payer: boolean;
   email: String;
@@ -41,18 +66,19 @@ export class ReservationComponent implements OnInit {
   id_v: number;
   id: number;
   vehicule: any;
+  info : any;
+  prix : number;
 
   Onchange() {
   }
 
   ngOnInit() {
     this.vehicule=history.state.data;
+    this.datedebut=history.state.datedebut;
+    this.datefin=history.state.datefin;
     if(this.vehicule==undefined){
       this.router.navigate(['/']);
     }
-    this.MessageDatedebut = false;
-    this.MessageDateFin = false;
-    this.MessageMail = false;
     this.formreservation = true;
     this.payer = false;
     var cookie=this.ValidationService.getCookie('tokenValidation');
@@ -61,6 +87,7 @@ export class ReservationComponent implements OnInit {
       window.location.href = '/';
     }else{
         var result=this.UserService.getinfouser(cookie);
+        this.mailForm.get('mail').setValue(result.mail);
         this.email = result.mail;
         this.id = result.id;
     }
@@ -70,42 +97,33 @@ export class ReservationComponent implements OnInit {
   verifform(datedebut,datefin,mail){
     console.log(datedebut);
     console.log(datefin);
-    if(datedebut==""){
-      this.MessageDatedebut = true;
-    }else{
-      this.MessageDatedebut = false;
-    }
-    if(datefin==""){
-      this.MessageDateFin = true;
-    }else{
-      this.MessageDateFin = false;
-    }
-    if (mail === '' || this.ValidationService.validationEmail(mail)==false) {
-      this.MessageMail = true;
-    } else {
-      this.MessageMail = false;
-    }
-    if(datedebut!="" && datefin!="" && this.ValidationService.validationEmail(mail)==true ){
       this.formreservation = false;
       this.email = mail;
       this.datedebut = datedebut;
       this.datefin = datefin;
       this.payer = true;
-    }
   }
-
+  verif(){
+    console.log(this.datedebut);
+    console.log(this.datefin);
+    console.log(this.mailForm.value);
+    this.email = this.mailForm.value.mail;
+    this.info = this.VehiculeService.getInfoVehiculebyId(this.vehicule['id']);
+    this.prix = this.ReservationService.prixReservation(this.datedebut,this.datefin,this.info.prix);
+    this.formreservation = false;
+    this.payer = true;
+    console.log("not");
+  }
   payment(){
     var reservation = {};
-    reservation["vehicule"]=this.vehicule;
-    reservation["datedebut"]=this.datedebut;
-    reservation["datefin"]=this.datefin;
+    reservation['vehicule']=this.vehicule;
+    reservation['datedebut']=this.datedebut;
+    reservation['datefin']=this.datefin;
+    reservation['prix']=this.prix;
     reservation['email']=this.email;
-    reservation['user']=this.id;
+    reservation['id']=this.id;
     var json = JSON.stringify(reservation)
     this.ReservationService.saveReservation(json)
-  }
-  Onclick() {
-
   }
 
   submitted = false;

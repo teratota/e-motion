@@ -59,7 +59,7 @@ class vehicule extends config
             $data_base=$this->connection();
             $select = $data_base->prepare("Select
             vehicule.*,
-            type.nom,
+            type.nom as type,
             couleur.nom As couleur,
             marque.nom As marque,
             model.nom As model

@@ -1,37 +1,28 @@
 <div class="container">
-    <form>
     <div *ngIf="formreservation"class="container"> 
-      <div  class="row my-4">
-          <div class="col-md-3 offset-md-1">
-              <label for="type">Date de debut</label>
-              <input type="datetime-local" #datedebut class="form-control">
-              <p *ngIf="MessageDatedebut" style="color : red" >pas bien</p>
+      <form [formGroup]="mailForm" (ngSubmit)="verif()">
+          <div  class="row my-4">
+              <div class="col-md-6 offset-md-1">
+                <label>Adresse de facturation</label>
+                <input type='email' formControlName="mail" class='form-control'>
+              </div>
+              <div class="col-md-3 ">
+                <button type="submit"  class="btn btn-success">Valider</button>
+              </div>
           </div>
-          <div class="col-md-3 ">
-              <label for="type">Date de Fin</label>
-              <input type="datetime-local" #datefin class="form-control">
-              <p *ngIf="MessageDateFin" style="color : red">pas bien</p>
-          </div>
-      </div>
-      <div class="row my-4">
-        <div class="col-md-6">
-          <label for="type">Adresse de facturation</label>
-          <input type="text" #mail class="form-control" value="{{ email }}">
-          <p *ngIf="MessageMail" style="color : red">Le mail n'est pas valide</p>
-        </div>
-      </div>
-      <div class="row my-4">
-        <div class="col-md-2 mx-auto">
-          <button type="submit" (click)="verifform(datedebut.value,datefin.value,mail.value)"class="btn btn-success">Valider</button>
-        </div>
-      </div>  
+      </form>
     </div>
     <div *ngIf="payer" class="row my-4">
         <div class="col-md-2 mx-auto">
-            <p>recapitulatif de la reservation</p>
-          </div>
-      <div class="col-md-2 mx-auto">
+            <p>Récapitulatif de la reservation</p>
+            <p>Date debut: {{datedebut}}</p>
+            <p>Date debut: {{datefin}}</p>
+            <p>Adresse de facturation: {{email}}</p>
+            <p>Inforamtion vehicule: {{email}}</p>
+            <p>Prix: {{prix}}</p>
+        </div>
+        <div class="col-md-2 mx-auto">
         <button type="submit"class="btn btn-success" (click)="payment()">Payer</button>
       </div>
-    </div> 
-    </form>
+    </div>
+</div> 

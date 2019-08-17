@@ -9,6 +9,7 @@ import { ModelService } from 'src/app/service/model.service';
 import { TypeService } from 'src/app/service/type.service';
 import { CouleurService } from 'src/app/service/couleur.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-vehicule-liste',
@@ -32,6 +33,21 @@ export class VehiculeListeComponent implements OnInit {
   couleur: any[];
   type: any[];
 
+  vehiculeForm = new FormGroup({
+    type:new FormControl('',[
+      Validators.required
+    ]),
+    marque:new FormControl(''),
+    model:new FormControl(''),
+    couleur:new FormControl(''),
+    datedebut:new FormControl('',[
+      Validators.required
+    ]),
+    datefin:new FormControl('',[
+      Validators.required
+    ])
+  });
+
   Onchange(marque) {
     this.model = this.ModelService.getAll(marque);
   }
@@ -44,22 +60,17 @@ export class VehiculeListeComponent implements OnInit {
   }
 
   public showvehicule(type,marque,model,couleur,datefin,datedebut) {
-    var search = {};
-    search['type']=type;
-    search['marque']=marque;
-    search['model']=model;
-    search['couleur']=couleur;
-    search['datefin']=datefin === undefined  ? "" : datefin;
-    search['datedebut']=datedebut === undefined  ? "" : datedebut;
+      var search = this.vehiculeForm.value
     var json = JSON.stringify(search);
     console.log(json);
     this.vehicule = this.VehiculeService.getAll(json);
     console.log(this.vehicule);
     this.isViewable = true;
+    
   }
     
   detail(vehicleID){
-    this.router.navigate(['/detail-vehicule'], {state: {data: {vehicleID}}});
+    this.router.navigate(['/detail-vehicule'], {state: {data: {vehicleID},datedebut: this.vehiculeForm.value.datedebut,datefin: this.vehiculeForm.value.datefin}});
   }
  
 
