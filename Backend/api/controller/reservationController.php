@@ -63,6 +63,13 @@ class reservationController
         echo json_encode($data);
     }
 
+    public function getVehiculeReservation($parametre = null)
+    {
+        $class = new reservation;
+        $data = $class->getVehiculeReservation($parametre['id']);
+        echo json_encode($data);
+    }
+
     public function getAllUserReservation($parametre = null)
     {
         $class = new reservation;

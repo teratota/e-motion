@@ -17,6 +17,7 @@ import { InterfaceUtilisateurOffreComponent } from './component/interface-utilis
 import { InterfaceUtilisateurReservationComponent } from './component/interface-utilisateur-reservation/interface-utilisateur-reservation.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { InterfaceUtilisateurOffreEditComponent } from './component/interface-utilisateur-offre-edit/interface-utilisateur-offre-edit.component';
+import { InterfaceUtilisateurOffreReservationComponent } from './component/interface-utilisateur-offre-reservation/interface-utilisateur-offre-reservation.component';
 
 const routes: Routes = [
   { path : 'gestion', component : GestionClientComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path : 'utilisateur/reservation', component : InterfaceUtilisateurReservationComponent},
   { path : 'inscription', component : InscriptionComponent},
   { path : 'utilisateur/offre/edit', component : InterfaceUtilisateurOffreEditComponent},
+  { path : 'utilisateur/offre/reservation', component : InterfaceUtilisateurOffreReservationComponent},
   { path : 'contact', component : ContactComponent},
 
 ];

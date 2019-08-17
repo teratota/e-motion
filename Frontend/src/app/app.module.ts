@@ -29,6 +29,7 @@ import { InterfaceUtilisateurOffreComponent } from './component/interface-utilis
 import { InterfaceUtilisateurOffreEditComponent } from './component/interface-utilisateur-offre-edit/interface-utilisateur-offre-edit.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { NgxStripeModule } from 'ngx-stripe';
+import { InterfaceUtilisateurOffreReservationComponent } from './component/interface-utilisateur-offre-reservation/interface-utilisateur-offre-reservation.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { NgxStripeModule } from 'ngx-stripe';
     InterfaceUtilisateurReservationComponent,
     InterfaceUtilisateurOffreComponent,
     InterfaceUtilisateurOffreEditComponent,
-    ContactComponent
+    ContactComponent,
+    InterfaceUtilisateurOffreReservationComponent
   ],
   imports: [
     BrowserModule,
