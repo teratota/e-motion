@@ -19,11 +19,9 @@ export class ValidationService {
       },
       async: false,
       success(data) {
-          console.log(data);
           result = data;
       }
   });
-    console.log(result);
     return result;
   }
 
@@ -38,12 +36,9 @@ export class ValidationService {
       },
       async: false,
       success(data) {
-        console.log("hello");
-          console.log(data);
           result = data;
       }
   });
-    console.log(result);
     return result;
   }
 

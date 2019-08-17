@@ -27,6 +27,7 @@ import { InterfaceUtilisateurInfoComponent } from './component/interface-utilisa
 import { InterfaceUtilisateurReservationComponent } from './component/interface-utilisateur-reservation/interface-utilisateur-reservation.component';
 import { InterfaceUtilisateurOffreComponent } from './component/interface-utilisateur-offre/interface-utilisateur-offre.component';
 import { InterfaceUtilisateurOffreEditComponent } from './component/interface-utilisateur-offre-edit/interface-utilisateur-offre-edit.component';
+import { ContactComponent } from './component/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { InterfaceUtilisateurOffreEditComponent } from './component/interface-ut
     InterfaceUtilisateurInfoComponent,
     InterfaceUtilisateurReservationComponent,
     InterfaceUtilisateurOffreComponent,
-    InterfaceUtilisateurOffreEditComponent
+    InterfaceUtilisateurOffreEditComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { ContactComponent } from './component/contact/contact.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
 import { HomePageComponent } from './component/home-page/home-page.component';
 import { InterfaceAdminReservationComponent } from './component/interface-admin-reservation/interface-admin-reservation.component';
@@ -33,7 +34,9 @@ const routes: Routes = [
   { path : 'utilisateur/offre', component : InterfaceUtilisateurOffreComponent},
   { path : 'utilisateur/reservation', component : InterfaceUtilisateurReservationComponent},
   { path : 'inscription', component : InscriptionComponent},
-  { path : 'utilisateur/offre/edit', component : InterfaceUtilisateurOffreEditComponent}
+  { path : 'utilisateur/offre/edit', component : InterfaceUtilisateurOffreEditComponent},
+  { path : 'contact', component : ContactComponent},
+
 ];
 
 @NgModule({

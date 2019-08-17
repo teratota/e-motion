@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
 import { ValidationService } from 'src/app/service/validation.service';
@@ -61,12 +62,13 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
     private CouleurService: CouleurService,
     private TypeService: TypeService,
     private VehiculeService: VehiculeService,
-    private router : Router
+    private router : Router,
+    private http: HttpClient,
     ) { }
     MessNotOffre : boolean;
     Msgimg : boolean;
     offre : any;
-    marque: any[]
+    marque: any[];
     model: any[];
     couleur: any[];
     type_vehicule: any[];
@@ -93,7 +95,7 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
     newVehicule(){
       this.marque = this.MarqueService.getAll();
       this.couleur = this.CouleurService.getAll();
-      this.type_vehicule = this.TypeService.getAll(); 
+      this.type_vehicule = this.TypeService.getAll();
       this.ajoutVehicule = true;
     }
 
@@ -112,7 +114,6 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
       }else{
         this.Msgimg = true;
       }
-      
     }
 
     notSave(){
@@ -134,7 +135,6 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
     onEdit(id){
       this.router.navigate(['/utilisateur/offre/edit'], {state: {data: {id}}});
     }
-
     
     onFileChange(event) {
       let reader = new FileReader();
@@ -142,9 +142,9 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
         const [file] = event.target.files;
         reader.readAsDataURL(file);
       }
-        reader.onload = (e) => {
+      reader.onload = (e) => {
           this.img=reader.result;
-        }
+        };
       console.log(this.img);
     }
 }
