@@ -50,13 +50,19 @@ class reservation extends config
     function saveReservation($reservation,$facture)
     {
         try {
+            echo $reservation->id;
+            echo $reservation->vehicule->id;
+            echo $reservation->datefin;
+            echo $reservation->datedebut;
+            echo $reservation->prix;
+            echo $facture;
             $data_base=$this->connection();
-            $insert = $data_base->prepare("INSERT INTO reservation (ref_id_user, ref_id_vehicule, date_fin, date_debut, prix, facture) VALUES (:user, :vehicule, :datefin, :datedebut, :prix :facture)");
-            $insert->bindParam(':user',$reservation['user']);
-            $insert->bindParam(':vehicule',$reservation['vehicule']);
-            $insert->bindParam(':datefin',$reservation['datefin']);
-            $insert->bindParam(':datedebut',$reservation['datedebut']);
-            $insert->bindParam(':prix',$reservation['prix']);
+            $insert = $data_base->prepare("INSERT INTO reservation (ref_id_user, ref_id_vehicule, date_fin, date_debut, prix, facture) VALUES (:user, :vehicule, :datefin, :datedebut, :prix ,:facture)");
+            $insert->bindParam(':user',$reservation->id);
+            $insert->bindParam(':vehicule',$reservation->vehicule->id);
+            $insert->bindParam(':datefin',$reservation->datefin);
+            $insert->bindParam(':datedebut',$reservation->datedebut);
+            $insert->bindParam(':prix',$reservation->prix);
             $insert->bindParam(':facture',$facture);
             $insert->execute();
             return true;

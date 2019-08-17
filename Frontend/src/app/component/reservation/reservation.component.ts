@@ -10,6 +10,7 @@ import { UserService } from 'src/app/service/user.service';
 import { ValidationService } from 'src/app/service/validation.service';
 import { Router } from '@angular/router';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { VehiculeService } from 'src/app/service/vehicule.service';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class ReservationComponent implements OnInit {
     private TypeService: TypeService,
     private UserService: UserService,
     private ValidationService: ValidationService,
+    private VehiculeService: VehiculeService,
     private router: Router
     ) {}
 
@@ -64,12 +66,16 @@ export class ReservationComponent implements OnInit {
   id_v: number;
   id: number;
   vehicule: any;
+  info : any;
+  prix : number;
 
   Onchange() {
   }
 
   ngOnInit() {
     this.vehicule=history.state.data;
+    this.datedebut=history.state.datedebut;
+    this.datefin=history.state.datefin;
     if(this.vehicule==undefined){
       this.router.navigate(['/']);
     }
@@ -97,25 +103,27 @@ export class ReservationComponent implements OnInit {
       this.datefin = datefin;
       this.payer = true;
   }
-  verifDate(){
-    console.log(this.monthForm.value);
-    console.log("valid");  
-  }
-  verifTime(){
-    console.log(this.timeForm.value);
-    console.log("valid");
-  }
   verif(){
+    console.log(this.datedebut);
+    console.log(this.datefin);
     console.log(this.mailForm.value);
+    this.email = this.mailForm.value.mail;
+    this.info = this.VehiculeService.getInfoVehiculebyId(this.vehicule['id']);
+    this.prix = this.ReservationService.prixReservation(this.datedebut,this.datefin,this.info.prix);
+    this.formreservation = false;
+    this.payer = true;
     console.log("not");
   }
   payment(){
     var reservation = {};
+    reservation['vehicule']=this.vehicule;
+    reservation['datedebut']=this.datedebut;
+    reservation['datefin']=this.datefin;
+    reservation['prix']=this.prix;
+    reservation['email']=this.email;
+    reservation['id']=this.id;
     var json = JSON.stringify(reservation)
     this.ReservationService.saveReservation(json)
-  }
-  Onclick() {
-
   }
 
   submitted = false;

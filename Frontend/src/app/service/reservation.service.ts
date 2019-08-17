@@ -88,5 +88,24 @@ export class ReservationService {
     console.log(test);
     return test;
     }
+
+    prixReservation(datedebut,datefin,prix){
+      var test: any;
+      $.ajax({
+        type: "POST",
+        data: {
+          datedebut: datedebut,datefin: datefin,prix: prix
+        },
+        url: "http://localhost:8000/reservation/prixReservation",
+        dataType: "json",
+        async: false,
+        success: function(data) {
+            console.log(data);
+            test = data;
+        }
+    });
+    console.log(test);
+    return test;
+    }
     
 }

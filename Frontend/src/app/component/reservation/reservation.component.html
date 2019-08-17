@@ -1,45 +1,5 @@
 <div class="container">
     <div *ngIf="formreservation"class="container"> 
-      <form [formGroup]="monthForm" (ngSubmit)="verifDate()">
-        <div  class="row my-4">
-            <div class="col-md-3 offset-md-1">
-              <label>Mois de debut</label>
-              <select formControlName="monthStart" class='form-control'>
-                <option value='01'>Janvier</option>
-                <option value='02'>Février</option>
-                <option value='03'>Mars</option>
-                <option value='04'>Avril</option>
-                <option value='05'>Mai</option>
-                <option value='06'>Juin</option>
-                <option value='07'>Juillet</option>
-                <option value='08'>Aout</option>
-                <option value='09'>Septembre</option>
-                <option value='10'>Octobre</option>
-                <option value='11'>Novembre</option>
-                <option value='12'>Decembre</option>
-              </select>
-            </div>
-            <div class="col-md-3 ">
-              <button type="submit"  class="btn btn-success">Valider</button>
-            </div>
-        </div>
-      </form>
-      <div>{{agenda}}</div>
-      <form [formGroup]="timeForm" (ngSubmit)="verifTime()">
-          <div  class="row my-4">
-              <div class="col-md-3 offset-md-1">
-                <label>Horaire de recuperation du véhicule</label>
-                <input type='time' formControlName="timeStart" class='form-control timepicker'>
-              </div>
-              <div class="col-md-3 ">
-                <label>Horaire de retour du véhicule</label>
-                <input type='time' formControlName="timeEnd" class='form-control timepicker'> 
-              </div>
-              <div class="col-md-3 ">
-                <button type="submit"  class="btn btn-success">Valider</button>
-              </div>
-          </div>
-      </form>
       <form [formGroup]="mailForm" (ngSubmit)="verif()">
           <div  class="row my-4">
               <div class="col-md-6 offset-md-1">
@@ -50,12 +10,19 @@
                 <button type="submit"  class="btn btn-success">Valider</button>
               </div>
           </div>
-    </form>
+      </form>
+    </div>
     <div *ngIf="payer" class="row my-4">
         <div class="col-md-2 mx-auto">
             <p>Récapitulatif de la reservation</p>
+            <p>Date debut: {{datedebut}}</p>
+            <p>Date debut: {{datefin}}</p>
+            <p>Adresse de facturation: {{email}}</p>
+            <p>Inforamtion vehicule: {{email}}</p>
+            <p>Prix: {{prix}}</p>
         </div>
         <div class="col-md-2 mx-auto">
         <button type="submit"class="btn btn-success" (click)="payment()">Payer</button>
       </div>
-    </div> 
+    </div>
+</div> 

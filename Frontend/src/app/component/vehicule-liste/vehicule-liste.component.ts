@@ -70,7 +70,7 @@ export class VehiculeListeComponent implements OnInit {
   }
     
   detail(vehicleID){
-    this.router.navigate(['/detail-vehicule'], {state: {data: {vehicleID}}});
+    this.router.navigate(['/detail-vehicule'], {state: {data: {vehicleID},datedebut: this.vehiculeForm.value.datedebut,datefin: this.vehiculeForm.value.datefin}});
   }
  
 
