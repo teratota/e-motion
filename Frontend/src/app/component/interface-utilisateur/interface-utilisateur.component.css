@@ -1,0 +1,14 @@
+.user-container{
+    text-align: center;
+    margin: 20px auto;
+}
+
+
+.user-container .user-bloc {
+    padding: 20px;
+    border: 1px solid;
+}
+
+.user-container .btn{
+    width: 100%;
+}

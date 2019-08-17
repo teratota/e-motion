@@ -112,7 +112,6 @@ export class ReservationComponent implements OnInit {
     this.prix = this.ReservationService.prixReservation(this.datedebut,this.datefin,this.info.prix);
     this.formreservation = false;
     this.payer = true;
-    console.log("not");
   }
   payment(){
     var reservation = {};

@@ -6,82 +6,138 @@
           class="fa fa-edit"></i> </a></p>
   </div>
 
-  <div *ngIf="edituser">
-    <form [formGroup]="registerForm" (ngSubmit)="saveUser()">
+  <div *ngIf="!edituser" class="infos">
       <div class="row">
         <div class="col-md-4">
             <label> Nom : </label>
-            <input class="form-control" type="text" formControlName="lastName" value="{{ nom }}">
+            <p>{{ nom }}</p>
         </div>
         <div class="col-md-4">
             <label> Prénom : </label>
-            <input class="form-control" type="text" formControlName="firstName" value="{{ prenom }}">
+            <p>{{ prenom }}</p>
         </div>
         <div class="col-md-4">
             <label> Date de naissance : </label>
-            <input class="form-control" type="date" formControlName="birthday" value="{{ anniversaire }}">
+            <p>{{ anniversaire }}</p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4">
             <label> Genre : </label>
-            <select class="form-control"  type="text" formControlName="gender" >
-                <option value="homme">homme</option>
-                <option value="femme">femme</option>
-                <option value="autre">autre</option>
-            </select>
+            <p>{{ genre }}</p>
         </div>
         <div class="col-md-4">
             <label> Téléphone : </label>
-            <input class="form-control" type="tel" formControlName="phone" value="{{ phone }}">
+            <p>{{ phone }}</p>
         </div>
         <div class="col-md-4">
             <label> Permis de conduire : </label>
-            <input class="form-control" type="text" formControlName="driverLicense" value="{{ npermis }}">
+            <p>{{ npermis }}</p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4">
             <label> Adresse :</label>
-            <input class="form-control" type="text" formControlName="adress" value="{{ adress }}">
+            <p>{{ adress }}</p>
         </div>
         <div class="col-md-4">
             <label> Ville :</label>
-            <input class="form-control" type="text" formControlName="city" value="{{ city }}">
+            <p>{{ city }}</p>
         </div>
         <div class="col-md-4">
             <label> Code postal : </label>
-            <input class="form-control" type="text" formControlName="zip" value="{{ code }}">
+            <p>{{ code }}</p>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <label> Pays : </label>
-            <input class="form-control" type="text" formControlName="country" value="{{ pays }}">
+            <p>{{ pays }}</p>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <label> Mail : </label>
-            <input class="form-control" type="email" formControlName="mail" value="{{ mail }}">
+            <p>{{ mail }}</p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-            <label> Mot de passe : </label>
-            <input class="form-control" type="password" formControlName="password1">
-        </div>
-        <div class="col-md-6">
-            <label> Confirmation du mot de passe : </label>
-            <input class="form-control" type="password" formControlName="password2">
-        </div>
-        <div class="col-md-12"><p *ngIf="password" style="color: red">Les mots de passes ne sont pas identique</p></div>
-      </div>
-      
-      <div class="row my-4">
-        <div class="text-center mx-auto">
-          <button type="submit" [disabled]="!registerForm.valid" class="btn btn-success">Enregistrer</button>
-          <button (click)="notSave()" type="button" class="btn btn-danger">Annuler</button>
-        </div>
-      </div>
-    </form>
   </div>
+
+  <div *ngIf="edituser">
+      <form [formGroup]="registerForm" (ngSubmit)="saveUser()">
+        <div class="row">
+          <div class="col-md-4">
+              <label> Nom : </label>
+              <input class="form-control" type="text" formControlName="lastName" value="{{ nom }}">
+          </div>
+          <div class="col-md-4">
+              <label> Prénom : </label>
+              <input class="form-control" type="text" formControlName="firstName" value="{{ prenom }}">
+          </div>
+          <div class="col-md-4">
+              <label> Date de naissance : </label>
+              <input class="form-control" type="date" formControlName="birthday" value="{{ anniversaire }}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+              <label> Genre : </label>
+              <select class="form-control"  type="text" formControlName="gender" >
+                  <option value="homme">homme</option>
+                  <option value="femme">femme</option>
+                  <option value="autre">autre</option>
+              </select>
+          </div>
+          <div class="col-md-4">
+              <label> Téléphone : </label>
+              <input class="form-control" type="tel" formControlName="phone" value="{{ phone }}">
+          </div>
+          <div class="col-md-4">
+              <label> Permis de conduire : </label>
+              <input class="form-control" type="text" formControlName="driverLicense" value="{{ npermis }}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+              <label> Adresse :</label>
+              <input class="form-control" type="text" formControlName="adress" value="{{ adress }}">
+          </div>
+          <div class="col-md-4">
+              <label> Ville :</label>
+              <input class="form-control" type="text" formControlName="city" value="{{ city }}">
+          </div>
+          <div class="col-md-4">
+              <label> Code postal : </label>
+              <input class="form-control" type="text" formControlName="zip" value="{{ code }}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+              <label> Pays : </label>
+              <input class="form-control" type="text" formControlName="country" value="{{ pays }}">
+          </div>
+          <div class="col-md-6">
+              <label> Mail : </label>
+              <input class="form-control" type="email" formControlName="mail" value="{{ mail }}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+              <label> Mot de passe : </label>
+              <input class="form-control" type="password" formControlName="password1">
+          </div>
+          <div class="col-md-6">
+              <label> Confirmation du mot de passe : </label>
+              <input class="form-control" type="password" formControlName="password2">
+          </div>
+          <div class="col-md-12"><p *ngIf="password" style="color: red">Les mots de passes ne sont pas identique</p></div>
+        </div>
+        
+        <div class="row my-4">
+          <div class="text-center mx-auto">
+            <button type="submit" [disabled]="!registerForm.valid" class="btn btn-success">Enregistrer</button>
+            <button (click)="notSave()" type="button" class="btn btn-danger">Annuler</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
 </div>

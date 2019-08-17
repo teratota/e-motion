@@ -121,7 +121,8 @@ export class ReservationService {
     });
     return test;
     }
-     prixReservation(datedebut,datefin,prix){
+
+  prixReservation(datedebut,datefin,prix){
       var test: any;
       $.ajax({
         type: "POST",
@@ -138,3 +139,4 @@ export class ReservationService {
     });
     return test;
     }
+}
