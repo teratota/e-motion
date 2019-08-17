@@ -10,14 +10,19 @@ class vehiculeController
         $result = $class->getall($search);
 
         if($search->datedebut!="" && $search->datefin!="" && count($result)!=0 ){
+            $datedebut = new DateTime($search->datedebut);
+            $search->datedebut=$datedebut->format('Y-m-d H:i:s');
+            $datefin = new DateTime($search->datefin);
+            $search->datefin=$datefin->format('Y-m-d H:i:s');
             $class = new reservation;
             foreach($result as $key => $value){
                 $data = $class->verifReservation($parametre,$value["id"]);
-                if($data[0]["COUNT(*)"]>=1){
-                    array_splice($result,$key);
+                if($data["COUNT(*)"]==1){
+                    unset($result[$key]);
                 }
             }  
         }
+        sort($result);
         echo json_encode($result);
     }
     public function getVehiculeForUser($parametre = null)

@@ -1,31 +1,31 @@
 <div class="container-fluid">
-  <form>
+  <form [formGroup]="vehiculeForm" (ngSubmit)="showvehicule()">
     <div class="container-fluid">
       <div class="row my-4">
         <div class="col-md-3">
           <label for="type_vehicule">Type de vehicule</label>
-          <select class="form-control" #type id="type_vehicule" required>
+          <select formControlName="type" class="form-control"  id="type_vehicule">
             <option disabled selected value hidden> Choissisez </option>
             <option *ngFor="let typev of type_vehicule" [value]="typev.id">{{typev.nom}}</option>
           </select>
         </div>
         <div class="col-md-3 ">
           <label for="marque">Marques</label>
-          <select (change)="Onchange(marques.value)" #marques class="form-control" id="marque" required>
+          <select formControlName="marque" (change)="Onchange(marques.value)" #marques class="form-control" id="marque">
             <option disabled selected value hidden> Choissisez </option>
             <option *ngFor="let mar of marque" [value]="mar.id">{{mar.nom}}</option>
           </select>
         </div>
         <div class="col-md-3 ">
           <label for="model">Model</label>
-          <select class="form-control" #models id="model" required>
+          <select formControlName="model" class="form-control"  id="model" >
             <option disabled selected value hidden> Choissisez </option>
             <option *ngFor="let mod of model" [value]="mod.id">{{mod.nom}}</option>
           </select>
         </div>
         <div class="col-md-3 ">
           <label for="couleur">Couleur</label>
-          <select class="form-control" id="couleur" #couleurs required>
+          <select formControlName="couleur" class="form-control" id="couleur" >
             <option disabled selected value hidden> Choissisez </option>
             <option *ngFor="let coul of couleur" [value]="coul.id">{{coul.nom}}</option>
           </select>
@@ -34,21 +34,17 @@
       <div class="row my-4">
         <div class="col-md-6">
           <label for="type">Date de debut</label>
-          <input type="datetime-local" #datedebut class="form-control">
+          <input formControlName="datedebut" type="datetime-local" class="form-control">
         </div>
         <div class="col-md-6 ">
           <label for="type">Date de Fin</label>
-          <input type="datetime-local" #datefin class="form-control">
+          <input formControlName="datefin" type="datetime-local" class="form-control">
         </div>
       </div>
       <div class="row my-4">
         <div class="col-md-2 mx-auto text-center">
-          <button *ngIf="router.url !== '/administration/offre'"
-            (click)="showvehicule(type.value,marques.value,models.value,couleurs.value,datefin.value,datedebut.value)"
-            type="submit" class="btn btn-success">Valider</button>
-          <button *ngIf="router.url === '/administration/offre'"
-            (click)="showvehicule(type.value,marques.value,models.value,couleurs.value)" type="submit"
-            class="btn btn-success">Valider</button>
+          <button *ngIf="router.url !== '/administration/offre'" type="submit" class="btn btn-success" >Valider</button>
+          <button *ngIf="router.url === '/administration/offre'" type="submit" class="btn btn-success" >Valider</button>
         </div>
       </div>
     </div>

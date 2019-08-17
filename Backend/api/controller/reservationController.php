@@ -6,14 +6,15 @@ class reservationController
     {
         $user = new user;
         $vehicule = new vehicule;
-        $user=$class->getinfouserbyid($reservation['user']);
-        $vehicule=$class->getinfovehiculebyid($reservation['vehicule']);
-        $facture = "<p>Facture<p><p>nom : ".$result['nom']."<p><p>prénom : ".$result['prenom']."<p>";
-        $facture .= "<p>email de facturation : ".$reservation['email']."<p>";
-        $facture .= "<p>date-debut reservation : ".$reservation['datedebut']."<p><p>date-fin reservation : <p>";
+        $user=$user->getinfouserbyid($reservation->id);
+        $vehicule=$vehicule->getinfovehiculebyid($reservation->vehicule->id);
+        $facture = "<p>Facture<p><p>nom : ".$user['nom']."<p><p>prénom : ".$user['prenom']."<p>";
+        $facture .= "<p>email de facturation : ".$reservation->email."<p>";
+        $facture .= "<p>date-debut reservation : ".$reservation->datedebut."<p><p>date-fin reservation : <p>";
         $facture .= "<p>Information Véhicule<p>";
         $facture .= "<p>marque : ".$vehicule['marque']."<p> <p>model : ".$vehicule['model']."<p> <p>couleur : ".$vehicule['couleur']."<p> <p>autonomie : ".$vehicule['autonomie']."<p> <p>type : ".$vehicule['type']."<p>";
-        $facture .= "<p>prix : ".$reservation['prix']."<p>";
+        $facture .= "<p>prix : ".$reservation->prix."<p>";
+        return $facture;
     }
     public function getHistory($parametre = null)
     {
@@ -24,6 +25,10 @@ class reservationController
     public function saveReservation($parametre = null)
     {
         $reservation = json_decode($parametre['reservation']);
+        $datedebut = new DateTime($reservation->datedebut);
+        $reservation->datedebut=$datedebut->format('Y-m-d H:i:s');
+        $datefin = new DateTime($reservation->datefin);
+        $reservation->datefin=$datefin->format('Y-m-d H:i:s');
         $class = new reservation;
         $facture=$this->facture($reservation);
         $result = $class->saveReservation($reservation,$facture);
@@ -31,11 +36,13 @@ class reservationController
     }
     public function prixReservation($parametre = null)
     {
-        $tarifH=$parametre["prix"]%24;
-        $interval=date_diff($parametre['datefin'],$parametre['datedebut']);
-        $nbhour=$interval->format("%h");
+        $datedebut = new DateTime($parametre['datedebut']);
+        $datefin = new DateTime($parametre['datefin']);
+        $tarifH=$parametre["prix"]/24;
+        $interval = $datedebut->diff($datefin);
+        $nbhour=$interval->days*24 + $interval->h;
         $prixtotal = $nbhour * $tarifH;
-        echo json_encode($prixtotal);
+        echo json_encode(round($prixtotal,2));
     }
     /*public function vefifDateReservation($parametre = null)
     {
