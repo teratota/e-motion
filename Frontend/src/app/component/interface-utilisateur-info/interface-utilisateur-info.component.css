@@ -10,3 +10,7 @@
 button {
     margin: 20px;
 }
+
+.infos label {
+    border-bottom: 1px solid;
+}

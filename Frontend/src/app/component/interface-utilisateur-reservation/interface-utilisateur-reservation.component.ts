@@ -28,6 +28,7 @@ export class InterfaceUtilisateurReservationComponent implements OnInit {
 
         const result = this.UserService.getinfouser(cookie);
         this.reservation = this.ReservationService.getReservationUser(result.id);
+        console.warn(this.reservation);
         if (this.reservation.length === 0) {
           this.MessNotReservation = true;
         } else {

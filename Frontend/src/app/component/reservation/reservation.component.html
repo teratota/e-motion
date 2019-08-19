@@ -2,23 +2,24 @@
     <div *ngIf="formreservation"class="container"> 
       <form [formGroup]="mailForm" (ngSubmit)="verif()">
           <div  class="row my-4">
-              <div class="col-md-6 offset-md-1">
+              <div class="col-md-12">
+                <h2>Validation de la location de la voiture</h2>
                 <label>Adresse de facturation</label>
                 <input type='email' formControlName="mail" class='form-control'>
               </div>
-              <div class="col-md-3 ">
+              <div class="col-md-12 text-center my-4">
                 <button type="submit"  class="btn btn-success">Valider</button>
               </div>
           </div>
       </form>
     </div>
     <div *ngIf="payer" class="row my-4">
-        <div class="col-md-2 mx-auto">
-            <p>Récapitulatif de la reservation</p>
+        <div class="col-md-12 mx-auto my-4">
+            <p>Récapitulatif de la reservation :</p>
             <p>Date debut: {{datedebut}}</p>
-            <p>Date debut: {{datefin}}</p>
+            <p>Date fin: {{datefin}}</p>
             <p>Adresse de facturation: {{email}}</p>
-            <p>Inforamtion vehicule: {{email}}</p>
+            <p>Information du véhicule: {{info}}</p>
             <p>Prix: {{prix}}</p>
         </div>
       <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
