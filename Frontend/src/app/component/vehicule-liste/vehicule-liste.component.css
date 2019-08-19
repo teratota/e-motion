@@ -32,3 +32,24 @@ h2{
 .card-title{
     margin-right: 10px;
 }
+
+
+/* Form control */
+
+/*.form-control {
+    border: none;
+    border-bottom: 2px solid black;
+    border-radius: 0;
+    padding: 0;
+    color: black;
+}*/
+
+
+.form-control:focus{
+    box-shadow: unset;
+    border-bottom: 2px var(--cyan) solid;
+}
+
+label {
+    color: var(--cyan);
+}

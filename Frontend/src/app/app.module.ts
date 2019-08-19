@@ -20,7 +20,15 @@ import { PromotionComponent } from './component/promotion/promotion.component';
 import { HistoriqueReservationComponent } from './component/historique-reservation/historique-reservation.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
 import { DetailVehiculeComponent } from './component/detail-vehicule/detail-vehicule.component';
-
+import { NavbarComponent } from './component/navbar/navbar.component';
+import { InterfaceUtilisateurComponent } from './component/interface-utilisateur/interface-utilisateur.component';
+import { InscriptionComponent } from './component/inscription/inscription.component';
+import { InterfaceUtilisateurInfoComponent } from './component/interface-utilisateur-info/interface-utilisateur-info.component';
+import { InterfaceUtilisateurReservationComponent } from './component/interface-utilisateur-reservation/interface-utilisateur-reservation.component';
+import { InterfaceUtilisateurOffreComponent } from './component/interface-utilisateur-offre/interface-utilisateur-offre.component';
+import { InterfaceUtilisateurOffreEditComponent } from './component/interface-utilisateur-offre-edit/interface-utilisateur-offre-edit.component';
+import { ContactComponent } from './component/contact/contact.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 @NgModule({
   declarations: [
@@ -37,8 +45,16 @@ import { DetailVehiculeComponent } from './component/detail-vehicule/detail-vehi
     VehiculeListeComponent,
     PromotionComponent,
     DetailVehiculeComponent,
-    HistoriqueReservationComponent
-    ConnexionComponent
+    HistoriqueReservationComponent,
+    ConnexionComponent,
+    NavbarComponent,
+    InterfaceUtilisateurComponent,
+    InscriptionComponent,
+    InterfaceUtilisateurInfoComponent,
+    InterfaceUtilisateurReservationComponent,
+    InterfaceUtilisateurOffreComponent,
+    InterfaceUtilisateurOffreEditComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +62,8 @@ import { DetailVehiculeComponent } from './component/detail-vehicule/detail-vehi
     RouterModule.forRoot([]),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxStripeModule.forRoot('pk_test_AXzdUpIX7azjNPXpDIQlLHj500383OadJs'),
   ],
   providers: [],
   bootstrap: [AppComponent]

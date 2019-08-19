@@ -20,7 +20,7 @@ class userController
     {
         $class = new user;
         $result = $class->connexion($parametre);
-        if ($result[0]["COUNT(*)"] == 1) {
+        if ($result["COUNT(*)"] == 1 && password_verify($parametre['password'], $result['password'] )== true ) {
             $resultToken = md5(uniqid(rand(), true));
             $resultInsert = $class->insertToken($resultToken, $result);
             if ($resultInsert == true ) {
@@ -34,5 +34,21 @@ class userController
             $result = false;
             echo json_encode($result);
         }
+    }
+
+    public function insertUser($parametre = null)
+    {
+        $user = json_decode($parametre['user']);
+        $class = new user;
+        $result = $class->insert($user);
+        echo json_encode($result);
+    }
+
+    public function updateUser($parametre = null)
+    {
+        $user = json_decode($parametre['user']);
+        $class = new user;
+        $result = $class->update($user,$parametre['id']);
+        echo json_encode($result);
     }
 }

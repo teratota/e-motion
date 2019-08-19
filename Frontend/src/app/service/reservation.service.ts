@@ -50,4 +50,92 @@ export class ReservationService {
       console.log(result);
       return result;
     }
-}
+
+    saveReservation(reservation) {
+      var test: any;
+      $.ajax({
+        type: "POST",
+        data: {
+          reservation: reservation
+        },
+        url: "http://localhost:8000/reservation/saveReservation",
+        dataType: "json",
+        async: false,
+        success: function(data) {
+            console.log(data);
+            test = data;
+        }
+    });
+    console.log(test);
+    return test;
+    }
+
+    getReservationUser(id){
+      var test: any;
+      $.ajax({
+        type: "POST",
+        data: {
+          id: id
+        },
+        url: "http://localhost:8000/reservation/getUserReservation",
+        dataType: "json",
+        async: false,
+        success: function(data) {
+            console.log(data);
+            test = data;
+        }
+    });
+    console.log(test);
+    return test;
+    }
+
+    getAllUserReservation(){
+      var test: any;
+      $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8000/reservation/getAllUserReservation',
+        dataType: 'json',
+        async: false,
+        success: function(data) {
+            console.log(data);
+            test = data;
+        }
+    });
+    return test;
+    }
+
+  getNameUser(id){
+      var test: any;
+      $.ajax({
+        type: 'POST',
+        data: {
+          id: id
+        },
+        url: 'http://localhost:8000/reservation/getNameUser',
+        dataType: 'json',
+        async: false,
+        success: function(data) {
+            console.log(data);
+            test = data;
+        }
+    });
+    return test;
+    }
+     prixReservation(datedebut,datefin,prix){
+      var test: any;
+      $.ajax({
+        type: "POST",
+        data: {
+          datedebut: datedebut,datefin: datefin,prix: prix
+        },
+        url: "http://localhost:8000/reservation/prixReservation",
+        dataType: "json",
+        async: false,
+        success: function(data) {
+            console.log(data);
+            test = data;
+        }
+    });
+    return test;
+    }
+  }

@@ -1,33 +1,32 @@
 <div class="container">
-    <form>
     <div *ngIf="formreservation"class="container"> 
-      <div  class="row my-4">
-          <div class="col-md-3 offset-md-1">
-              <label for="type">Date de debut</label>
-              <input type="datetime-local" #datedebut class="form-control">
-              <p *ngIf="MessageDatedebut" style="color : red" >pas bien</p>
+      <form [formGroup]="mailForm" (ngSubmit)="verif()">
+          <div  class="row my-4">
+              <div class="col-md-6 offset-md-1">
+                <label>Adresse de facturation</label>
+                <input type='email' formControlName="mail" class='form-control'>
+              </div>
+              <div class="col-md-3 ">
+                <button type="submit"  class="btn btn-success">Valider</button>
+              </div>
           </div>
-          <div class="col-md-3 ">
-              <label for="type">Date de Fin</label>
-              <input type="datetime-local" #datefin class="form-control">
-              <p *ngIf="MessageDateFin" style="color : red">pas bien</p>
-          </div>
-      </div>
-      <div class="row my-4">
-        <div class="col-md-6">
-          <label for="type">Adresse de facturation</label>
-          <input type="text" #email class="form-control">
-        </div>
-      </div>
-      <div class="row my-4">
-        <div class="col-md-2 mx-auto">
-          <button type="submit" (click)="verifdate(datedebut.value,datefin.value)"class="btn btn-success">Valider</button>
-        </div>
-      </div>  
+      </form>
     </div>
     <div *ngIf="payer" class="row my-4">
-      <div class="col-md-2 mx-auto">
-        <button type="submit"class="btn btn-success">Payer</button>
-      </div>
-    </div> 
-    </form>
+        <div class="col-md-2 mx-auto">
+            <p>Récapitulatif de la reservation</p>
+            <p>Date debut: {{datedebut}}</p>
+            <p>Date debut: {{datefin}}</p>
+            <p>Adresse de facturation: {{email}}</p>
+            <p>Inforamtion vehicule: {{email}}</p>
+            <p>Prix: {{prix}}</p>
+        </div>
+      <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
+          <input type="text" formControlName="name" placeholder="Jane Doe">
+          <div id="card-element" class="field"></div>
+          <button type="submit" class="btn btn-success">
+            BUY
+          </button>
+        </form>
+    </div>
+</div> 
