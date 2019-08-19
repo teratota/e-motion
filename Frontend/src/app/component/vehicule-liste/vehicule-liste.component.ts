@@ -18,21 +18,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class VehiculeListeComponent implements OnInit {
 
-  constructor(private VehiculeService: VehiculeService,
-    private ReservationService: ReservationService,
-    private ModelService: ModelService,
-    private MarqueService: MarqueService,
-    private CouleurService: CouleurService,
-    private TypeService: TypeService,
-    private router: Router) { }
-  vehicule: Vehicule[];
-  isViewable: boolean;
-  type_vehicule: any[];
-  marque: Marque[];
-  model: any[];
-  couleur: any[];
-  type: any[];
-
   vehiculeForm = new FormGroup({
     type:new FormControl('',[
       Validators.required
@@ -48,6 +33,22 @@ export class VehiculeListeComponent implements OnInit {
     ])
   });
 
+  constructor(private VehiculeService: VehiculeService,
+    private ReservationService: ReservationService,
+    private ModelService: ModelService,
+    private MarqueService: MarqueService,
+    private CouleurService: CouleurService,
+    private TypeService: TypeService,
+    private router: Router) { }
+  vehicule: Vehicule[];
+  isViewable: boolean;
+  type_vehicule: any[];
+  marque: Marque[];
+  model: any[];
+  couleur: any[];
+  type: any[];
+  superieur :boolean;
+
   Onchange(marque) {
     this.model = this.ModelService.getAll(marque);
   }
@@ -59,14 +60,18 @@ export class VehiculeListeComponent implements OnInit {
     this.type_vehicule = this.TypeService.getAll();
   }
 
-  public showvehicule(type,marque,model,couleur,datefin,datedebut) {
+  public showvehicule() {
+    if(this.vehiculeForm.value.datefin <= this.vehiculeForm.value.debut || this.vehiculeForm.value.debut >= this.vehiculeForm.value.datefin){
+      this.superieur=true;
+    }else{
+      this.superieur=false;
       var search = this.vehiculeForm.value
-    var json = JSON.stringify(search);
-    console.log(json);
-    this.vehicule = this.VehiculeService.getAll(json);
-    console.log(this.vehicule);
-    this.isViewable = true;
-    
+      var json = JSON.stringify(search);
+      console.log(json);
+      this.vehicule = this.VehiculeService.getAll(json);
+      console.log(this.vehicule);
+      this.isViewable = true;
+    }
   }
     
   detail(vehicleID){

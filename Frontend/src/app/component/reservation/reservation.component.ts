@@ -9,8 +9,9 @@ import { CouleurService } from 'src/app/service/couleur.service';
 import { UserService } from 'src/app/service/user.service';
 import { ValidationService } from 'src/app/service/validation.service';
 import { Router } from '@angular/router';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { VehiculeService } from 'src/app/service/vehicule.service';
+import {StripeService, Elements, Element as StripeElement, ElementsOptions } from 'ngx-stripe';
 
 
 @Component({
@@ -19,7 +20,6 @@ import { VehiculeService } from 'src/app/service/vehicule.service';
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
-
   constructor(
     private ReservationService: ReservationService,
     private ModelService: ModelService,
@@ -29,8 +29,22 @@ export class ReservationComponent implements OnInit {
     private UserService: UserService,
     private ValidationService: ValidationService,
     private VehiculeService: VehiculeService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder,
+    private stripeService: StripeService
     ) {}
+
+    elements: Elements;
+  card: StripeElement;
+ 
+  // optional parameters
+  elementsOptions: ElementsOptions = {
+    locale: 'es'
+  };
+
+    stripeTest = new FormGroup({
+      name: new FormControl()
+   });
 
     mailForm = new FormGroup({
       mail:new FormControl('',[
@@ -112,6 +126,32 @@ export class ReservationComponent implements OnInit {
     this.prix = this.ReservationService.prixReservation(this.datedebut,this.datefin,this.info.prix);
     this.formreservation = false;
     this.payer = true;
+    this.stripeTest = this.fb.group({
+      name: ['', [Validators.required]]
+    });
+    this.stripeService.elements(this.elementsOptions)
+      .subscribe(elements => {
+        this.elements = elements;
+        // Only mount the element the first time
+        if (!this.card) {
+          this.card = this.elements.create('card', {
+            style: {
+              base: {
+                iconColor: '#666EE8',
+                color: '#31325F',
+                lineHeight: '40px',
+                fontWeight: 300,
+                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                fontSize: '18px',
+                '::placeholder': {
+                  color: '#CFD7E0'
+                }
+              }
+            }
+          });
+          this.card.mount('#card-element');
+        }
+      });
   }
   payment(){
     var reservation = {};
@@ -123,6 +163,25 @@ export class ReservationComponent implements OnInit {
     reservation['id']=this.id;
     var json = JSON.stringify(reservation)
     this.ReservationService.saveReservation(json)
+    this.router.navigate(['/utilisateur/reservation']);
+  }
+
+  buy() {
+    const name = this.stripeTest.get('name').value;
+    this.stripeService
+      .createToken(this.card, { name })
+      .subscribe(result => {
+        if (result.token) {
+          console.log(result.token);
+          var token = JSON.stringify(result.token);
+          var info=this.ValidationService.paymentStripe(token,this.prix);
+          if(info == true){
+            this.payment();
+          }
+        } else if (result.error) {
+          console.log(result.error.message);
+        }
+      });
   }
 
   submitted = false;

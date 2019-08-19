@@ -1,9 +1,9 @@
 <div class="container-fluid">
   <form [formGroup]="vehiculeForm" (ngSubmit)="showvehicule()">
-    <div class="container-fluid">
+    <!-- <div class="container-fluid"> -->
       <div class="row my-4">
         <div class="col-md-3">
-          <label for="type_vehicule">Type de vehicule</label>
+          <label >Type de vehicule</label>
           <select formControlName="type" class="form-control"  id="type_vehicule">
             <option disabled selected value hidden> Choissisez </option>
             <option *ngFor="let typev of type_vehicule" [value]="typev.id">{{typev.nom}}</option>
@@ -43,11 +43,12 @@
       </div>
       <div class="row my-4">
         <div class="col-md-2 mx-auto text-center">
-          <button *ngIf="router.url !== '/administration/offre'" type="submit" class="btn btn-success" >Valider</button>
+          <p *ngIf="superieur" style="color: red">Les dates saisie ne son pas valides</p>
+          <button *ngIf="router.url !== '/administration/offre'" [disabled]="!vehiculeForm.valid" type="submit" class="btn btn-success" >Valider</button>
           <button *ngIf="router.url === '/administration/offre'" type="submit" class="btn btn-success" >Valider</button>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
   </form>
 </div>
 

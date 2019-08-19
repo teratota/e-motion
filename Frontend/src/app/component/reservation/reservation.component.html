@@ -22,8 +22,12 @@
             <p>Information du véhicule: {{info}}</p>
             <p>Prix: {{prix}}</p>
         </div>
-        <div class="col-md-12 mx-auto my-4">
-        <button type="submit"class="btn btn-success" (click)="payment()">Payer</button>
-      </div>
+      <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
+          <input type="text" formControlName="name" placeholder="Jane Doe">
+          <div id="card-element" class="field"></div>
+          <button type="submit" class="btn btn-success">
+            BUY
+          </button>
+        </form>
     </div>
-</div>
+</div> 

@@ -89,6 +89,25 @@ export class ReservationService {
     return test;
     }
 
+    getReservationVehicule(id){
+      var test: any;
+      $.ajax({
+        type: "POST",
+        data: {
+          id: id
+        },
+        url: "http://localhost:8000/reservation/getVehiculeReservation",
+        dataType: "json",
+        async: false,
+        success: function(data) {
+            console.log(data);
+            test = data;
+        }
+    });
+    console.log(test);
+    return test;
+    }
+
     getAllUserReservation(){
       var test: any;
       $.ajax({
@@ -121,8 +140,7 @@ export class ReservationService {
     });
     return test;
     }
-
-  prixReservation(datedebut,datefin,prix){
+     prixReservation(datedebut,datefin,prix){
       var test: any;
       $.ajax({
         type: "POST",
@@ -139,4 +157,4 @@ export class ReservationService {
     });
     return test;
     }
-}
+  }
