@@ -5,8 +5,6 @@ import { InterfaceAdminReservationComponent } from './component/interface-admin-
 import { InterfaceAdminUtilisateursComponent } from './component/interface-admin-utilisateurs/interface-admin-utilisateurs.component';
 import { InterfaceAdminOffreComponent } from './component/interface-admin-offre/interface-admin-offre.component';
 import { InterfaceAdminComponent } from './component/interface-admin/interface-admin.component';
-import { HistoriqueCommandeComponent } from './component/historique-commande/historique-commande.component';
-import { GestionClientComponent } from './component/gestion-client/gestion-client.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ReservationComponent } from './component/reservation/reservation.component';
@@ -19,8 +17,6 @@ import { InscriptionComponent } from './component/inscription/inscription.compon
 import { InterfaceUtilisateurOffreEditComponent } from './component/interface-utilisateur-offre-edit/interface-utilisateur-offre-edit.component';
 
 const routes: Routes = [
-  { path : 'gestion', component : GestionClientComponent },
-  { path : 'historique', component : HistoriqueCommandeComponent },
   { path : 'administration', component : InterfaceAdminComponent },
   { path : 'administration/utilisateurs', component : InterfaceAdminUtilisateursComponent },
   { path : 'administration/offre', component : InterfaceAdminOffreComponent },
