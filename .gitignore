@@ -4,3 +4,7 @@ Backend/api/config/config_logs\.php
 Backend/api/config/config_logs\.php
 
 Backend/api/composer.json
+
+Backend/api/vendor/
+
+Backend/api/composer.lock

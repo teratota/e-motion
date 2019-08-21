@@ -86,6 +86,7 @@
     <div *ngFor="let offres of offre" class="reservation-container col-md-12">
       <p class="marques">{{offres.marque}} <span class="modeles">{{offres.model}}</span> </p>
       <p class="reservation-download"><a id="{{offres.id}}" #res (click)="onEdit(res.id)" class="text-danger"> <i class="fa fa-edit"></i> </a></p>
+      <p class="reservation-download"><a id="{{offres.id}}" #res (click)="onReservation(res.id)" class="text-danger"> <i class="fa fa-list-ul"></i> </a></p>
       <p class="reservation-download"><a id="{{offres.id}}" #res (click)="onDelete(res.id)" class="text-danger"> <i class="fa fa-trash"></i> </a></p>
     </div>
   </div>

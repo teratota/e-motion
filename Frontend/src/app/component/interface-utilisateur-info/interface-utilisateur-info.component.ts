@@ -24,6 +24,7 @@ export class InterfaceUtilisateurInfoComponent implements OnInit {
     phone: string;
     genre: string;
     anniversaire: string;
+    mailverif : boolean;
 
   constructor(
     private UserService: UserService,
@@ -128,10 +129,16 @@ export class InterfaceUtilisateurInfoComponent implements OnInit {
   }
   saveUser() {
     console.table(this.registerForm.value);
+    var mail = this.ValidationService.validationEmail(this.registerForm.value.mail);
+    if(mail=false){
+      this.mailverif = true;
+    }else{
+      this.mailverif = false;
     let result = this.ValidationService.validationIdentiquePassword(this.registerForm.value.password1, this.registerForm.value.password2);
     if (result == false) {
       this.password = true;
     } else {
+      this.password = false;
       let user = JSON.stringify(this.registerForm.value);
       let info = this.UserService.updateUser(user, this.id);
       if (info == true) {
@@ -140,6 +147,7 @@ export class InterfaceUtilisateurInfoComponent implements OnInit {
        this.edituser = false;
       }
     }
+  }
   }
 
 }

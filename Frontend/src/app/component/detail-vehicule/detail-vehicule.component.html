@@ -17,7 +17,7 @@
     </div>
     <div class="row details">
         <p class="col-md-6 col-sm-12"><span class="price">{{this.info.prix}}€</span>/J</p>
-        <div class="col-md-4 col-sm-12">
+        <div *ngIf="connection" class="col-md-4 col-sm-12">
             <button type="submit" (click)="reservation(this.info.id)" class="btn btn-success">Réserver</button>
         </div>
     </div>

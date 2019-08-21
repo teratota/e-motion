@@ -43,6 +43,7 @@
             <div class="col-md-6">
               <label> mail : </label>
               <input class="form-control" type="email" formControlName="mail">
+              <p *ngIf="password" style="color: red">Cette email est déja utlisé</p>
             </div>
           </div>
 
@@ -85,6 +86,7 @@
             <div class="col-md-6">
               <label> Confirmation du mot de passe : </label>
               <input class="form-control" type="password" formControlName="password2">
+               <p *ngIf="password" style="color: red">Les mots de passes ne son pas identique</p>
             </div>
           </div>
 

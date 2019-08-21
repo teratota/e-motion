@@ -136,6 +136,33 @@ class reservation extends config
         }
     }
 
+    function getVehiculeReservation($id)
+    {
+        try {
+            $data_base=$this->connection();
+            $select = $data_base->prepare(" Select
+            reservation.id,
+            reservation.date_fin,
+            reservation.date_debut,
+            marque.nom as marque,
+            model.nom As model
+            From
+            reservation Inner Join
+            vehicule On reservation.ref_id_vehicule = vehicule.id Inner Join
+            marque On vehicule.ref_id_marque = marque.id Inner Join
+            model On model.ref_id_marque = marque.id
+            And vehicule.ref_id_model = model.id
+            Where reservation.ref_id_vehicule = :id_vehicule");
+            $select->bindParam(':id_vehicule',$id);
+            $select->execute();
+            $data=$select->fetchAll();
+            return $data;
+        } catch (PDOException $e) {
+            return "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
     function getAllUserReservation()
     {
         try {
