@@ -19,6 +19,7 @@ export class InterfaceUtilisateurComponent implements OnInit {
   id: number;
   nom : string;
   prenom : string;
+  points: string;
 
 
   ngOnInit() {
@@ -28,6 +29,7 @@ export class InterfaceUtilisateurComponent implements OnInit {
       window.location.href = '/';
     }else{
         var result=this.UserService.getinfouser(cookie);
+        this.points = result.point;
         this.email = result.mail;
         this.id = result.id;
         this.prenom = result.prenom;

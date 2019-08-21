@@ -1,6 +1,6 @@
 <?php
 require "config/model.php";
-require "vendor/autoload.php";
+// require "vendor/autoload.php";
 class reservationController
 {
     private function facture($reservation)

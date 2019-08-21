@@ -105,18 +105,26 @@ class reservation extends config
     {
         try {
             $data_base=$this->connection();
-            $select = $data_base->prepare(" Select
+            $select = $data_base->prepare("Select
             reservation.id,
+            reservation.ref_id_user,
             reservation.date_fin,
             reservation.date_debut,
-            marque.nom as marque,
-            model.nom As model
+            marque.nom As marque,
+            model.nom As model,
+            reservation.prix,
+            vehicule.plaque,
+            vehicule.coffre,
+            vehicule.personne,
+            vehicule.kilometrage,
+            vehicule.prix As prix1,
+            vehicule.autonomie,
+            vehicule.img
             From
-            reservation Inner Join
-            vehicule On reservation.ref_id_vehicule = vehicule.id Inner Join
-            marque On vehicule.ref_id_marque = marque.id Inner Join
-            model On model.ref_id_marque = marque.id
-            And vehicule.ref_id_model = model.id
+            reservation 
+            Inner Join vehicule On reservation.ref_id_vehicule = vehicule.id 
+            Inner Join marque On vehicule.ref_id_marque = marque.id
+            Inner Join model On model.ref_id_marque = marque.id
             Where reservation.ref_id_user = :id_user");
             $select->bindParam(':id_user',$id);
             $select->execute();
