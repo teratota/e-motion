@@ -135,6 +135,10 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
     onEdit(id){
       this.router.navigate(['/utilisateur/offre/edit'], {state: {data: {id}}});
     }
+
+    onReservation(id){
+      this.router.navigate(['/utilisateur/offre/reservation'], {state: {data: {id}}});
+    }
     
     onFileChange(event) {
       let reader = new FileReader();

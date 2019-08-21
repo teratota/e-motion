@@ -139,4 +139,19 @@ class user extends config
             die();
         }
     }
+
+    function validationEmail($email)
+    {
+        try {
+            $data_base=$this->connection();
+            $select = $data_base->prepare("Select COUNT(*) From user WHERE mail = :mail ");
+            $select->bindParam(':mail',$email);
+            $select->execute();
+            $data=$select->fetchAll();
+            return $data;
+        } catch (PDOException $e) {
+            return "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
 }
