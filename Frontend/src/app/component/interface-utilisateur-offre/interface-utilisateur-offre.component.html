@@ -7,28 +7,28 @@
   <form [formGroup]="vehiculeForm" (ngSubmit)="saveVehicule()">
   <div class="container"> 
   <div class="row my-4">
-    <div class="col-md-2 offset-md-1">
+    <div class="col-md-3">
     <label for="type_vehicule">Type de vehicule</label>
     <select class="form-control" formControlName="type" id="type_vehicule" required>
       <option disabled selected value hidden> -- select an option -- </option>
       <option *ngFor="let typev of type_vehicule" [value]="typev.id">{{typev.nom}}</option>
     </select>
     </div>
-    <div class="col-md-2 ">
+    <div class="col-md-3 ">
     <label for="marque">Marques</label>
     <select (change)="Onchange(marques.value)" #marques formControlName="marque" class="form-control" id="marque" required>
       <option disabled selected value hidden> -- select an option -- </option>
       <option *ngFor="let mar of marque" [value]="mar.id">{{mar.nom}}</option>
     </select>
     </div>
-  <div class="col-md-2 ">
+  <div class="col-md-3 ">
         <label for="model">Model</label>
         <select class="form-control" formControlName="model" id="model" required>
           <option disabled selected value hidden> -- select an option -- </option>
           <option *ngFor="let mod of model" [value]="mod.id">{{mod.nom}}</option>
         </select>
     </div>
-    <div class="col-md-2 ">
+    <div class="col-md-3 ">
         <label for="couleur">Couleur</label>
         <select class="form-control" id="couleur" formControlName="couleur" required>
           <option disabled selected value hidden> -- select an option -- </option>
@@ -37,38 +37,42 @@
     </div>
   </div>
     <div class="row my-4">
-        <div class="col-md-2 ">
+        <div class="col-md-4 ">
             <label for="couleur">Autonomie (Km)</label>
             <input type="text" formControlName="autonomie" class="form-control" >
         </div>
-        <div class="col-md-2 ">
+        <div class="col-md-4 ">
             <label for="couleur">Kilometrage (Km)</label>
             <input type="text" formControlName="kilometrage" class="form-control" >
         </div>
-        <div class="col-md-2 ">
-            <label for="couleur">Capaciter (Personne)</label>
+        <div class="col-md-4 ">
+            <label for="couleur">Capacité (Personne)</label>
             <input type="text" formControlName="capaciter" class="form-control" >
         </div>
-        <div class="col-md-2 ">
+    </div>
+    <div class="row my-4">
+        <div class="col-md-4 ">
             <label for="couleur">Coffre (L)</label>
             <input type="text" formControlName="coffre" class="form-control" >
         </div>
-        <div class="col-md-2 ">
+        <div class="col-md-4 ">
             <label for="couleur">Plaque d'immatriculation</label>
             <input type="text" formControlName="plaque" class="form-control" >
         </div>
-        <div class="col-md-2 ">
-            <label for="couleur">Prix (A la jpournée)</label>
+        <div class="col-md-4 ">
+            <label for="couleur">Prix (A la journée)</label>
             <input type="text" formControlName="prix" class="form-control" >
         </div>
-        <div class="col-md-6 ">
-          <label for="couleur">Image</label>
-          <input type="file" (change)="onFileChange($event)" formControlName="img" class="form-control" >
-          <p *ngIf='Msgimg'>Veuiller uploader une image</p>
-      </div>
     </div>
     <div class="row my-4">
-        <div class="col-md-2 mx-auto">
+        <div class="col-md-6 ">
+            <label for="couleur">Image</label>
+            <input type="file" (change)="onFileChange($event)" formControlName="img" class="form-control" >
+            <p *ngIf='Msgimg'>Veuiller uploader une image</p>
+        </div>
+    </div>
+    <div class="row my-4">
+        <div class="col-md-12 mx-auto text-center boutons">
           <button type="submit" [disabled]="!vehiculeForm.valid" class="btn btn-success">Enregistrer</button>
           <button (click)="notSave()" type="submit" class="btn btn-danger">Annuler</button>
         </div>

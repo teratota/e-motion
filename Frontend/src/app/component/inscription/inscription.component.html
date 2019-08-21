@@ -1,43 +1,104 @@
-<div *ngIf="MsgConfirmation">
-    <p style="color: green">Merci de votre inscription<i class="fa fa-check"></i></p>
-</div>
-<div *ngIf="confirmation">
-    <form [formGroup]="registerForm" (ngSubmit)="checkData()">
-        <label> Nom : </label>
-            <input class="form-control"  type="text" formControlName="lastName" >
-        <label> Prénom : </label>
-            <input class="form-control"  type="text" formControlName="firstName">
-        <label> date de naissance : </label>
-            <input class="form-control"  type="date" formControlName="birthday">
-        <label> sexe : </label>
-            <select class="form-control"  type="text" formControlName="gender">
+<div class="container full-page">
+  <div class="card text-white bg-primary mb-3">
+    <div class="card-header">Inscription</div>
+    <div class="card-body">
+
+      <div *ngIf="MsgConfirmation">
+        <p style="color: green">Merci de votre inscription<i class="fa fa-check"></i></p>
+      </div>
+      <div *ngIf="confirmation">
+        <form [formGroup]="registerForm" (ngSubmit)="checkData()">
+          <div class="row">
+            <div class="col-md-6">
+              <label> Nom : </label>
+              <input class="form-control" type="text" formControlName="lastName">
+            </div>
+            <div class="col-md-6">
+              <label> Prénom : </label>
+              <input class="form-control" type="text" formControlName="firstName">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label> date de naissance : </label>
+              <input class="form-control" type="date" formControlName="birthday">
+            </div>
+            <div class="col-md-6">
+              <label> sexe : </label>
+              <select class="form-control" type="text" formControlName="gender">
                 <option value="homme">homme</option>
                 <option value="femme">femme</option>
                 <option value="autre">autre</option>
-            </select>
-        <label> phone : </label>
-            <input class="form-control"  type="text" formControlName="phone">
-        <label> adresse :</label>
-            <input class="form-control"  type="text" formControlName="adress">
-        <label> ville :</label>
-            <input class="form-control"  type="text" formControlName="city">
-        <label> code postal : </label>
-            <input class="form-control"  type="text" formControlName="zip">
-        <label> pays : </label>
-            <input class="form-control"  type="text" formControlName="country">
-        <label> permis de conduire : </label>
-            <input class="form-control"  type="text" formControlName="driverLicense">
-        <label> mail : </label>
-            <input class="form-control"  type="email" formControlName="mail">
-        <label> mot de passe : </label>
-            <input class="form-control"  type="password" formControlName="password1">
-        <label> Confirmation du mot de passe : </label>
-            <input class="form-control"  type="password" formControlName="password2">
-            <p *ngIf="password" style="color: red">Les mots de passes ne son pas identique</p>
-        <div class="row my-4">
-            <div class="col-md-2 mx-auto">
-                <input type="submit" [disabled]="!registerForm.valid" class="btn btn-success" value="Enregister">
+              </select>
             </div>
-        </div> 
-    </form>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label> phone : </label>
+              <input class="form-control" type="text" formControlName="phone">
+            </div>
+
+            <div class="col-md-6">
+              <label> mail : </label>
+              <input class="form-control" type="email" formControlName="mail">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <label> adresse :</label>
+              <input class="form-control" type="text" formControlName="adress">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label> ville :</label>
+              <input class="form-control" type="text" formControlName="city">
+            </div>
+            <div class="col-md-6">
+              <label> code postal : </label>
+              <input class="form-control" type="text" formControlName="zip">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label> pays : </label>
+              <input class="form-control" type="text" formControlName="country">
+            </div>
+            <div class="col-md-6">
+              <label> permis de conduire : </label>
+              <input class="form-control" type="text" formControlName="driverLicense">
+            </div>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <label> mot de passe : </label>
+              <input class="form-control" type="password" formControlName="password1">
+            </div>
+            <div class="col-md-6">
+              <label> Confirmation du mot de passe : </label>
+              <input class="form-control" type="password" formControlName="password2">
+            </div>
+          </div>
+
+          <div class="row" *ngIf="password">
+            <p style="color: red">Les mots de passes ne sont pas identiques</p>
+          </div>
+
+          <div class="row my-4">
+            <div class="col-md-12 mx-auto text-center">
+              <input type="submit" [disabled]="!registerForm.valid" class="btn btn-success" value="Enregister">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

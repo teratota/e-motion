@@ -22,3 +22,7 @@
     margin: 0;
     padding: 10px 0;
 }
+
+.boutons button {
+    margin: 0 10px;
+}
