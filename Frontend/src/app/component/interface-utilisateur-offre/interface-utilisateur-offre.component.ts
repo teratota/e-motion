@@ -149,6 +149,5 @@ export class InterfaceUtilisateurOffreComponent implements OnInit {
       reader.onload = (e) => {
           this.img=reader.result;
         };
-      console.log(this.img);
     }
 }

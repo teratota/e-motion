@@ -37,8 +37,6 @@ export class InterfaceUtilisateurInfoComponent implements OnInit {
       window.location.href = '/';
     } else {
         let result = this.UserService.getinfouser(cookie);
-        console.table(result);
-        console.log(result.mail);
         this.mail = result.mail;
         this.npermis = result.npermis;
         this.pays = result.pays;

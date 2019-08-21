@@ -87,7 +87,6 @@ export class InterfaceUtilisateurOffreEditComponent implements OnInit {
     this.vehiculeForm.get('plaque').setValue(this.info['plaque']);
     this.vehiculeForm.get('prix').setValue(this.info['prix']);
     this.vehiculeForm.get('img').setValue(this.info['img']);
-    console.log(this.info);
     this.ajoutVehicule = false;
     var cookie=this.ValidationService.getCookie('tokenValidation');
     var result=this.ValidationService.verifuserconnection(cookie);
@@ -142,7 +141,6 @@ export class InterfaceUtilisateurOffreEditComponent implements OnInit {
         reader.onload = (e) => {
           this.img=reader.result;
         }
-      console.log(this.img);
     }
 
 }

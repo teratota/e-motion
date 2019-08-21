@@ -16,11 +16,9 @@ export class UserService {
         dataType: 'json',
         async: false,
         success(data) {
-            console.log(data);
             result = data;
         }
     });
-      console.log(result);
       return result;
     }
 
@@ -35,11 +33,9 @@ export class UserService {
           id: identifiant
         },
         success(data) {
-            console.log(data);
             result = data;
         }
     });
-      console.log(result);
       return result;
     }
 
@@ -55,11 +51,9 @@ export class UserService {
           password: pass
         },
         success(data) {
-            console.log(data);
             result = data;
         }
     });
-      console.log(result);
       return result;
     }
 
@@ -74,11 +68,9 @@ export class UserService {
           user: user
         },
         success(data) {
-            console.log(data);
             result = data;
         }
       });
-      console.log(result);
       return result;
       }
 
@@ -93,11 +85,9 @@ export class UserService {
             user: user,id:id
           },
           success(data) {
-              console.log(data);
               result = data;
           }
         });
-        console.log(result);
         return result;
         }
 
@@ -112,11 +102,9 @@ export class UserService {
           token: token
         },
         success(data) {
-            console.log(data);
             result = data;
         }
     });
-      console.log(result);
       return result;
     }
 

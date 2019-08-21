@@ -19,11 +19,9 @@ export class ContactService {
         mail: mail, name: name, content: content
       },
       success(data) {
-          console.log(data);
           result = data;
       }
     });
-    console.log(result);
     return result;
     }
 }

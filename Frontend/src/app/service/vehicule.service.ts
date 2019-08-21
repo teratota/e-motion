@@ -20,11 +20,9 @@ export class VehiculeService {
       dataType: "json",
       async: false,
       success: function(data) {
-          console.log(data);
           test = data;
       }
   });
-  console.log(test);
   return test;
   }
 
@@ -40,11 +38,9 @@ export class VehiculeService {
       dataType: "json",
       async: false,
       success: function(data) {
-          console.log(data);
           test = data;
       }
   });
-  console.log(test);
   return test;
   }
 
@@ -60,11 +56,9 @@ export class VehiculeService {
       dataType: "json",
       async: false,
       success: function(data) {
-          console.log(data);
           test = data;
       }
   });
-  console.log(test);
   return test;
   }
   
@@ -80,11 +74,9 @@ export class VehiculeService {
       dataType: "json",
       async: false,
       success: function(data) {
-          console.log(data);
           test = data;
       }
   });
-  console.log(test);
   return test;
   }
 
@@ -99,11 +91,9 @@ export class VehiculeService {
         id: identifiant
       },
       success(data) {
-          console.log(data);
           result = data;
       }
   });
-    console.log(result);
     return result;
   }
 
@@ -118,11 +108,9 @@ export class VehiculeService {
         id: identifiant
       },
       success(data) {
-          console.log(data);
           result = data;
       }
   });
-    console.log(result);
     return result;
   }
 
