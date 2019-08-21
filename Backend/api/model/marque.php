@@ -15,10 +15,4 @@ class marque extends config
             die();
         }
 	}
-    
-    function insert(){}
-    
-    function update(){}
-        
-    function delete(){}  
 }

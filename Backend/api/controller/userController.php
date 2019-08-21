@@ -51,4 +51,15 @@ class userController
         $result = $class->update($user,$parametre['id']);
         echo json_encode($result);
     }
+    Public function validationEmail($parametre = null)
+    {
+        $class = new user;
+        $result = $class->validationEmail($parametre['email']);
+        if($result["COUNT(*)"]>0){
+            $return = false;
+        }else{
+            $return = true;
+        }
+        echo json_encode($return);
+    }
 }

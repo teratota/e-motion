@@ -29,6 +29,7 @@
             <input class="form-control"  type="text" formControlName="driverLicense">
         <label> mail : </label>
             <input class="form-control"  type="email" formControlName="mail">
+            <p *ngIf="password" style="color: red">Cette email est déja utlisé</p>
         <label> mot de passe : </label>
             <input class="form-control"  type="password" formControlName="password1">
         <label> Confirmation du mot de passe : </label>

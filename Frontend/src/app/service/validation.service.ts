@@ -71,15 +71,20 @@ export class ValidationService {
 
   validationEmail(email)
   {
-    var verif     = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$/
-    if (verif.exec(email) == null)
-    {
-      return false;
-    }
-    else
-    {
-      return true;
-    }    
+    let result: any;
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:8000/user/validationEmail',
+      dataType: 'json',
+      data: {
+        email: email
+      },
+      async: false,
+      success(data) {
+          result = data;
+      }
+  });
+    return result;
   }
   validationChaine(chaine)
   {

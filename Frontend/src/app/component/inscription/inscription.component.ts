@@ -64,6 +64,7 @@ export class InscriptionComponent implements OnInit {
   });
 
   password:boolean;
+  mail:boolean;
   confirmation: boolean;
   MsgConfirmation : boolean;
 
@@ -76,16 +77,23 @@ export class InscriptionComponent implements OnInit {
 
   checkData() {
     console.table(this.registerForm.value);
-    var result = this.ValidationService.validationIdentiquePassword(this.registerForm.value.password1,this.registerForm.value.password2);
+    var mail = this.ValidationService.validationEmail(this.registerForm.value.mail)
+    if(mail=false){
+      this.mail = true;
+    }else{
+      this.mail = false;
+      var result = this.ValidationService.validationIdentiquePassword(this.registerForm.value.password1,this.registerForm.value.password2);
     if(result == false){
       this.password=true;
     }else{
+      this.password=false;
       var user = JSON.stringify(this.registerForm.value)
       var info = this.UserService.insertUser(user);
       if(info==true){
         this.confirmation = false;
         this.MsgConfirmation = true;
       }
+    }
     }
     console.log(name);
   }

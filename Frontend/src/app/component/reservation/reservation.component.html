@@ -22,12 +22,8 @@
             <p>Information du véhicule: {{info}}</p>
             <p>Prix: {{prix}}</p>
         </div>
-      <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
-          <input type="text" formControlName="name" placeholder="Jane Doe">
-          <div id="card-element" class="field"></div>
-          <button type="submit" class="btn btn-success">
-            BUY
-          </button>
-        </form>
+        <div class="col-md-12 text-center my-4">
+          <button type="submit" (click)="payment()" class="btn btn-success">Valider</button>
+        </div>
     </div>
 </div> 
