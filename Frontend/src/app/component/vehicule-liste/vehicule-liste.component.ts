@@ -39,7 +39,7 @@ export class VehiculeListeComponent implements OnInit {
     private MarqueService: MarqueService,
     private CouleurService: CouleurService,
     private TypeService: TypeService,
-    private router: Router) { }
+    public router: Router) { }
   vehicule: Vehicule[];
   isViewable: boolean;
   type_vehicule: any[];

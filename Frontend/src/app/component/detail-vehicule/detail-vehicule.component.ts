@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { VehiculeService } from '../../service/vehicule.service';
 import { Router } from '@angular/router';
-import { ComponentFactoryResolver } from '@angular/core/src/render3';
+import { CouleurService } from 'src/app/service/couleur.service';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-detail-vehicule',
@@ -13,7 +14,7 @@ export class DetailVehiculeComponent implements OnInit {
   detail: any[];
   datedebut : String;
   datefin : String;
-  info: any[];
+  info:  {img: string, marque: string, model: string, autonomie: number, coffre:number,couleur:string,kilometrage:number,personne:number, plaque : string, prix:number, id:number};
 
   constructor(private VehiculeService: VehiculeService, private router : Router) { }
 
