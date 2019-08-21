@@ -1,6 +1,6 @@
 <?php
 require "config/model.php";
-// require "vendor/autoload.php";
+ require "vendor/autoload.php";
 class reservationController
 {
     private function facture($reservation)
@@ -88,15 +88,15 @@ class reservationController
     {
        
         try {
-            \Stripe\Stripe::setApiKey('sk_test_zTwDALADRVBwfWUoCsapcNGb005ulh5P9d');
             $token = json_decode($parametre['token']);
+            \Stripe\Stripe::setApiKey('sk_test_zTwDALADRVBwfWUoCsapcNGb005ulh5P9d');
             $charge = \Stripe\Charge::create([
                 'amount' => 999,
                 'currency' => 'eur',
                 'description' => 'Example charge',
                 'source' => $parametre['token']
             ]);
-          } catch(\Stripe\Error\Card $e) {
+        } catch(\Stripe\Error\Card $e) {
           } catch (\Stripe\Error\RateLimit $e) {
             // Too many requests made to the API too quickly
           } catch (\Stripe\Error\InvalidRequest $e) {

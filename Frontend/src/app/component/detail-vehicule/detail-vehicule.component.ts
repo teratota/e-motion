@@ -33,7 +33,6 @@ export class DetailVehiculeComponent implements OnInit {
     this.detail = history.state.data;
     this.datedebut = history.state.datedebut;
     this.datefin = history.state.datefin;
-    console.log(this.datedebut+" "+this.datedebut);
     this.info = this.VehiculeService.getInfoVehiculebyId(this.detail['vehicleID']);
   }
 

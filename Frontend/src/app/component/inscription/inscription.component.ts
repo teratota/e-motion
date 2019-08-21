@@ -95,6 +95,5 @@ export class InscriptionComponent implements OnInit {
       }
     }
     }
-    console.log(name);
   }
 }

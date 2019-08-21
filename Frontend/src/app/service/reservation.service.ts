@@ -26,11 +26,9 @@ export class ReservationService {
         dataType: "json",
         async: false,
         success: function(data) {
-            console.log(data);
             test = data;
         }
     });
-    console.log(test);
     return test;
     }
 
@@ -43,11 +41,9 @@ export class ReservationService {
         dataType: 'json',
         async: false,
         success(data) {
-            console.log(data);
             result = data;
         }
     });
-      console.log(result);
       return result;
     }
 
@@ -62,11 +58,9 @@ export class ReservationService {
         dataType: "json",
         async: false,
         success: function(data) {
-            console.log(data);
             test = data;
         }
     });
-    console.log(test);
     return test;
     }
 
@@ -81,11 +75,9 @@ export class ReservationService {
         dataType: "json",
         async: false,
         success: function(data) {
-            console.log(data);
             test = data;
         }
     });
-    console.log(test);
     return test;
     }
 
@@ -100,11 +92,9 @@ export class ReservationService {
         dataType: "json",
         async: false,
         success: function(data) {
-            console.log(data);
             test = data;
         }
     });
-    console.log(test);
     return test;
     }
 
@@ -116,7 +106,6 @@ export class ReservationService {
         dataType: 'json',
         async: false,
         success: function(data) {
-            console.log(data);
             test = data;
         }
     });
@@ -134,7 +123,6 @@ export class ReservationService {
         dataType: 'json',
         async: false,
         success: function(data) {
-            console.log(data);
             test = data;
         }
     });
@@ -151,7 +139,6 @@ export class ReservationService {
         dataType: "json",
         async: false,
         success: function(data) {
-            console.log(data);
             test = data;
         }
     });
