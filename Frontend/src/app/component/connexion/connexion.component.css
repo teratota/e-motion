@@ -1,6 +1,10 @@
+body {
+    background:  #2980b9
+}
+
 .full-page {
     position: relative;
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
     display: flex;
     justify-content: center;

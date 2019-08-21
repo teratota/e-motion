@@ -4,15 +4,11 @@
   <p *ngIf="MessNotReservation" style="color : green" >vous n'avez aucune reservation</p>
   <div class="row">
     <div *ngFor="let reservations of reservation" class="reservation-container">
-      <p class="reservation-debut">{{reservations.date_fin | date: 'dd MM yyyy' }} <span class="reservation-fin">{{reservation.date_debut | date: 'dd MM yyyy' }}</span> </p>
+      <p class="reservation-debut"> <span class="word">DU</span> {{reservations.date_debut | date: 'dd MM yyyy' }} <span class="word">AU</span><span class="reservation-fin">{{reservations.date_fin | date: 'dd MM yyyy' }}</span> </p>
       <div class="row">
         
-        <div class="col-md-4">
-          <p class="reservation-vehicule">Vehicule Reserver: {{reservations.marque}} {{reservations.model}}</p>
-        </div>
-
-        <div class="col-md-4">
-          <p class="reservation-download"><a id="{{reservations.id}}" #res (click)="onDownloadFacture(res.id)" class="text-danger"> <i class="fa fa-trash"></i> </a></p>
+        <div class="col-md-12">
+          <p class="reservation-vehicule">{{reservations.marque}} {{reservations.model}}</p>
         </div>
 
       </div>
