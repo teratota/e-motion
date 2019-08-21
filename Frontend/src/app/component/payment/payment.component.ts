@@ -76,14 +76,12 @@ export class PaymentComponent implements OnInit {
       .createToken(this.card, { name })
       .subscribe(result => {
         if (result.token) {
-          console.log(result.token);
           var token = JSON.stringify(result.token);
           var info=this.ValidationService.paymentStripe(token,this.reservation.prix);
           if(info == true){
             this.payment();
           }
         } else if (result.error) {
-          console.log(result.error.message);
         }
       });
   }
