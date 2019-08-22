@@ -67,9 +67,7 @@ export class VehiculeListeComponent implements OnInit {
       this.superieur=false;
       var search = this.vehiculeForm.value
       var json = JSON.stringify(search);
-      console.log(json);
       this.vehicule = this.VehiculeService.getAll(json);
-      console.log(this.vehicule);
       this.isViewable = true;
     }
   }

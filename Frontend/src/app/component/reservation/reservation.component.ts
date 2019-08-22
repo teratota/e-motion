@@ -97,8 +97,6 @@ export class ReservationComponent implements OnInit {
   }
 
   verifform(datedebut,datefin,mail){
-    console.log(datedebut);
-    console.log(datefin);
       this.formreservation = false;
       this.email = mail;
       this.datedebut = datedebut;
@@ -106,9 +104,6 @@ export class ReservationComponent implements OnInit {
       this.payer = true;
   }
   verif(){
-    console.log(this.datedebut);
-    console.log(this.datefin);
-    console.log(this.mailForm.value);
     this.email = this.mailForm.value.mail;
     this.info = this.VehiculeService.getInfoVehiculebyId(this.vehicule['id']);
     this.prix = this.ReservationService.prixReservation(this.datedebut,this.datefin,this.info.prix);
