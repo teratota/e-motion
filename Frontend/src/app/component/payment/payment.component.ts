@@ -27,7 +27,7 @@ export class PaymentComponent implements OnInit {
  
   // optional parameters
   elementsOptions: ElementsOptions = {
-    locale: 'es'
+    locale: 'fr'
   };
 
     stripeTest = new FormGroup({

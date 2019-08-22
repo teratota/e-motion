@@ -159,7 +159,7 @@ class user extends config
     {
         $data_base=$this->connection();
         $update = $data_base->prepare("UPDATE user SET point = :points WHERE id = :id");
-        $update->bindParam(':code',$points);
+        $update->bindParam(':points',$points);
         $update->bindParam(':id',$id);
         $update->execute();
     }
