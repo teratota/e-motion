@@ -141,3 +141,7 @@ h2{
 .partenaria .picto:before {
     content: "\f2b5";
 }
+
+.contact .picto:before {
+    content: "\f0e0";
+}
