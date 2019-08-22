@@ -126,7 +126,6 @@ export class InterfaceUtilisateurInfoComponent implements OnInit {
     this.edituser = false;
   }
   saveUser() {
-    console.table(this.registerForm.value);
     var mail = this.ValidationService.validationEmail(this.registerForm.value.mail);
     if(mail=false){
       this.mailverif = true;

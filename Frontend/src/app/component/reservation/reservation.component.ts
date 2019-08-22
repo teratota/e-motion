@@ -106,6 +106,7 @@ export class ReservationComponent implements OnInit {
   verif(){
     this.email = this.mailForm.value.mail;
     this.info = this.VehiculeService.getInfoVehiculebyId(this.vehicule['id']);
+    
     this.prix = this.ReservationService.prixReservation(this.datedebut,this.datefin,this.info.prix);
     this.formreservation = false;
     this.payer = true;
