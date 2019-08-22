@@ -1,0 +1,24 @@
+<div class="container margin-top">
+    <div class="img">
+        <img src="{{this.info.img}}" alt="voiture">
+        <div class="car-detail">
+            <span>{{this.info.marque}} {{this.info.model}}</span>
+        </div>
+    </div>
+    <div class="row details">
+        <p class="col-md-4 col-sm-12">Autonomie : {{this.info.autonomie}} Km</p>
+        <p class="col-md-4 col-sm-12">coffre : {{this.info.coffre}} L</p>
+        <p class="col-md-4 col-sm-12">couleur : {{this.info.couleur}}</p>
+    </div>
+    <div class="row details">
+        <p class="col-md-4 col-sm-12">kilometrage : {{this.info.kilometrage}} Km</p>
+        <p class="col-md-4 col-sm-12">{{this.info.personne}} personnes</p>
+        <p class="col-md-4 col-sm-12">Immatriculation : {{this.info.plaque}}</p>
+    </div>
+    <div class="row details">
+        <p class="col-md-6 col-sm-12"><span class="price">{{this.info.prix}}€</span>/J</p>
+        <div *ngIf="connection" class="col-md-4 col-sm-12">
+            <button type="submit" (click)="reservation(this.info.id)" class="btn btn-success">Réserver</button>
+        </div>
+    </div>
+</div>

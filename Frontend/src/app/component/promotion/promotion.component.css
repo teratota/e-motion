@@ -1,0 +1,25 @@
+.head-promotion{
+    width: 100%;
+    background-image: url('/assets/images/promotion3.jpg');
+    background-position: center;
+    height: 200px;
+    background-size: cover;
+}
+
+.head-promotion .shadow-head{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(70, 70, 70, 0.6);
+    box-shadow: 0 0 20px 2px #333 inset;
+    display: flex;
+    align-items: center;
+    flex-basis: auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h3{
+    padding-top: 20px;
+    color: whitesmoke;
+    text-align: center;
+}

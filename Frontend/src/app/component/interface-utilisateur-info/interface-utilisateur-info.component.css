@@ -1,0 +1,16 @@
+.modif-text {
+    margin: 0;
+    padding: 30px 0;
+}
+
+.row {
+    padding: 10px 0;
+}
+
+button {
+    margin: 20px;
+}
+
+.infos label {
+    border-bottom: 1px solid;
+}

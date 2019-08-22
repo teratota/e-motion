@@ -1,0 +1,11 @@
+<div class="container">
+<h1>Saisissez vos informations</h1>
+
+<form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
+  <input type="text" formControlName="name" placeholder="Votre nom" class="my-4">
+  <div id="card-element" class="field my-4"></div>
+  <button type="submit" class="btn btn-success my-4">
+    Réserver
+  </button>
+</form>
+</div>

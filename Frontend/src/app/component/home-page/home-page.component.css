@@ -1,0 +1,147 @@
+header {
+    height: 100vh;
+    width: 100%;
+    background-color: #27213C;
+    background-image: url('../../../assets/images/header.jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+}
+
+header .title{
+    position: relative;
+    z-index: 2;
+    padding: 60px;
+    color: white;
+}
+
+header .car {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 120px;
+}
+
+header .car img{
+    width: 800px;
+}
+
+header .title h1 {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.50);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    font-size: 5rem;
+}
+
+header .title p {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.50);
+    font-size: 1.4rem;
+}
+
+header::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, rgb(63, 121, 181) 0%, rgba(194, 233, 251, 0.8) 100%);
+}
+
+.background-blue {
+    background: var(--cyan);
+    color: white;
+}
+
+.background-white {
+    background: white;
+    color: var(--cyan);
+}
+
+.presentation {
+    margin-top: 60px;
+}
+
+.presentation .title{
+    position: relative;
+    z-index: 2;
+    padding: 10px 0;
+}
+
+.presentation .body {
+    padding: 30px 0;
+    min-height: 300px;
+}
+
+.partenaire{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-basis: auto;
+    justify-content: space-around;
+}
+
+h2{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.background-white .picto,
+.background-blue .picto{
+    position: relative;
+}
+
+.background-white .picto:before{
+    background-color: white;
+}
+
+.background-blue .picto:before{
+    background-color: var(--cyan);
+}
+
+.background-white .picto:before,
+.background-blue .picto:before{
+    width: 115px;
+    height: 75px;
+    border-radius: 80px;
+    position: absolute;
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: flex;
+    flex-basis: auto;
+    justify-content: center;
+    align-items: center;
+    text-decoration: inherit;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: -37.5px;
+    font-size: 35px;
+}
+
+.about-us .picto:before{
+    content: "\f128";
+}
+
+.offers .picto:before{
+    content: "\f155";
+}
+
+.our-team .picto:before{
+    content: "\f0c0";
+}
+
+.partenaria .picto:before {
+    content: "\f2b5";
+}
+
+.contact .picto:before {
+    content: "\f0e0";
+}

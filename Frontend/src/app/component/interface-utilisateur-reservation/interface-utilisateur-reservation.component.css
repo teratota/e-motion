@@ -1,0 +1,44 @@
+.reservation-container {
+    border: 1px solid;
+    width: 100%;
+    padding: 20px;
+    border-bottom: unset;
+}
+
+.reservation-container:last-child {
+    border-bottom: 1px solid;
+}
+
+.reservation-container > div {
+    text-align: left;
+}
+
+.reservation-container > div.row > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.reservation-container > div p {
+    margin: 0;
+}
+
+.reservation-container  .reservation-debut,
+.reservation-container .reservation-fin  {
+    color: var(--cyan);
+    font-size: 1.5rem
+}
+
+.reservation-container .reservation-fin {
+    margin: 0 10px;
+}
+
+.word{
+    margin: 0 10px;
+    color: black;
+}
+
+.reservation-vehicule {
+    font-size: 1.5rem;
+}

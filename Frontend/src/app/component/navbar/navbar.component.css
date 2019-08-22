@@ -1,0 +1,20 @@
+nav {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    background-color: white;
+    height: 80px;
+}
+
+nav a {
+    color: var(--cyan);
+    cursor: pointer;
+}
+
+.car {
+    height: 50px;
+}
+
+nav .deconnexion:hover {
+    color: brown;
+}

@@ -1,0 +1,31 @@
+
+<app-interface-utilisateur></app-interface-utilisateur>
+<div class="container">
+  <p *ngIf="MessNotReservation" style="color : green" >vous n'avez aucune reservation</p>
+  <div class="row">
+    <div *ngFor="let reservations of reservation" class="reservation-container">
+      <p class="reservation-debut"> <span class="word">DU</span> {{reservations.date_debut | date: 'dd MM yyyy' }} <span class="word">AU</span><span class="reservation-fin">{{reservations.date_fin | date: 'dd MM yyyy' }}</span> </p>
+      <div class="row">
+        
+        <div class="col-md-12">
+          <p class="reservation-vehicule">{{reservations.marque}} {{reservations.model}}</p>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{{reservations.img}}" alt="{{reservations.marque}} {{reservations.model}}">
+        </div>
+        <div class="col-md-4 reservation-content">
+            <p>autonomie: {{reservations.autonomie}} Km</p>
+            <p>coffre: {{reservations.coffre}} L</p>
+            <p>kilometrage: {{reservations.kilometrage}} Km</p>
+            <p>{{reservations.personne}} personne(s)</p>
+            <p>plaque: {{reservations.plaque}}</p>
+            <p>prix journée: {{reservations.prix1}}€</p>
+            <p>prix total: {{reservations.prix}}€</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

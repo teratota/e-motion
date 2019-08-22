@@ -1,0 +1,37 @@
+<app-interface-admin></app-interface-admin>
+<div *ngIf="displayInfos">
+  <div class="container">
+    <p *ngIf="MessNotReservation" style="color : green">vous n'avez aucune reservation</p>
+    <div class="row">
+      <div *ngFor="let reservations of reservation" class="reservation-container">
+        <p class="name">{{reservations.ref_id_user[0].nom}} <span class="firstname">{{reservations.ref_id_user[0].prenom}}</span></p>
+        
+        <p class="reservation-debut">Du <span class="blue reservation-date">{{reservations.date_fin | date: 'dd MM yyyy' }}</span></p>
+        <p class="reservation-fin">Au <span class="blue reservation-date">{{reservations.date_debut | date: 'dd MM yyyy' }}</span></p> 
+        <div class="row">
+
+          <div class="col-md-4">
+            <img src="{{reservations.img}}" alt="{{reservations.marque}} {{reservations.model}}">
+          </div>
+
+          <div class="col-md-4 reservation-content">
+            <p>Vehicule reservé: {{reservations.marque}} {{reservations.model}}</p>
+            <p>autonomie: {{reservations.autonomie}} Km</p>
+            <p>coffre: {{reservations.coffre}} L</p>
+            <p>kilometrage: {{reservations.kilometrage}} Km</p>
+            <p>{{reservations.personne}} personne(s)</p>
+            <p>plaque: {{reservations.plaque}}</p>
+            <p>prix journée: {{reservations.prix1}}€</p>
+            <p>prix total: {{reservations.prix}}€</p>
+          </div>
+
+          <div class="col-md-4">
+            <p class="reservation-delete"><a id="{{reservations.id}}" #res (click)="onDownloadFacture(res.id)"
+                class="text-danger"> <i class="fa fa-trash"></i> </a></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div *ngIf="connection">
+  <nav class="navbar ">
+    <a href="/">
+      <img class="car" src="../../../assets/images/logo.png"/>
+    </a>
+    <a class="navbar-brand" [routerLink]="['/']" >
+      Acceuil
+    </a>
+    <a class="navbar-brand" [routerLink]="['/utilisateur']" >
+      Mon compte
+    </a>
+    <a class="navbar-brand deconnexion" (click)="deconnection()">
+      Déconnexion
+    </a>
+  </nav>
+</div>
+<div *ngIf="anonyme">
+  <nav class="navbar ">
+    <a href="/">
+      <img class="car" src="../../../assets/images/logo.png"/>
+    </a>
+    <a class="navbar-brand" [routerLink]="['/']" >
+      Acceuil
+    </a>
+    <a class="navbar-brand" [routerLink]="['/inscription']" >
+      Inscription
+    </a>
+    <a class="navbar-brand" [routerLink]="['/connexion']" >
+      Connexion
+    </a>
+  </nav>
+  </div>
+<div *ngIf="admin">
+  <nav class="navbar">
+    <a href="/">
+      <img class="car" src="../../../assets/images/logo.png"/>
+    </a>
+    <a class="navbar-brand" [routerLink]="['/']" >
+      Acceuil
+    </a>
+    <a class="navbar-brand" [routerLink]="['/utilisateur']" >
+      Mon compte
+    </a>
+    <a class="navbar-brand" [routerLink]="['/administration']" >
+      Zone d'administration
+    </a>
+    <a class="navbar-brand deconnexion" (click)="deconnection()">
+      Déconnexion
+    </a>
+  </nav>
+</div>
