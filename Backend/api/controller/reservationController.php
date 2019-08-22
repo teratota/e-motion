@@ -17,6 +17,14 @@ class reservationController
         $facture .= "<p>prix : ".$reservation->prix."<p>";
         return $facture;
     }
+    private function addPoints($reservation)
+    {
+        $class = new user;
+        $user = $class->getinfouserbyid($reservation->id);
+        $points = $user['point'] + 10;
+        $return = $class->updatePoints($points, $reservation->id);
+        return $return;
+    }
     public function getHistory($parametre = null)
     {
         $class = new reservation;
@@ -32,6 +40,7 @@ class reservationController
         $reservation->datefin=$datefin->format('Y-m-d H:i:s');
         $class = new reservation;
         $facture=$this->facture($reservation);
+        $points = $this->addPoints($reservation);
         $result = $class->saveReservation($reservation,$facture);
         echo json_encode($result);
     }
@@ -60,13 +69,6 @@ class reservationController
     {
         $class = new reservation;
         $data = $class->getUserReservation($parametre['id']);
-        echo json_encode($data);
-    }
-
-    public function getVehiculeReservation($parametre = null)
-    {
-        $class = new reservation;
-        $data = $class->getVehiculeReservation($parametre['id']);
         echo json_encode($data);
     }
 

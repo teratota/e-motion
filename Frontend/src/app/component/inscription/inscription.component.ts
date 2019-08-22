@@ -76,7 +76,6 @@ export class InscriptionComponent implements OnInit {
   ngOnInit() { }
 
   checkData() {
-    console.table(this.registerForm.value);
     var mail = this.ValidationService.validationEmail(this.registerForm.value.mail)
     if(mail=false){
       this.mail = true;
