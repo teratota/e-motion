@@ -13,5 +13,7 @@
     <label>Message</label>
     <textarea class="form-control" rows="5" formControlName="content"></textarea>
   </div>
-  <button type="submit" [disabled]="!contactForm.valid" class="btn btn-primary">Submit</button>
+  <div class="text-center">
+    <button type="submit" [disabled]="!contactForm.valid" class="btn btn-success">Envoyer</button>
+  </div>
 </form>
