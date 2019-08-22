@@ -1,6 +1,6 @@
 <?php
 require "config/model.php";
-// require "vendor/autoload.php";
+require "vendor/autoload.php";
 class reservationController
 {
     private function facture($reservation)
@@ -17,6 +17,14 @@ class reservationController
         $facture .= "<p>prix : ".$reservation->prix."<p>";
         return $facture;
     }
+    private function addPoints($reservation)
+    {
+        $class = new user;
+        $user = $class->getinfouserbyid($reservation->id);
+        $points = $user['point'] + 10;
+        $return = $class->updatePoints($points, $reservation->id);
+        return $return;
+    }
     public function getHistory($parametre = null)
     {
         $class = new reservation;
@@ -32,6 +40,7 @@ class reservationController
         $reservation->datefin=$datefin->format('Y-m-d H:i:s');
         $class = new reservation;
         $facture=$this->facture($reservation);
+        $points = $this->addPoints($reservation);
         $result = $class->saveReservation($reservation,$facture);
         echo json_encode($result);
     }
@@ -63,13 +72,6 @@ class reservationController
         echo json_encode($data);
     }
 
-    public function getVehiculeReservation($parametre = null)
-    {
-        $class = new reservation;
-        $data = $class->getVehiculeReservation($parametre['id']);
-        echo json_encode($data);
-    }
-
     public function getAllUserReservation($parametre = null)
     {
         $class = new reservation;
@@ -88,7 +90,12 @@ class reservationController
     {
        
         try {
+                // Set your secret key: remember to change this to your live secret key in production
+            // See your keys here: https://dashboard.stripe.com/account/apikeys
             \Stripe\Stripe::setApiKey('sk_test_zTwDALADRVBwfWUoCsapcNGb005ulh5P9d');
+            // Token is created using Checkout or Elements!
+            // Get the payment token ID submitted by the form:
+                echo $parametre['token'];
             $token = json_decode($parametre['token']);
             $charge = \Stripe\Charge::create([
                 'amount' => 999,
@@ -97,6 +104,16 @@ class reservationController
                 'source' => $parametre['token']
             ]);
           } catch(\Stripe\Error\Card $e) {
+            // Since it's a decline, \Stripe\Error\Card will be caught
+            $body = $e->getJsonBody();
+            $err  = $body['error'];
+          
+            print('Status is:' . $e->getHttpStatus() . "\n");
+            print('Type is:' . $err['type'] . "\n");
+            print('Code is:' . $err['code'] . "\n");
+            // param is '' in this case
+            print('Param is:' . $err['param'] . "\n");
+            print('Message is:' . $err['message'] . "\n");
           } catch (\Stripe\Error\RateLimit $e) {
             // Too many requests made to the API too quickly
           } catch (\Stripe\Error\InvalidRequest $e) {

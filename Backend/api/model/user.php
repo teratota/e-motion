@@ -154,4 +154,13 @@ class user extends config
             die();
         }
     }
+
+    function updatePoints($points, $id)
+    {
+        $data_base=$this->connection();
+        $update = $data_base->prepare("UPDATE user SET point = :points WHERE id = :id");
+        $update->bindParam(':code',$points);
+        $update->bindParam(':id',$id);
+        $update->execute();
+    }
 }
